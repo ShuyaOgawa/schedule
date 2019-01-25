@@ -12,6 +12,9 @@
 		988432F721ABD5610037DFB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988432F521ABD5610037DFB0 /* Main.storyboard */; };
 		988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 988432F821ABD5620037DFB0 /* Assets.xcassets */; };
 		988432FC21ABD5620037DFB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988432FA21ABD5620037DFB0 /* LaunchScreen.storyboard */; };
+		9884330621ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */; };
+		9884330E21AD37400037DFB0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884330D21AD37400037DFB0 /* SecondViewController.swift */; };
+		989D7FF821B1407C0011D2F6 /* watercolour-texture-background_1048-6656.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 989D7FF621B1407C0011D2F6 /* watercolour-texture-background_1048-6656.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		988432F821ABD5620037DFB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		988432FB21ABD5620037DFB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		988432FD21ABD5620037DFB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		9884330D21AD37400037DFB0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		989D7FF621B1407C0011D2F6 /* watercolour-texture-background_1048-6656.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "watercolour-texture-background_1048-6656.jpg"; path = "../../../Downloads/watercolour-texture-background_1048-6656.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +60,11 @@
 		988432F021ABD5610037DFB0 /* Schedule2 */ = {
 			isa = PBXGroup;
 			children = (
-				988432F121ABD5610037DFB0 /* AppDelegate.swift */,
+				989D7FF621B1407C0011D2F6 /* watercolour-texture-background_1048-6656.jpg */,
 				988432F321ABD5610037DFB0 /* ViewController.swift */,
+				9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */,
+				9884330D21AD37400037DFB0 /* SecondViewController.swift */,
+				988432F121ABD5610037DFB0 /* AppDelegate.swift */,
 				988432F521ABD5610037DFB0 /* Main.storyboard */,
 				988432F821ABD5620037DFB0 /* Assets.xcassets */,
 				988432FA21ABD5620037DFB0 /* LaunchScreen.storyboard */,
@@ -123,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				988432FC21ABD5620037DFB0 /* LaunchScreen.storyboard in Resources */,
+				989D7FF821B1407C0011D2F6 /* watercolour-texture-background_1048-6656.jpg in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
 			);
@@ -135,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9884330E21AD37400037DFB0 /* SecondViewController.swift in Sources */,
 				988432F421ABD5610037DFB0 /* ViewController.swift in Sources */,
 				988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */,
+				9884330621ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4F37WK7V25;
 				INFOPLIST_FILE = Schedule2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4F37WK7V25;
 				INFOPLIST_FILE = Schedule2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

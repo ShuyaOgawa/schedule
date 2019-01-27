@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="watercolour-texture-background_1048-6656.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uSB-bM-7iR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSB-bM-7iR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -299,7 +299,4 @@
             <point key="canvasLocation" x="1149.5999999999999" y="141.67916041979012"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="watercolour-texture-background_1048-6656.jpg" width="626" height="626"/>
-    </resources>
 </document>

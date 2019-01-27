@@ -6,5 +6,5 @@ target 'Schedule2' do
   use_frameworks!
 
   # Pods for Schedule2
-
+	pod 'Firebase/Core'
 end

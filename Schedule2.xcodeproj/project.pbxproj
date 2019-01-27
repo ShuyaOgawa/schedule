@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2297226651D213E5693AE98D /* Pods_Schedule2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209669591186E3256B5EBD41 /* Pods_Schedule2.framework */; };
 		988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988432F121ABD5610037DFB0 /* AppDelegate.swift */; };
 		988432F421ABD5610037DFB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988432F321ABD5610037DFB0 /* ViewController.swift */; };
 		988432F721ABD5610037DFB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988432F521ABD5610037DFB0 /* Main.storyboard */; };
@@ -14,9 +15,12 @@
 		988432FC21ABD5620037DFB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988432FA21ABD5620037DFB0 /* LaunchScreen.storyboard */; };
 		9884330621ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */; };
 		9884330E21AD37400037DFB0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884330D21AD37400037DFB0 /* SecondViewController.swift */; };
+		98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98BE045921FDA28000D53FA8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		209669591186E3256B5EBD41 /* Pods_Schedule2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Schedule2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24DF07A519BDE971E2149F74 /* Pods-Schedule2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.debug.xcconfig"; sourceTree = "<group>"; };
 		988432EE21ABD5610037DFB0 /* Schedule2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988432F121ABD5610037DFB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		988432F321ABD5610037DFB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		988432FD21ABD5620037DFB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		9884330D21AD37400037DFB0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		98BE045921FDA28000D53FA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2297226651D213E5693AE98D /* Pods_Schedule2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0295B7ADB9D34E769DB20A93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24DF07A519BDE971E2149F74 /* Pods-Schedule2.debug.xcconfig */,
+				A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		988432E521ABD5610037DFB0 = {
 			isa = PBXGroup;
 			children = (
 				988432F021ABD5610037DFB0 /* Schedule2 */,
 				988432EF21ABD5610037DFB0 /* Products */,
+				0295B7ADB9D34E769DB20A93 /* Pods */,
+				FAB49EBD3A16C8E08D991896 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,8 +84,17 @@
 				988432F821ABD5620037DFB0 /* Assets.xcassets */,
 				988432FA21ABD5620037DFB0 /* LaunchScreen.storyboard */,
 				988432FD21ABD5620037DFB0 /* Info.plist */,
+				98BE045921FDA28000D53FA8 /* GoogleService-Info.plist */,
 			);
 			path = Schedule2;
+			sourceTree = "<group>";
+		};
+		FAB49EBD3A16C8E08D991896 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				209669591186E3256B5EBD41 /* Pods_Schedule2.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9884330021ABD5620037DFB0 /* Build configuration list for PBXNativeTarget "Schedule2" */;
 			buildPhases = (
+				04FD3734066E1035193195D3 /* [CP] Check Pods Manifest.lock */,
 				988432EA21ABD5610037DFB0 /* Sources */,
 				988432EB21ABD5610037DFB0 /* Frameworks */,
 				988432EC21ABD5610037DFB0 /* Resources */,
+				752FFDAEF151B395C85F5542 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,12 +158,62 @@
 			buildActionMask = 2147483647;
 			files = (
 				988432FC21ABD5620037DFB0 /* LaunchScreen.storyboard in Resources */,
+				98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04FD3734066E1035193195D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Schedule2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		752FFDAEF151B395C85F5542 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		988432EA21ABD5610037DFB0 /* Sources */ = {
@@ -288,6 +367,7 @@
 		};
 		9884330121ABD5620037DFB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DF07A519BDE971E2149F74 /* Pods-Schedule2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +386,7 @@
 		};
 		9884330221ABD5620037DFB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

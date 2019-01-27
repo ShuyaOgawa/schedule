@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,15 +31,27 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // ログイン時の処理
+                //まずは、同じstororyboard内であることをここで定義します
+                let storyboard: UIStoryboard = self.storyboard!
+                //ここで移動先のstoryboardを選択(今回の場合は先ほどsecondと名付けたのでそれを書きます)
+                let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+                //ここが実際に移動するコードとなります
+                self.present(timeschedule, animated: true, completion: nil)
             }
             return
         }
         // ログインボタン設置
         let fbLoginBtn = FBSDKLoginButton()
         fbLoginBtn.readPermissions = ["public_profile", "email"]
-        fbLoginBtn.center = self.view.center
+        var fbx = self.view.frame.width
+        fbx *= 1/2
+        var fby = self.view.frame.height
+        fby *= 5/6
+        fbLoginBtn.layer.position = CGPoint(x: fbx, y:fby)
         fbLoginBtn.delegate = self as? FBSDKLoginButtonDelegate
         self.view.addSubview(fbLoginBtn)
+        
+        
     }
     
     override func didReceiveMemoryWarning() {

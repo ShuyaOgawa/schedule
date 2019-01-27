@@ -7,4 +7,8 @@ target 'Schedule2' do
 
   # Pods for Schedule2
 	pod 'Firebase/Core'
+	pod 'FirebaseUI'
+  	pod 'Firebase/Auth'
+  	pod 'FacebookCore'
+  	pod 'FacebookLogin'
 end

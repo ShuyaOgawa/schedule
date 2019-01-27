@@ -17,6 +17,8 @@
 		9884330E21AD37400037DFB0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9884330D21AD37400037DFB0 /* SecondViewController.swift */; };
 		98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98BE045921FDA28000D53FA8 /* GoogleService-Info.plist */; };
 		98BE045D21FDAF8200D53FA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE045C21FDAF8200D53FA8 /* LoginViewController.swift */; };
+		98BE046021FDD7C700D53FA8 /* icons8-settings.undefined in Resources */ = {isa = PBXBuildFile; fileRef = 98BE045F21FDD7C700D53FA8 /* icons8-settings.undefined */; };
+		98BE046221FDDE1300D53FA8 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046121FDDE1300D53FA8 /* AcountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		98BE045921FDA28000D53FA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98BE045B21FDAC4600D53FA8 /* Schedule2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Schedule2.entitlements; sourceTree = "<group>"; };
 		98BE045C21FDAF8200D53FA8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		98BE045F21FDD7C700D53FA8 /* icons8-settings.undefined */ = {isa = PBXFileReference; lastKnownFileType = file; path = "icons8-settings.undefined"; sourceTree = "<group>"; };
+		98BE046121FDDE1300D53FA8 /* AcountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountViewController.swift; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +83,9 @@
 		988432F021ABD5610037DFB0 /* Schedule2 */ = {
 			isa = PBXGroup;
 			children = (
+				98BE045E21FDD7AC00D53FA8 /* 素材 */,
 				988432F521ABD5610037DFB0 /* Main.storyboard */,
+				98BE046121FDDE1300D53FA8 /* AcountViewController.swift */,
 				98BE045C21FDAF8200D53FA8 /* LoginViewController.swift */,
 				988432F321ABD5610037DFB0 /* ViewController.swift */,
 				9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */,
@@ -92,6 +98,15 @@
 				98BE045B21FDAC4600D53FA8 /* Schedule2.entitlements */,
 			);
 			path = Schedule2;
+			sourceTree = "<group>";
+		};
+		98BE045E21FDD7AC00D53FA8 /* 素材 */ = {
+			isa = PBXGroup;
+			children = (
+				98BE045F21FDD7C700D53FA8 /* icons8-settings.undefined */,
+			);
+			name = "素材";
+			path = "ぞざい";
 			sourceTree = "<group>";
 		};
 		FAB49EBD3A16C8E08D991896 /* Frameworks */ = {
@@ -172,6 +187,7 @@
 				98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
+				98BE046021FDD7C700D53FA8 /* icons8-settings.undefined in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +317,7 @@
 				988432F421ABD5610037DFB0 /* ViewController.swift in Sources */,
 				988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */,
 				98BE045D21FDAF8200D53FA8 /* LoginViewController.swift in Sources */,
+				98BE046221FDDE1300D53FA8 /* AcountViewController.swift in Sources */,
 				9884330621ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

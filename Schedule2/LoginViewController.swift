@@ -68,6 +68,7 @@ class LoginViewController: UIViewController {
             return
         }
         // ログイン時の処理
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
     }
     
     @IBAction func logoutButton(_ sender: Any) {

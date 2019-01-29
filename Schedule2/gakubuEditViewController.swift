@@ -1,5 +1,5 @@
 //
-//  AccountEditViewController.swift
+//  gakubuEditViewController.swift
 //  Schedule2
 //
 //  Created by 小川秀哉 on 2019/01/29.
@@ -8,27 +8,15 @@
 
 import UIKit
 
-class AccountEditViewController: UIViewController {
-    
+class gakubuEditViewController: UIViewController {
 
-    @IBOutlet weak var nickName: UITextField!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
     }
     
-    @IBAction func backToAcountview(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    
-    
-    
+
     /*
     // MARK: - Navigation
 

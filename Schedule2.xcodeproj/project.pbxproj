@@ -22,6 +22,9 @@
 		98BE046421FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png in Resources */ = {isa = PBXBuildFile; fileRef = 98BE046321FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png */; };
 		98BE046622005EB300D53FA8 /* AccountEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046522005EB300D53FA8 /* AccountEditViewController.swift */; };
 		98BE046A2200606600D53FA8 /* icons8-delete-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04692200606600D53FA8 /* icons8-delete-filled-50.png */; };
+		98BE046C2200780400D53FA8 /* daigakuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046B2200780400D53FA8 /* daigakuEditViewController.swift */; };
+		98BE046E2200782E00D53FA8 /* gakubuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046D2200782E00D53FA8 /* gakubuEditViewController.swift */; };
+		98BE04702200785F00D53FA8 /* gakkaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046F2200785F00D53FA8 /* gakkaEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		98BE046321FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-user-circle-thin-240.png"; sourceTree = "<group>"; };
 		98BE046522005EB300D53FA8 /* AccountEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditViewController.swift; sourceTree = "<group>"; };
 		98BE04692200606600D53FA8 /* icons8-delete-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-delete-filled-50.png"; sourceTree = "<group>"; };
+		98BE046B2200780400D53FA8 /* daigakuEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daigakuEditViewController.swift; sourceTree = "<group>"; };
+		98BE046D2200782E00D53FA8 /* gakubuEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gakubuEditViewController.swift; sourceTree = "<group>"; };
+		98BE046F2200785F00D53FA8 /* gakkaEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gakkaEditViewController.swift; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +101,9 @@
 				988432F321ABD5610037DFB0 /* ViewController.swift */,
 				98BE046121FDDE1300D53FA8 /* AcountViewController.swift */,
 				98BE046522005EB300D53FA8 /* AccountEditViewController.swift */,
+				98BE046B2200780400D53FA8 /* daigakuEditViewController.swift */,
+				98BE046D2200782E00D53FA8 /* gakubuEditViewController.swift */,
+				98BE046F2200785F00D53FA8 /* gakkaEditViewController.swift */,
 				9884330521ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift */,
 				9884330D21AD37400037DFB0 /* SecondViewController.swift */,
 				988432F121ABD5610037DFB0 /* AppDelegate.swift */,
@@ -326,10 +335,13 @@
 			files = (
 				9884330E21AD37400037DFB0 /* SecondViewController.swift in Sources */,
 				988432F421ABD5610037DFB0 /* ViewController.swift in Sources */,
+				98BE04702200785F00D53FA8 /* gakkaEditViewController.swift in Sources */,
 				988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */,
 				98BE046622005EB300D53FA8 /* AccountEditViewController.swift in Sources */,
 				98BE045D21FDAF8200D53FA8 /* LoginViewController.swift in Sources */,
+				98BE046C2200780400D53FA8 /* daigakuEditViewController.swift in Sources */,
 				98BE046221FDDE1300D53FA8 /* AcountViewController.swift in Sources */,
+				98BE046E2200782E00D53FA8 /* gakubuEditViewController.swift in Sources */,
 				9884330621ABDBEC0037DFB0 /* ScheduleItemCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

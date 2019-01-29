@@ -12,7 +12,9 @@ import FBSDKLoginKit
 
 class AcountViewController: UIViewController {
     
+    
     @IBOutlet weak var userName: UILabel!
+    
     var userProfile : NSDictionary!
     
     override func viewDidLoad() {
@@ -37,10 +39,8 @@ class AcountViewController: UIViewController {
                 // プロフィール情報をディクショナリに入れる
                 self.userProfile = result as! NSDictionary
                 print(self.userProfile)
-                
                 //名前
                 self.userName.text = self.userProfile.object(forKey: "name") as? String
-                
             }
         })
         

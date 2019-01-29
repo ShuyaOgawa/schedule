@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FacebookLogin
+import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -81,6 +85,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
       
     }
+    
+    
 
 
 }

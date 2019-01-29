@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // ログイン時の処理
+                
                 //まずは、同じstororyboard内であることをここで定義します
                 let storyboard: UIStoryboard = self.storyboard!
                 //ここで移動先のstoryboardを選択(今回の場合は先ほどsecondと名付けたのでそれを書きます)

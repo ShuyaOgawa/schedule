@@ -25,6 +25,10 @@
 		98BE046C2200780400D53FA8 /* daigakuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046B2200780400D53FA8 /* daigakuEditViewController.swift */; };
 		98BE046E2200782E00D53FA8 /* gakubuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046D2200782E00D53FA8 /* gakubuEditViewController.swift */; };
 		98BE04702200785F00D53FA8 /* gakkaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BE046F2200785F00D53FA8 /* gakkaEditViewController.swift */; };
+		98BE04752200A97300D53FA8 /* 646.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04712200A97100D53FA8 /* 646.jpg */; };
+		98BE04762200A97300D53FA8 /* 647.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04722200A97200D53FA8 /* 647.jpg */; };
+		98BE04772200A97300D53FA8 /* 645.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04732200A97200D53FA8 /* 645.jpg */; };
+		98BE04782200A97300D53FA8 /* 644.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04742200A97300D53FA8 /* 644.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		98BE046B2200780400D53FA8 /* daigakuEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daigakuEditViewController.swift; sourceTree = "<group>"; };
 		98BE046D2200782E00D53FA8 /* gakubuEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gakubuEditViewController.swift; sourceTree = "<group>"; };
 		98BE046F2200785F00D53FA8 /* gakkaEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gakkaEditViewController.swift; sourceTree = "<group>"; };
+		98BE04712200A97100D53FA8 /* 646.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 646.jpg; sourceTree = "<group>"; };
+		98BE04722200A97200D53FA8 /* 647.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 647.jpg; sourceTree = "<group>"; };
+		98BE04732200A97200D53FA8 /* 645.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 645.jpg; sourceTree = "<group>"; };
+		98BE04742200A97300D53FA8 /* 644.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 644.jpg; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +127,10 @@
 		98BE045E21FDD7AC00D53FA8 /* 素材 */ = {
 			isa = PBXGroup;
 			children = (
+				98BE04742200A97300D53FA8 /* 644.jpg */,
+				98BE04732200A97200D53FA8 /* 645.jpg */,
+				98BE04712200A97100D53FA8 /* 646.jpg */,
+				98BE04722200A97200D53FA8 /* 647.jpg */,
 				98BE04692200606600D53FA8 /* icons8-delete-filled-50.png */,
 				98BE046321FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png */,
 				98BE045F21FDD7C700D53FA8 /* icons8-settings.undefined */,
@@ -201,12 +213,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98BE04762200A97300D53FA8 /* 647.jpg in Resources */,
 				988432FC21ABD5620037DFB0 /* LaunchScreen.storyboard in Resources */,
 				98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */,
+				98BE04772200A97300D53FA8 /* 645.jpg in Resources */,
 				98BE046421FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
 				98BE046A2200606600D53FA8 /* icons8-delete-filled-50.png in Resources */,
+				98BE04752200A97300D53FA8 /* 646.jpg in Resources */,
+				98BE04782200A97300D53FA8 /* 644.jpg in Resources */,
 				98BE046021FDD7C700D53FA8 /* icons8-settings.undefined in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

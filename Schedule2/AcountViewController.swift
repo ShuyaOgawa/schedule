@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FacebookLogin
+import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FacebookLogin
+import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class AccountEditViewController: UIViewController {
     
@@ -17,8 +21,14 @@ class AccountEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+            
+        } else {
+            // No user is signed in.
+            self.dismiss(animated: true)
+        }
         
         
     }

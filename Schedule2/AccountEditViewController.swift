@@ -37,6 +37,16 @@ class AccountEditViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
+    func edit_nickName() {
+        //    firebaseのデータベース取得
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        //firebaseデータベースにuser追加
+        let user = Auth.auth().currentUser
+        let user_id = user?.uid
+        ref.child("users").setValue(["user_id": user_id!])
+    }
+    
     
     
     /*

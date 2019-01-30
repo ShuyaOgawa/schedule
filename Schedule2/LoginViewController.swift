@@ -15,6 +15,7 @@ import FBSDKLoginKit
 class LoginViewController: UIViewController {
     
     @IBAction func backToTop(segue: UIStoryboardSegue) {}
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,13 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // ログイン時の処理
+                //    firebaseのデータベース取得
+                var ref: DatabaseReference!
+                ref = Database.database().reference()
+                //firebaseデータベースにuser追加
+                let user = Auth.auth().currentUser
+                let user_id = user?.uid
+                ref.child("users").setValue(["user_id": user_id!])
                 
                 //まずは、同じstororyboard内であることをここで定義します
                 let storyboard: UIStoryboard = self.storyboard!

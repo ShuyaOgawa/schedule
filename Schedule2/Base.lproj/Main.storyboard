@@ -448,10 +448,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Oz-xM-LQm">
-                                <rect key="frame" x="130" y="79" width="115" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSg-rE-SwY">
                                 <rect key="frame" x="127" y="401" width="120" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -461,12 +457,24 @@
                                     <action selector="update_profile:" destination="qSG-Fs-Q5G" eventType="touchUpInside" id="Gzy-JV-AV3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-t1-dws">
+                                <rect key="frame" x="127" y="87" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oyr-cW-UiM">
+                                <rect key="frame" x="127" y="87" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="image_button:" destination="qSG-Fs-Q5G" eventType="touchUpInside" id="ilU-mr-CUL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cFV-dO-3Bf"/>
                     </view>
                     <connections>
                         <outlet property="nickName" destination="tfT-0G-UMO" id="wM3-gW-oxf"/>
+                        <outlet property="user_image" destination="6rv-t1-dws" id="uPr-WM-zyS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrq-Tk-i20" userLabel="First Responder" sceneMemberID="firstResponder"/>

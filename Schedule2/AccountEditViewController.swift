@@ -16,6 +16,7 @@ class AccountEditViewController: UIViewController {
     
 
     @IBOutlet weak var nickName: UITextField!
+    @IBOutlet weak var user_image: UIImageView!
     
     
     
@@ -54,6 +55,11 @@ class AccountEditViewController: UIViewController {
         let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
         //ここが実際に移動するコードとなります
         self.present(AccountView, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func image_button(_ sender: Any) {
+        
     }
     
     

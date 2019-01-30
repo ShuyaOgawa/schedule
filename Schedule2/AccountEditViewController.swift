@@ -12,7 +12,7 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class AccountEditViewController: UIViewController {
+class AccountEditViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
 
     @IBOutlet weak var nickName: UITextField!
@@ -39,6 +39,7 @@ class AccountEditViewController: UIViewController {
     }
     
     
+//    ユーザのニックネームの編集
     @IBAction func update_profile(_ sender: Any) {
         //    firebaseのデータベース取得
         var ref: DatabaseReference!
@@ -57,10 +58,38 @@ class AccountEditViewController: UIViewController {
         self.present(AccountView, animated: true, completion: nil)
     }
     
-    
+//    ユーザの画像の編集
     @IBAction func image_button(_ sender: Any) {
-        
+        let ipc = UIImagePickerController()
+        ipc.delegate = self
+        ipc.sourceType = UIImagePickerController.SourceType.photoLibrary
+        //編集を可能にする
+        ipc.allowsEditing = true
+        self.present(ipc,animated: true, completion: nil)
     }
+    
+    //写真を選択した時の処理を書く。
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //編集機能を表示させたい場合
+        //UIImagePickerControllerEditedImageはallowsEditingをYESにした場合に用いる。
+        //allowsEditingで指定した範囲を画像として取得する事ができる。
+        //UIImagePickerControllerOriginalImageはallowsEditingをYESにしていたとしても編集機能は表示されない。
+        if info[.originalImage] != nil {
+            let image = info[.originalImage] as! UIImage
+            //画像を設定する
+            user_image.image = image
+            self.user_image.layer.cornerRadius = 60
+            self.user_image.layer.masksToBounds = true
+
+        }
+        
+        //編集機能を表示させない場合
+        //let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        //imageView.image = image
+        
+        dismiss(animated: true,completion: nil)
+    }
+    
     
     
     

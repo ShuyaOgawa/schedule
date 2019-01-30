@@ -457,7 +457,7 @@
                                     <action selector="update_profile:" destination="qSG-Fs-Q5G" eventType="touchUpInside" id="Gzy-JV-AV3"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-t1-dws">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-t1-dws">
                                 <rect key="frame" x="127" y="87" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

@@ -40,11 +40,11 @@ class LoginViewController: UIViewController {
                 //firebaseデータベースにuser追加
                 let user = Auth.auth().currentUser
                 let user_id = user?.uid
-                ref.child("users").setValue(["user_id": user_id!])
+                ref.child("users/\(user_id!)").updateChildValues(["user_id": user_id!])
                 
                 //まずは、同じstororyboard内であることをここで定義します
                 let storyboard: UIStoryboard = self.storyboard!
-                //ここで移動先のstoryboardを選択(今回の場合は先ほどsecondと名付けたのでそれを書きます)
+                //ここで移動先のstoryboardを選択
                 let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
                 //ここが実際に移動するコードとなります
                 self.present(timeschedule, animated: true, completion: nil)

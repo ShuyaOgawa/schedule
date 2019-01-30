@@ -37,14 +37,23 @@ class AccountEditViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    func edit_nickName() {
+    
+    @IBAction func update_profile(_ sender: Any) {
         //    firebaseのデータベース取得
         var ref: DatabaseReference!
         ref = Database.database().reference()
         //firebaseデータベースにuser追加
         let user = Auth.auth().currentUser
         let user_id = user?.uid
-        ref.child("users").setValue(["user_id": user_id!])
+        let nickName = self.nickName.text
+        ref.child("users/\(user_id!)").updateChildValues(["nickName": nickName!])
+        
+        //まずは、同じstororyboard内であることをここで定義します
+        let storyboard: UIStoryboard = self.storyboard!
+        //ここで移動先のstoryboardを選択
+        let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
+        //ここが実際に移動するコードとなります
+        self.present(AccountView, animated: true, completion: nil)
     }
     
     

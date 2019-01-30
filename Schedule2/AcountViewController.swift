@@ -21,10 +21,30 @@ class AcountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        returnUserData()
+        
 
-        // Do any additional setup after loading the view.
+        //ニックネームが登録されていたらfirebaseからさ取得。そうでなければfacebookの名前取得。
+        let user_id = Auth.auth().currentUser?.uid
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let nickName = value?["nickName"] as? String?
+            if nickName != nil {
+                self.userName.text = nickName!
+            } else {
+                self.returnUserData()
+            }
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
     }
+    
+    
     
     func returnUserData()
     {
@@ -34,13 +54,11 @@ class AcountViewController: UIViewController {
             if ((error) != nil)
             {
                 // エラー処理
-                
             }
             else
             {
                 // プロフィール情報をディクショナリに入れる
                 self.userProfile = result as! NSDictionary
-                print(self.userProfile)
                 //名前
                 self.userName.text = self.userProfile.object(forKey: "name") as? String
             }

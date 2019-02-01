@@ -11,4 +11,5 @@ target 'Schedule2' do
   	pod 'Firebase/Auth'
   	pod 'FacebookCore'
   	pod 'FacebookLogin'
+	pod 'Firebase/Storage'
 end

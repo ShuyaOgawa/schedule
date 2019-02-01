@@ -16,6 +16,7 @@ class AcountViewController: UIViewController {
     
     
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var user_image: UIImageView!
     
     var userProfile : NSDictionary!
     
@@ -31,11 +32,35 @@ class AcountViewController: UIViewController {
             // Get user value
             let value = snapshot.value as? NSDictionary
             let nickName = value?["nickName"] as? String?
+            let user_image_data = value?["user_image"] as? String?
             if nickName != nil {
                 self.userName.text = nickName!
             } else {
                 self.returnUserData()
             }
+            
+            if user_image_data != nil {
+                //空白を+に変換する
+                var base64String = user_image_data!?.replacingOccurrences(of: " ", with:"+",range:nil)
+                
+                //BASE64の文字列をデコードしてNSDataを生成
+                let decodeBase64:NSData? =
+                    NSData(base64Encoded:base64String!, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+                
+                //NSDataの生成が成功していたら
+                let decodeSuccess = decodeBase64
+                    
+                //NSDataからUIImageを生成
+                let img = UIImage(data: decodeSuccess as! Data)
+                
+                self.user_image.image = img
+                self.user_image.layer.cornerRadius = 40
+                self.user_image.layer.masksToBounds = true
+                
+            }
+            
+
+            
             
         }) { (error) in
             print(error.localizedDescription)

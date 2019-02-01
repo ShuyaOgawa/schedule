@@ -38,7 +38,8 @@
                                     <constraint firstAttribute="width" constant="270" id="av8-K4-AL7"/>
                                     <constraint firstAttribute="height" constant="152" id="d1Q-b1-rJT"/>
                                 </constraints>
-                                <string key="text">あなたのiPhoneで簡単にテスト対策ファイルを共有できます。</string>
+                                <string key="text">あなたのiPhoneで簡単に
+テスト対策ファイルを共有できます。</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -294,8 +295,8 @@
                                 <rect key="frame" x="0.0" y="95" width="375" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="rPO-dZ-hO4">
-                                        <rect key="frame" x="27" y="38" width="81" height="79"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="rPO-dZ-hO4">
+                                        <rect key="frame" x="27" y="38" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ox5-u3-rwe">
@@ -397,6 +398,7 @@
                     </view>
                     <connections>
                         <outlet property="userName" destination="X53-hB-Omr" id="4cv-SQ-4vO"/>
+                        <outlet property="user_image" destination="rPO-dZ-hO4" id="T0f-1t-2Pw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIy-SV-S4P" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -87,9 +87,20 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
             //firebaseデータベースにuser追加
             let user = Auth.auth().currentUser
             let user_id = user?.uid
-            print("aaaaaaaaaaaaaaaaaaaaaaaa")
-            print(user_image)
-            ref.child("users/\(user_id!)").updateChildValues(["user_image": user_image.image])
+//            ref.child("users/\(user_id!)").updateChildValues(["user_image": user_image.image!])
+            
+            // PNG形式の画像フォーマットとしてNSDataに変換
+            let image_data = user_image.image!.pngData()
+            
+            //画像をNSDataにキャスト
+            let data:NSData = image_data as! NSData
+            
+            //BASE64のStringに変換する
+            let encodeString:String =
+                data.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
+
+            ref.child("users/\(user_id!)").updateChildValues(["user_image": encodeString])
+            
             
         }
         

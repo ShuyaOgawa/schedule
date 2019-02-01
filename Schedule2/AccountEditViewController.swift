@@ -39,7 +39,7 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     
-//    ユーザのニックネームの編集
+//    ユーザ編集の更新ボタン
     @IBAction func update_profile(_ sender: Any) {
         //    firebaseのデータベース取得
         var ref: DatabaseReference!
@@ -80,7 +80,17 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
             user_image.image = image
             self.user_image.layer.cornerRadius = 60
             self.user_image.layer.masksToBounds = true
-
+            
+            //    firebaseのデータベース取得
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            //firebaseデータベースにuser追加
+            let user = Auth.auth().currentUser
+            let user_id = user?.uid
+            print("aaaaaaaaaaaaaaaaaaaaaaaa")
+            print(user_image)
+            ref.child("users/\(user_id!)").updateChildValues(["user_image": user_image.image])
+            
         }
         
         //編集機能を表示させない場合
@@ -89,6 +99,7 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         
         dismiss(animated: true,completion: nil)
     }
+    
     
     
     

@@ -12,7 +12,7 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class AccountEditViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class AccountEditViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextFieldDelegate {
     
 
     @IBOutlet weak var nickName: UITextField!
@@ -22,6 +22,9 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nickName.delegate = self
+        
         // Do any additional setup after loading the view.
         if Auth.auth().currentUser != nil {
             // User is signed in.
@@ -56,6 +59,13 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
         //ここが実際に移動するコードとなります
         self.present(AccountView, animated: true, completion: nil)
+    }
+    
+    //Enterを押したらキーボードが閉じるようにする
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
     }
     
 //    ユーザの画像の編集

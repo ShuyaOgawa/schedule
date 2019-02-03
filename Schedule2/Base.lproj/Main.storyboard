@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="caY-Ib-qjE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y8f-oI-bkQ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L9x-Zn-H3O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-367" y="181"/>
+            <point key="canvasLocation" x="-1010" y="140"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -70,11 +70,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSB-bM-7iR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hqh-qg-d1w">
                                 <rect key="frame" x="32" y="91" width="343" height="444"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ubN-wV-kh4">
                                     <size key="itemSize" width="61" height="64"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -90,14 +91,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9I-Nl-kYS">
-                                                    <rect key="frame" x="6" y="3" width="49" height="41"/>
+                                                    <rect key="frame" x="0.0" y="3" width="61" height="41"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmx-4X-vsf">
-                                                    <rect key="frame" x="10" y="44" width="45" height="20"/>
+                                                    <rect key="frame" x="3" y="44" width="54" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
@@ -106,7 +107,6 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.5663538551099857" green="0.9971866904145078" blue="0.37604281950602902" alpha="0.16794124119718309" colorSpace="custom" customColorSpace="sRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.connerRadius">
                                                 <integer key="value" value="30"/>
@@ -115,7 +115,6 @@
                                         <connections>
                                             <outlet property="className" destination="Y9I-Nl-kYS" id="9IV-C6-7c4"/>
                                             <outlet property="classRoom" destination="Xmx-4X-vsf" id="3Kc-OB-m0L"/>
-                                            <segue destination="mIz-YL-ZzZ" kind="show" identifier="PushClassList" id="sw4-vg-G1H"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -231,7 +230,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="icons8-settings.undefined"/>
                                 <connections>
-                                    <segue destination="qIG-Rp-XHJ" kind="presentation" id="w8U-64-zIx"/>
+                                    <segue destination="qIG-Rp-XHJ" kind="presentation" identifier="new_class_segue" id="w8U-64-zIx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -245,12 +244,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="498" y="212"/>
+            <point key="canvasLocation" x="133.59999999999999" y="171.36431784107947"/>
         </scene>
-        <!--Mon1 View Controller-->
+        <!--New class View Controller-->
         <scene sceneID="9jA-AR-r1Q">
             <objects>
-                <viewController storyboardIdentifier="mon_1" id="wuz-Ys-IYn" customClass="mon_1_ViewController" customModule="Schedule2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="new_class" id="wuz-Ys-IYn" customClass="new_class_ViewController" customModule="Schedule2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9Y-Yg-Uvp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,7 +269,7 @@
                                             <action selector="back_button:" destination="wuz-Ys-IYn" eventType="touchUpInside" id="A25-Kf-THf"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月曜1限" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwB-ae-rQO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwB-ae-rQO">
                                         <rect key="frame" x="115" y="13" width="145" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="eAH-M1-Vy7"/>
@@ -328,11 +327,12 @@
                     <connections>
                         <outlet property="class_name_field" destination="a0D-Ui-hwl" id="dnb-jR-Bw7"/>
                         <outlet property="room_name_field" destination="5hW-of-VnV" id="dsh-b0-6Iz"/>
+                        <outlet property="title_label" destination="vwB-ae-rQO" id="9WE-aJ-9ep"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd6-QP-WYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1280.8" y="946.77661169415296"/>
+            <point key="canvasLocation" x="-420" y="895"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="1rw-bO-omN">
@@ -1145,7 +1145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qL-1u-rcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-367.19999999999999" y="958.4707646176912"/>
+            <point key="canvasLocation" x="-1010" y="1640"/>
         </scene>
         <!--Acount View Controller-->
         <scene sceneID="1w5-CV-SWI">

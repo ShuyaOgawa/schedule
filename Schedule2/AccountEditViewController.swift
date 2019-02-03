@@ -20,6 +20,7 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
     
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

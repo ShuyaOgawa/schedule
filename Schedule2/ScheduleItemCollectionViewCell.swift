@@ -13,4 +13,5 @@ class ScheduleItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var className: UILabel!
     @IBOutlet weak var classRoom: UILabel!
     
+    
 }

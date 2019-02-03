@@ -12,14 +12,16 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class mon_1_ViewController: UIViewController {
+class new_class_ViewController: UIViewController {
     
     @IBOutlet weak var class_name_field: UITextField!
     @IBOutlet weak var room_name_field: UITextField!
+    @IBOutlet weak var title_label: UILabel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }

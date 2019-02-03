@@ -22,24 +22,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // 画面遷移先に渡すindexPath
     var give_indexPath: String = ""
     var give_day: String = ""
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // 枠のカラー
-        HomeMemoTextView.layer.borderColor = UIColor.gray.cgColor
-        
-        // 枠の幅
-        HomeMemoTextView.layer.borderWidth = 1.0
-        
-        // 枠を角丸にする場合
-        HomeMemoTextView.layer.cornerRadius = 10.0
-        HomeMemoTextView.layer.masksToBounds = true
-       
-    }
-    
+    var class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+    var room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     
     let classNameSample = ["英語", "", "発生工学", "実験", "実験", "実験", "", "", "", "", "", "", "", "", "ガンの生物学", "", "環境工学", "", "", "英語", "免疫工学", "実験", "実験", "実験", "", "", "", "実験", "実験", "実験", "", "", "", "", "", ""]
     
@@ -53,6 +37,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                            "月曜6限", "火曜6限", "水曜6限", "木曜6限", "金曜6限", "土曜6限",
                            ]
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        // 枠のカラー
+        HomeMemoTextView.layer.borderColor = UIColor.gray.cgColor
+        
+        // 枠の幅
+        HomeMemoTextView.layer.borderWidth = 1.0
+        
+        // 枠を角丸にする場合
+        HomeMemoTextView.layer.cornerRadius = 10.0
+        HomeMemoTextView.layer.masksToBounds = true
+        
+        
+        
+        
+       
+    }
+    
+    
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return 36
@@ -62,12 +73,39 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleItem", for: indexPath) as! ScheduleItemCollectionViewCell
         
-        cell.className.text = classNameSample[indexPath.row]
-        cell.classRoom.text = classRoomSample[indexPath.row]
+        
+        for i in 0...36{
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            ref.child("classes/\(i)").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                
+                if value != nil {
+                    let class_name = value!["class_name"] as! String
+                    let room_name = value!["room_name"] as! String
+                    var indexPath = value!["indexPath"] as! String
+                    if class_name != nil && room_name != nil {
+                        self.class_array[Int(indexPath)!] = class_name
+                        self.room_array[Int(indexPath)!] = room_name
+                    } else {
+                        
+                    }
+                }
+                
+                cell.className.text = self.class_array[indexPath.row]
+                cell.classRoom.text = self.room_array[indexPath.row]
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        
+//        cell.className.text = class_array[indexPath.row]
+//        cell.classRoom.text = room_array[indexPath.row]
         
       
-        
-        
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderWidth = 0.7
         
@@ -83,24 +121,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.classRoom.layer.masksToBounds = true
         
 //        授業配置
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("classes/mon_1").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let class_name = value?["class_name"] as? String?
-            let room_name = value?["room_name"] as? String?
-            if class_name != nil && room_name != nil {
-                cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 95/100)
-                cell.className.text = class_name!
-                cell.classRoom.text = room_name!
-            } else {
-                
-            }
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/0").observeSingleEvent(of: .value, with: { (snapshot) in
+//             Get user value
+//            let value = snapshot.value as? NSDictionary
+//            let class_name = value?["class_name"] as? String?
+//            let room_name = value?["room_name"] as? String?
+//            if class_name != nil && room_name != nil {
+//                cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 95/100)
+//                cell.className.text = class_name!
+//                cell.classRoom.text = room_name!
+//            } else {
+        
+//            }
+        
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
         
      
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{

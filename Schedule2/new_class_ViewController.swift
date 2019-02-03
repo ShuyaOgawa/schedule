@@ -12,7 +12,7 @@ import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class new_class_ViewController: UIViewController {
+class new_class_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var class_name_field: UITextField!
     @IBOutlet weak var room_name_field: UITextField!
@@ -26,10 +26,8 @@ class new_class_ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("new")
+        room_name_field.delegate = self
         title_label.text = receive_day
-       
 
         // Do any additional setup after loading the view.
     }
@@ -53,16 +51,30 @@ class new_class_ViewController: UIViewController {
             //firebaseデータベースにuser追加
             let user = Auth.auth().currentUser
             let user_id = user?.uid
-            let class_name = self.class_name_field.text
-            let room_name = self.room_name_field.text
-            ref.child("classes/mon_1").updateChildValues(["class_name": class_name!, "room_name": room_name!])
-            self.dismiss(animated: true)
+            let class_name = self.class_name_field.text!
+            let room_name = self.room_name_field.text!
+            print("ccccccccc")
+            print(class_name)
+            ref.child("classes/\(receive_indexPath)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
+            //まずは、同じstororyboard内であることをここで定義します
+            let storyboard: UIStoryboard = self.storyboard!
+            //ここで移動先のstoryboardを選択
+            let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+            //ここが実際に移動するコードとなります
+            self.present(timeschedule, animated: true, completion: nil)
         }
     }
     
     
     @IBAction func back_button(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    //Enterを押したらキーボードが閉じるようにする
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
     }
     
 }

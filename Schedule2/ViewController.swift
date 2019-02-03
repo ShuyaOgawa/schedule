@@ -19,6 +19,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func backToTop(segue: UIStoryboardSegue) {}
     @IBOutlet weak var HomeMemoTextView: UITextView!
     
+    // 画面遷移先に渡すindexPath
+    var give_indexPath: String = ""
+    var give_day: String = ""
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        // 枠のカラー
+        HomeMemoTextView.layer.borderColor = UIColor.gray.cgColor
+        
+        // 枠の幅
+        HomeMemoTextView.layer.borderWidth = 1.0
+        
+        // 枠を角丸にする場合
+        HomeMemoTextView.layer.cornerRadius = 10.0
+        HomeMemoTextView.layer.masksToBounds = true
+       
+    }
+    
     
     let classNameSample = ["英語", "", "発生工学", "実験", "実験", "実験", "", "", "", "", "", "", "", "", "ガンの生物学", "", "環境工学", "", "", "英語", "免疫工学", "実験", "実験", "実験", "", "", "", "実験", "実験", "実験", "", "", "", "", "", ""]
     
@@ -90,29 +111,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-  
-    
-  
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // 枠のカラー
-        HomeMemoTextView.layer.borderColor = UIColor.gray.cgColor
-        
-        // 枠の幅
-        HomeMemoTextView.layer.borderWidth = 1.0
-        
-        // 枠を角丸にする場合
-        HomeMemoTextView.layer.cornerRadius = 10.0
-        HomeMemoTextView.layer.masksToBounds = true
-        
-        
-        
-      
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var ref: DatabaseReference!
@@ -125,13 +123,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if class_name! != nil && room_name! != nil {
                 
             } else {
-//                データ渡し＆遷移
-                let new_class = self.storyboard!.instantiateViewController(withIdentifier: "new_class") as? new_class_ViewController
-                self.present(new_class!,animated: true, completion: { () in
-                    new_class?.title_label.text = self.set_class_comma[indexPath.row]
-                    
-                    
-                })
+                self.give_indexPath = String(indexPath.row)
+                self.give_day = self.set_class_comma[indexPath.row]
+                self.performSegue(withIdentifier: "new_class", sender: nil)
+                
             }
             
             
@@ -140,9 +135,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
-    
-   
+    // 画面遷移先のViewControllerを取得し、データを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "new_class" {
+            let vc = segue.destination as! new_class_ViewController
+            vc.receive_indexPath = give_indexPath
+            vc.receive_day = give_day
+        }
+    }
 
 
 }

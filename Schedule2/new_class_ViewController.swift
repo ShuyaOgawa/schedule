@@ -18,13 +18,22 @@ class new_class_ViewController: UIViewController {
     @IBOutlet weak var room_name_field: UITextField!
     @IBOutlet weak var title_label: UILabel!
     
+    
+    var receive_indexPath: String = ""
+    var receive_day: String = ""
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("new")
+        title_label.text = receive_day
+       
 
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*

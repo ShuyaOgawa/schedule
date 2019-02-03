@@ -240,11 +240,12 @@
                     <connections>
                         <outlet property="HomeMemoTextView" destination="Fhj-56-Blf" id="NLR-6f-PTG"/>
                         <outlet property="collectionView" destination="Hqh-qg-d1w" id="thO-qX-2yB"/>
+                        <segue destination="wuz-Ys-IYn" kind="presentation" identifier="new_class" id="Pmn-E5-7aU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="171.36431784107947"/>
+            <point key="canvasLocation" x="-58" y="188"/>
         </scene>
         <!--New class View Controller-->
         <scene sceneID="9jA-AR-r1Q">
@@ -332,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pd6-QP-WYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420" y="895"/>
+            <point key="canvasLocation" x="-423" y="1028"/>
         </scene>
         <!--Schedule View Controller-->
         <scene sceneID="1rw-bO-omN">
@@ -1145,7 +1146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qL-1u-rcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010" y="1640"/>
+            <point key="canvasLocation" x="-1068" y="1907"/>
         </scene>
         <!--Acount View Controller-->
         <scene sceneID="1w5-CV-SWI">

@@ -241,11 +241,12 @@
                         <outlet property="HomeMemoTextView" destination="Fhj-56-Blf" id="NLR-6f-PTG"/>
                         <outlet property="collectionView" destination="Hqh-qg-d1w" id="thO-qX-2yB"/>
                         <segue destination="wuz-Ys-IYn" kind="presentation" identifier="new_class" id="Pmn-E5-7aU"/>
+                        <segue destination="mIz-YL-ZzZ" kind="presentation" identifier="detail_class" id="JCh-mg-XT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="188"/>
+            <point key="canvasLocation" x="250" y="103"/>
         </scene>
         <!--New class View Controller-->
         <scene sceneID="9jA-AR-r1Q">
@@ -1679,7 +1680,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zye-Pr-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KTV-f8-3pN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1372" y="140"/>
+            <point key="canvasLocation" x="1145" y="177"/>
         </scene>
     </scenes>
     <resources>

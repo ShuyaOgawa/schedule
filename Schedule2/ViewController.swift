@@ -25,6 +25,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     var room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     
+    
     let classNameSample = ["英語", "", "発生工学", "実験", "実験", "実験", "", "", "", "", "", "", "", "", "ガンの生物学", "", "環境工学", "", "", "英語", "免疫工学", "実験", "実験", "実験", "", "", "", "実験", "実験", "実験", "", "", "", "", "", ""]
     
     let classRoomSample = ["501", "", "502", "実験室", "実験室", "実験室", "", "", "", "", "", "", "", "", "506", "", "505", "", "", "501", "502", "実験室", "実験室", "実験室", "", "", "", "実験室", "実験室", "実験室", "", "", "", "", "", ""]
@@ -88,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     if class_name != nil && room_name != nil {
                         self.class_array[Int(indexPath)!] = class_name
                         self.room_array[Int(indexPath)!] = room_name
+                    
                     } else {
                         
                     }
@@ -95,15 +97,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 cell.className.text = self.class_array[indexPath.row]
                 cell.classRoom.text = self.room_array[indexPath.row]
+                
             }) { (error) in
                 print(error.localizedDescription)
             }
         }
         
         
-        
-//        cell.className.text = class_array[indexPath.row]
-//        cell.classRoom.text = room_array[indexPath.row]
+        cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
         
       
         cell.layer.borderColor = UIColor.gray.cgColor
@@ -159,7 +160,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let class_name = value?["class_name"] as? String?
             let room_name = value?["room_name"] as? String?
             if class_name! != nil && room_name! != nil {
-                
+                self.performSegue(withIdentifier: "detail_class", sender: nil)
             } else {
                 self.give_indexPath = String(indexPath.row)
                 self.give_day = self.set_class_comma[indexPath.row]

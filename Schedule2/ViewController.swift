@@ -152,26 +152,46 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/mon_1").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            let class_name = value?["class_name"] as? String?
+//            let room_name = value?["room_name"] as? String?
+//            if class_name! != nil && room_name! != nil {
+//                self.performSegue(withIdentifier: "detail_class", sender: nil)
+//            } else {
+//                self.give_indexPath = String(indexPath.row)
+//                self.give_day = self.set_class_comma[indexPath.row]
+//                self.performSegue(withIdentifier: "new_class", sender: nil)
+        
+//            }
+        
+            
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+        let provisional_indexPath = indexPath.row
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("classes/mon_1").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            let class_name = value?["class_name"] as? String?
-            let room_name = value?["room_name"] as? String?
-            if class_name! != nil && room_name! != nil {
+            if value != nil {
+                let class_name = value!["class_name"] as! String
+                let room_name = value!["room_name"] as! String
                 self.performSegue(withIdentifier: "detail_class", sender: nil)
             } else {
-                self.give_indexPath = String(indexPath.row)
-                self.give_day = self.set_class_comma[indexPath.row]
+                self.give_indexPath = String(provisional_indexPath)
+                self.give_day = self.set_class_comma[provisional_indexPath]
                 self.performSegue(withIdentifier: "new_class", sender: nil)
-                
             }
-            
-            
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        
     }
     
     // 画面遷移先のViewControllerを取得し、データを渡す

@@ -22,6 +22,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // 画面遷移先に渡すindexPath
     var give_indexPath: String = ""
     var give_day: String = ""
+    var give_class_name: String = ""
     var class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     var room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     
@@ -181,6 +182,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if value != nil {
                 let class_name = value!["class_name"] as! String
                 let room_name = value!["room_name"] as! String
+                self.give_class_name = class_name
                 self.performSegue(withIdentifier: "detail_class", sender: nil)
             } else {
                 self.give_indexPath = String(provisional_indexPath)
@@ -200,6 +202,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let vc = segue.destination as! new_class_ViewController
             vc.receive_indexPath = give_indexPath
             vc.receive_day = give_day
+        }
+        if segue.identifier == "detail_class" {
+            let vc = segue.destination as! ClassViewController
+            vc.recieve_class_name = give_class_name
         }
     }
 

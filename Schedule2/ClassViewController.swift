@@ -8,12 +8,16 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class ClassViewController: UIViewController {
 
-  
+    @IBOutlet weak var class_label: UILabel!
+    
+    var recieve_class_name: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        class_label.text = recieve_class_name
         // Do any additional setup after loading the view.
     }
     

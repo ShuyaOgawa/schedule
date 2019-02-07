@@ -12,4 +12,5 @@ target 'Schedule2' do
   	pod 'FacebookCore'
   	pod 'FacebookLogin'
 	pod 'Firebase/Storage'
+	pod 'DKImagePickerController'
 end

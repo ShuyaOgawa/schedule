@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class ClassViewController: UIViewController {
+class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
 
     @IBOutlet weak var class_label: UILabel!
     
@@ -31,5 +32,23 @@ class ClassViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func upload_file(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        // 選択可能上限の設定もできます
+        pickerController.maxSelectableCount = 5
+        pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+            // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
+            for asset in assets {
+                asset.fetchFullScreenImage(true, completeBlock: { (image, info) in
+                    // ここで取り出せます
+                })
+            }
+        }
+        self.present(pickerController, animated: true) {}
+    }
+    
+    
 
 }
+

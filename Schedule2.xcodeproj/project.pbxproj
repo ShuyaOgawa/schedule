@@ -31,6 +31,7 @@
 		98BE04782200A97300D53FA8 /* 644.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 98BE04742200A97300D53FA8 /* 644.jpg */; };
 		98CF880D22063F3F0026802E /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF880C22063F3F0026802E /* UIView+Border.swift */; };
 		98CF880F22064A410026802E /* new_class_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF880E22064A410026802E /* new_class_ViewController.swift */; };
+		98CF8815220B74850026802E /* icons8-ファイル追加-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 98CF8814220B74850026802E /* icons8-ファイル追加-100.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		98BE04742200A97300D53FA8 /* 644.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 644.jpg; sourceTree = "<group>"; };
 		98CF880C22063F3F0026802E /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 		98CF880E22064A410026802E /* new_class_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = new_class_ViewController.swift; sourceTree = "<group>"; };
+		98CF8814220B74850026802E /* icons8-ファイル追加-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ファイル追加-100.png"; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 		98BE045E21FDD7AC00D53FA8 /* 素材 */ = {
 			isa = PBXGroup;
 			children = (
+				98CF8814220B74850026802E /* icons8-ファイル追加-100.png */,
 				98BE04742200A97300D53FA8 /* 644.jpg */,
 				98BE04732200A97200D53FA8 /* 645.jpg */,
 				98BE04712200A97100D53FA8 /* 646.jpg */,
@@ -224,6 +227,7 @@
 				98BE045A21FDA28000D53FA8 /* GoogleService-Info.plist in Resources */,
 				98BE04772200A97300D53FA8 /* 645.jpg in Resources */,
 				98BE046421FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png in Resources */,
+				98CF8815220B74850026802E /* icons8-ファイル追加-100.png in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
 				98BE046A2200606600D53FA8 /* icons8-delete-filled-50.png in Resources */,

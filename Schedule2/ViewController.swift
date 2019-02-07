@@ -76,32 +76,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleItem", for: indexPath) as! ScheduleItemCollectionViewCell
         
         
-        for i in 0...36{
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
-            ref.child("classes/\(i)").observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                
-                if value != nil {
-                    let class_name = value!["class_name"] as! String
-                    let room_name = value!["room_name"] as! String
-                    var indexPath = value!["indexPath"] as! String
-                    if class_name != nil && room_name != nil {
-                        self.class_array[Int(indexPath)!] = class_name
-                        self.room_array[Int(indexPath)!] = room_name
-                    
-                    } else {
-                        
-                    }
+        let provisional_indexPath = indexPath.row
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            if value != nil {
+                let class_name = value!["class_name"] as! String
+                let room_name = value!["room_name"] as! String
+                var indexPath = value!["indexPath"] as! String
+                if class_name != nil && room_name != nil {
+                    self.class_array[provisional_indexPath] = class_name
+                    self.room_array[provisional_indexPath] = room_name
+                } else {
                 }
-                
-                cell.className.text = self.class_array[indexPath.row]
-                cell.classRoom.text = self.room_array[indexPath.row]
-                
-            }) { (error) in
-                print(error.localizedDescription)
             }
+            cell.className.text = self.class_array[indexPath.row]
+            cell.classRoom.text = self.room_array[indexPath.row]
+        }) { (error) in
+            print(error.localizedDescription)
         }
         
         

@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class daigakuEditViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var daigaku: UITextField!
     
     var pickerView: UIPickerView = UIPickerView()
-    var daigaku_list = ["明治大学", "青山学院大学", "立教大学", "中央大学", "法政大学", "上智大学", "東京理科大学"]
+    var daigaku_list = ["明治大学", "青山学院大学", "立教大学", "中央大学", "法政大学", "東京理科大学"]
+    
+    var give_daigaku = ""
 
-                                                                                                                    override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -58,6 +63,26 @@ class daigakuEditViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
         return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    @IBAction func goTogakubu(_ sender: Any) {
+        //    firebaseのデータベース取得
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        //firebaseデータベースにuser追加
+        let user = Auth.auth().currentUser
+        let user_id = user?.uid
+        let daigaku = self.daigaku.text
+        ref.child("users/\(user_id!)").updateChildValues(["daigaku": daigaku!])
+    }
+    
+    // 画面遷移先のViewControllerを取得し、データを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gakubu" {
+            let vc = segue.destination as! gakubuEditViewController
+            let give_daigaku = self.daigaku.text
+            vc.recieve_daigaku = give_daigaku!
+        }
     }
     
     

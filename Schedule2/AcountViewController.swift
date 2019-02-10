@@ -17,6 +17,9 @@ class AcountViewController: UIViewController {
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var user_image: UIImageView!
+    @IBOutlet weak var daigaku_label: UILabel!
+    @IBOutlet weak var gakubu_label: UILabel!
+    
     
     var userProfile : NSDictionary!
     
@@ -33,8 +36,24 @@ class AcountViewController: UIViewController {
             let value = snapshot.value as? NSDictionary
             let nickName = value?["nickName"] as? String?
             let user_image_data = value?["user_image"] as? String?
+            let daigaku = value?["daigaku"] as? String?
+            let gakubu = value?["gakubu"] as? String?
             if nickName != nil {
                 self.userName.text = nickName!
+            } else {
+                self.returnUserData()
+            }
+            
+            if daigaku != nil{
+                self.daigaku_label.text = daigaku!
+                self.daigaku_label.textColor = UIColor.black
+            } else {
+                self.returnUserData()
+            }
+            
+            if gakubu != nil {
+                self.gakubu_label.text = gakubu!
+                self.gakubu_label.textColor = UIColor.black
             } else {
                 self.returnUserData()
             }

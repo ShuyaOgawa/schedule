@@ -48,13 +48,14 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
         if class_name_field.text != nil && room_name_field.text != nil {
             var ref: DatabaseReference!
             ref = Database.database().reference()
-            //firebaseデータベースにuser追加
             let user = Auth.auth().currentUser
             let user_id = user?.uid
+            
+            
+            
+            //firebaseデータベースにuser追加
             let class_name = self.class_name_field.text!
             let room_name = self.room_name_field.text!
-            print("ccccccccc")
-            print(class_name)
             ref.child("classes/\(receive_indexPath)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
             //まずは、同じstororyboard内であることをここで定義します
             let storyboard: UIStoryboard = self.storyboard!

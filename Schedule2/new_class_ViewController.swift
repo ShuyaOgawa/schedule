@@ -51,7 +51,20 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
             let user = Auth.auth().currentUser
             let user_id = user?.uid
             
-            
+//            編集途中　学部参照
+            print("bbbbbbbbbbb")
+            ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                if value != nil {
+                    print("aaaaaaaaa")
+                    print(value)
+                } else {
+                    
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
             
             //firebaseデータベースにuser追加
             let class_name = self.class_name_field.text!

@@ -109,8 +109,22 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
             //BASE64のStringに変換する
             let encodeString:String =
                 data.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
-
             ref.child("users/\(user_id!)").updateChildValues(["user_image": encodeString])
+            
+            
+            
+//            ストレージにトプ画の保存
+            let storage = Storage.storage()
+            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+            if let data = (info[UIImagePickerController.InfoKey.originalImage] as! UIImage).pngData() {
+                //user_uidの名前で画像保存
+                let reference = storageRef.child("user_image/" + user_id! + ".jpg")
+                reference.putData(data, metadata: nil, completion: { metaData, error in
+                })
+            }
+            
+            
+            
             
             
         }

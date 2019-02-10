@@ -58,24 +58,36 @@ class AcountViewController: UIViewController {
                 self.returnUserData()
             }
             
-            if user_image_data != nil {
+//            if user_image_data != nil {
                 //空白を+に変換する
-                var base64String = user_image_data!?.replacingOccurrences(of: " ", with:"+",range:nil)
-                
+//                var base64String = user_image_data!?.replacingOccurrences(of: " ", with:"+",range:nil)
+            
                 //BASE64の文字列をデコードしてNSDataを生成
-                let decodeBase64:NSData? =
-                    NSData(base64Encoded:base64String!, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
-                
+//                let decodeBase64:NSData? =
+//                    NSData(base64Encoded:base64String!, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+            
                 //NSDataの生成が成功していたら
-                let decodeSuccess = decodeBase64
-                    
+//                let decodeSuccess = decodeBase64
+            
                 //NSDataからUIImageを生成
-                let img = UIImage(data: decodeSuccess as! Data)
-                
-                self.user_image.image = img
-                self.user_image.layer.cornerRadius = 40
-                self.user_image.layer.masksToBounds = true
-                
+//                let img = UIImage(data: decodeSuccess as! Data)
+            
+//                self.user_image.image = img
+//                self.user_image.layer.cornerRadius = 40
+//                self.user_image.layer.masksToBounds = true
+            
+//            }
+            
+//            トプ画をストレージから取得
+            print("aaaaaaaaaaaa")
+            let storage = Storage.storage()
+            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+            let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
+            riversRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                print(type(of: data))
+                print(data)
+                let image: UIImage? = data.flatMap(UIImage.init)
+                self.user_image.image = image
             }
             
 

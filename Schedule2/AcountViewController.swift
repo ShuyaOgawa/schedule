@@ -84,13 +84,20 @@ class AcountViewController: UIViewController {
             let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
             let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
             riversRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                print(type(of: data))
-                print(data)
-                let image: UIImage? = data.flatMap(UIImage.init)
-                self.user_image.image = image
+                
+                if let error = error {
+                    // Uh-oh, an error occurred!
+                    print(error)
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    let image: UIImage? = data.flatMap(UIImage.init)
+                    self.user_image.image = image
+                }
+                
             }
+         
             
-
+            
             
             
         }) { (error) in

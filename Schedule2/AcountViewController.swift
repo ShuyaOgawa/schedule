@@ -79,11 +79,10 @@ class AcountViewController: UIViewController {
 //            }
             
 //            トプ画をストレージから取得
-            print("aaaaaaaaaaaa")
             let storage = Storage.storage()
             let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
             let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
-            riversRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
                 
                 if let error = error {
                     // Uh-oh, an error occurred!
@@ -92,6 +91,8 @@ class AcountViewController: UIViewController {
                     // Data for "images/island.jpg" is returned
                     let image: UIImage? = data.flatMap(UIImage.init)
                     self.user_image.image = image
+                    self.user_image.layer.cornerRadius = 40
+                    self.user_image.layer.masksToBounds = true
                 }
                 
             }

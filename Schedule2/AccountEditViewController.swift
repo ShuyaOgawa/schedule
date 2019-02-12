@@ -79,6 +79,7 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         self.present(ipc,animated: true, completion: nil)
     }
     
+   
     //写真を選択した時の処理を書く。
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         //編集機能を表示させたい場合
@@ -93,23 +94,23 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
             self.user_image.layer.masksToBounds = true
             
             //    firebaseのデータベース取得
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
+//            var ref: DatabaseReference!
+//            ref = Database.database().reference()
             //firebaseデータベースにuser追加
             let user = Auth.auth().currentUser
             let user_id = user?.uid
 //            ref.child("users/\(user_id!)").updateChildValues(["user_image": user_image.image!])
             
             // PNG形式の画像フォーマットとしてNSDataに変換
-            let image_data = user_image.image!.pngData()
+//            let image_data = user_image.image!.pngData()
             
             //画像をNSDataにキャスト
-            let data:NSData = image_data as! NSData
+//            let data:NSData = image_data as! NSData
             
             //BASE64のStringに変換する
-            let encodeString:String =
-                data.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
-            ref.child("users/\(user_id!)").updateChildValues(["user_image": encodeString])
+//            let encodeString:String =
+//                data.base64EncodedString(options: NSData.Base64EncodingOptions.lineLength64Characters)
+//            ref.child("users/\(user_id!)").updateChildValues(["user_image": encodeString])
             
             
             
@@ -123,10 +124,6 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
                 })
             }
             
-            
-            
-            
-            
         }
         
         //編集機能を表示させない場合
@@ -136,18 +133,63 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         dismiss(animated: true,completion: nil)
     }
     
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+extension UIImage {
+    
+    /// 上下逆になった画像を反転する
+    func fixedOrientation() -> UIImage? {
+        if self.imageOrientation == UIImage.Orientation.up {
+            return self
+        }
+        UIGraphicsBeginImageContextWithOptions(self.size, false, scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    /// イメージ縮小
+    func resizeImage(maxSize: Int) -> UIImage? {
+        
+        guard let jpg = self.jpegData(compressionQuality: 1) as NSData? else {
+            return nil
+        }
+        if isLessThanMaxByte(data: jpg, maxDataByte: maxSize) {
+            return self
+        }
+        // 80%に圧縮
+        let _size: CGSize = CGSize(width: (self.size.width * 0.8), height: (self.size.height * 0.8))
+        UIGraphicsBeginImageContext(_size)
+        self.draw(in: CGRect(x: 0, y: 0, width: _size.width, height: _size.height))
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+        UIGraphicsEndImageContext()
+        // 再帰処理
+        return newImage.resizeImage(maxSize: maxSize)
+    }
+    
+    /// 最大容量チェック
+    func isLessThanMaxByte(data: NSData?, maxDataByte: Int) -> Bool {
+        
+        if maxDataByte <= 0 {
+            // 最大容量の指定が無い場合はOK扱い
+            return true
+        }
+        guard let data = data else {
+            fatalError("Data unwrap error")
+        }
+        if data.length < maxDataByte {
+            // 最大容量未満：OK　※以下でも良いがバッファを取ることにした
+            return true
+        }
+        // 最大容量以上：NG
+        return false
+    }
+}
+
+

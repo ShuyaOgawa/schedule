@@ -28,6 +28,8 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         room_name_field.delegate = self
         title_label.text = receive_day
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -51,16 +53,13 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
             let user = Auth.auth().currentUser
             let user_id = user?.uid
             
-//            編集途中　学部参照
-            print("bbbbbbbbbbb")
+//            編集途中　大学学部参照
             ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let value = snapshot.value as? NSDictionary
                 if value != nil {
-                    print("aaaaaaaaa")
-                    print(value)
-                } else {
-                    
+                    let daigaku = value?["daigaku"] as? String
+                    let gakubu = value?["gakubu"] as? String
                 }
             }) { (error) in
                 print(error.localizedDescription)

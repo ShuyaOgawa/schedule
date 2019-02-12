@@ -21,6 +21,8 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         
         class_label.text = recieve_class_name
         // Do any additional setup after loading the view.
+        
+        
     }
     
    
@@ -53,7 +55,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         print(image_list)
     }
     
-    
+
     
 }
 

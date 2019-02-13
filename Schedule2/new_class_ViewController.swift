@@ -48,23 +48,12 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func update_class(_ sender: Any) {
         if class_name_field.text != nil && room_name_field.text != nil {
+//            大学、学部が登録されている場合
+            if UserDefaults.standard.string(forKey: "daigaku") != nil && UserDefaults.standard.string(forKey: "gakubu") != nil {
+                
+            }
             var ref: DatabaseReference!
             ref = Database.database().reference()
-            let user = Auth.auth().currentUser
-            let user_id = user?.uid
-            
-//            編集途中　大学学部参照
-            ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                if value != nil {
-                    let daigaku = value?["daigaku"] as? String
-                    let gakubu = value?["gakubu"] as? String
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-            
             //firebaseデータベースにuser追加
             let class_name = self.class_name_field.text!
             let room_name = self.room_name_field.text!

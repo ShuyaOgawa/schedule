@@ -21,10 +21,21 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-        // Do any additional setup after loading the view.
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
+        
+//        アカウント作成していたときuserdefaultのuser_idを参照してtimescheduleに移動
+        if UserDefaults.standard.object(forKey: "user_id") != nil {
+            //まずは、同じstororyboard内であることをここで定義します
+            let storyboard: UIStoryboard = self.storyboard!
+            //ここで移動先のstoryboardを選択
+            let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+            //ここが実際に移動するコードとなります
+            self.present(timeschedule, animated: true, completion: nil)
+        }
+        
         // ログイン済みかチェック
         if let token = FBSDKAccessToken.current() {
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
@@ -41,6 +52,11 @@ class LoginViewController: UIViewController {
                 let user = Auth.auth().currentUser
                 let user_id = user?.uid
                 ref.child("users/\(user_id!)").updateChildValues(["user_id": user_id!])
+                
+                
+//                user_idのuserdefaultshへの書き込み
+                UserDefaults.standard.set(user_id!, forKey: "user_id")
+                
                 
                 //まずは、同じstororyboard内であることをここで定義します
                 let storyboard: UIStoryboard = self.storyboard!
@@ -104,5 +120,11 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
 
+    
+    
+    
 }

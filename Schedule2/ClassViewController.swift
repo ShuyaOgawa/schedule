@@ -55,6 +55,10 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         print(image_list)
     }
     
+    @IBAction func delete_class_button(_ sender: Any) {
+    }
+    
+    
 
     
 }

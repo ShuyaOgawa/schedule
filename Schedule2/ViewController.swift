@@ -20,8 +20,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var HomeMemoTextView: UITextView!
     
     // 画面遷移先に渡すindexPath
-    var daigaku: String?
-    var gakubu: String?
     var give_indexPath: String = ""
     var give_day: String = ""
     var give_class_name: String = ""
@@ -57,22 +55,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         HomeMemoTextView.layer.cornerRadius = 10.0
         HomeMemoTextView.layer.masksToBounds = true
         
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        let user = Auth.auth().currentUser
-        let user_id = user?.uid
         
-        //大学学部参照
-        ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil {
-                self.daigaku = value?["daigaku"] as? String
-                self.gakubu = value?["gakubu"] as? String
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }
     }
     
     
@@ -81,7 +64,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return 36
     }
     

@@ -137,6 +137,7 @@ class AcountViewController: UIViewController {
         let storyboard: UIStoryboard = self.storyboard!
         //ここで移動先のstoryboardを選択
         let login = storyboard.instantiateViewController(withIdentifier: "login")
+        UserDefaults.standard.removeObject(forKey: "user_id")
         self.present(login, animated: true, completion: nil)
     }
     /*

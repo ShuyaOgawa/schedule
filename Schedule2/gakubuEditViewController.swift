@@ -135,7 +135,8 @@ class gakubuEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
         let user_id = user?.uid
         let gakubu = self.gakubu_picker.text
         ref.child("users/\(user_id!)").updateChildValues(["gakubu": gakubu!])
-        
+//        学部をUserDefaultに書き込み
+        UserDefaults.standard.set(gakubu, forKey: "gakubu")
         //まずは、同じstororyboard内であることをここで定義します
         let storyboard: UIStoryboard = self.storyboard!
         //ここで移動先のstoryboardを選択

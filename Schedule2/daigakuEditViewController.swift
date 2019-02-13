@@ -74,6 +74,8 @@ class daigakuEditViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let user_id = user?.uid
         let daigaku = self.daigaku.text
         ref.child("users/\(user_id!)").updateChildValues(["daigaku": daigaku!])
+//        大学をUserDefaultにと書き込み
+        UserDefaults.standard.set(daigaku, forKey: "daigaku")
     }
     
     // 画面遷移先のViewControllerを取得し、データを渡す

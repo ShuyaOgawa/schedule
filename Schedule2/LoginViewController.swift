@@ -19,8 +19,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.array(forKey: "class_name") == nil {
+            let class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+            UserDefaults.standard.set(class_array, forKey: "class_name")
+        }
         
-        
+        if UserDefaults.standard.array(forKey: "room_name") == nil {
+            let room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+            UserDefaults.standard.set(room_array, forKey: "room_name")
+        }
     }
     
     

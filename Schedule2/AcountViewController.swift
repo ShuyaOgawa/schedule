@@ -132,13 +132,49 @@ class AcountViewController: UIViewController {
     
 //    ログアウト処理
     @IBAction func logout(_ sender: UIButton) {
-        let loginManager : FBSDKLoginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        let storyboard: UIStoryboard = self.storyboard!
-        //ここで移動先のstoryboardを選択
-        let login = storyboard.instantiateViewController(withIdentifier: "login")
-        UserDefaults.standard.removeObject(forKey: "user_id")
-        self.present(login, animated: true, completion: nil)
+        
+        
+        // ① UIAlertControllerクラスのインスタンスを生成
+        // タイトル, メッセージ, Alertのスタイルを指定する
+        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "ログアウト", message: "時間割がリセットされますがいいですか？", preferredStyle:  UIAlertController.Style.alert)
+        
+        // ② Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //        UserDefaiultsのuser_id、class_name、room_name削除
+            UserDefaults.standard.removeObject(forKey: "user_id")
+            UserDefaults.standard.removeObject(forKey: "class_name")
+            UserDefaults.standard.removeObject(forKey: "room_name")
+            let loginManager : FBSDKLoginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            //ここで移動先のstoryboardを選択
+            let storyboard: UIStoryboard = self.storyboard!
+            let login = storyboard.instantiateViewController(withIdentifier: "login")
+            self.present(login, animated: true, completion: nil)
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        // ④ Alertを表示
+        self.present(alert, animated: true, completion: nil)
+        
+        
+        
+        
+
     }
     /*
     // MARK: - Navigation
@@ -149,5 +185,7 @@ class AcountViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+   
 
 }

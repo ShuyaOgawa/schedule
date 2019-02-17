@@ -15,6 +15,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     @IBOutlet weak var class_label: UILabel!
     
     var recieve_class_name: String = ""
+    var recieve_indexPath: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +57,48 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     }
     
     @IBAction func delete_class_button(_ sender: Any) {
+        // ① UIAlertControllerクラスのインスタンスを生成
+        // タイトル, メッセージ, Alertのスタイルを指定する
+        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "削除", message: "この授業をコマから外しますか？", preferredStyle:  UIAlertController.Style.alert)
+        
+        // ② Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //        UserDefaiultsのuser_id、class_name、room_name削除
+            var class_array = UserDefaults.standard.array(forKey: "class_name") as! Array<String>
+            class_array[Int(self.recieve_indexPath)!] = ""
+            UserDefaults.standard.set(class_array, forKey: "class_name")
+            var room_array = UserDefaults.standard.array(forKey: "room_name") as! Array<String>
+            room_array[Int(self.recieve_indexPath)!] = ""
+            UserDefaults.standard.set(class_array, forKey: "room_name")
+            self.go_to_ViewController()
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        // ④ Alertを表示
+        self.present(alert, animated: true, completion: nil)
     }
     
+//    viewControllerに遷移するメソッド
+    func go_to_ViewController() {
+        let storyboard: UIStoryboard = self.storyboard!
+        let login = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+        self.present(login, animated: true, completion: nil)
+    }
     
 
     

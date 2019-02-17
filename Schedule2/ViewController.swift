@@ -23,13 +23,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var give_indexPath: String = ""
     var give_day: String = ""
     var give_class_name: String = ""
-    var class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
-    var room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+    
+//    var class_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     
     
-    let classNameSample = ["英語", "", "発生工学", "実験", "実験", "実験", "", "", "", "", "", "", "", "", "ガンの生物学", "", "環境工学", "", "", "英語", "免疫工学", "実験", "実験", "実験", "", "", "", "実験", "実験", "実験", "", "", "", "", "", ""]
+//    var room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
     
-    let classRoomSample = ["501", "", "502", "実験室", "実験室", "実験室", "", "", "", "", "", "", "", "", "506", "", "505", "", "", "501", "502", "実験室", "実験室", "実験室", "", "", "", "実験室", "実験室", "実験室", "", "", "", "", "", ""]
+    var class_array = UserDefaults.standard.array(forKey: "class_name") as! Array<String>
+    var room_array = UserDefaults.standard.array(forKey: "room_name") as! Array<String>
     
     let set_class_comma = ["月曜1限", "火曜1限", "水曜1限", "木曜1限", "金曜1限", "土曜1限",
                            "月曜2限", "火曜2限", "水曜2限", "木曜2限", "金曜2限", "土曜2限",
@@ -72,27 +73,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleItem", for: indexPath) as! ScheduleItemCollectionViewCell
         
         
-        let provisional_indexPath = indexPath.row
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil {
-                let class_name = value!["class_name"] as! String
-                let room_name = value!["room_name"] as! String
-                var indexPath = value!["indexPath"] as! String
-                if class_name != nil && room_name != nil {
-                    self.class_array[provisional_indexPath] = class_name
-                    self.room_array[provisional_indexPath] = room_name
-                } else {
-                }
-            }
-            cell.className.text = self.class_array[indexPath.row]
-            cell.classRoom.text = self.room_array[indexPath.row]
-        }) { (error) in
-            print(error.localizedDescription)
-        }
+//        let provisional_indexPath = indexPath.row
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            if value != nil {
+//                let class_name = value!["class_name"] as! String
+//                let room_name = value!["room_name"] as! String
+//                var indexPath = value!["indexPath"] as! String
+//                if class_name != nil && room_name != nil {
+//                    self.class_array[provisional_indexPath] = class_name
+//                    self.room_array[provisional_indexPath] = room_name
+//                } else {
+//                }
+//            }
+//            cell.className.text = self.class_array[indexPath.row]
+//            cell.classRoom.text = self.room_array[indexPath.row]
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+        
+        cell.className.text = self.class_array[indexPath.row]
+        cell.classRoom.text = self.room_array[indexPath.row]
         
         
         cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
@@ -163,25 +167,39 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 //        }) { (error) in
 //            print(error.localizedDescription)
 //        }
-        let provisional_indexPath = indexPath.row
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil {
-                let class_name = value!["class_name"] as! String
-                let room_name = value!["room_name"] as! String
-                self.give_class_name = class_name
-                self.performSegue(withIdentifier: "detail_class", sender: nil)
-            } else {
-                self.give_indexPath = String(provisional_indexPath)
-                self.give_day = self.set_class_comma[provisional_indexPath]
-                self.performSegue(withIdentifier: "new_class", sender: nil)
-            }
-        }) { (error) in
-            print(error.localizedDescription)
+//        DBに授業がある場合はclassViewContorllerに遷移、ない場合はnewClassviewControllerに遷移
+//        let provisional_indexPath = indexPath.row
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/\(indexPath.row)").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            if value != nil {
+//                let class_name = value!["class_name"] as! String
+//                let room_name = value!["room_name"] as! String
+//                self.give_class_name = class_name
+//                self.performSegue(withIdentifier: "detail_class", sender: nil)
+//            } else {
+//                self.give_indexPath = String(provisional_indexPath)
+//                self.give_day = self.set_class_comma[provisional_indexPath]
+//                self.performSegue(withIdentifier: "new_class", sender: nil)
+//            }
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+        
+//userDefaultにタッチされた授業がない場合はnewClassViewController、ある場合はclassViewControllerに遷移
+        var class_array = UserDefaults.standard.array(forKey: "class_name") as! Array<String>
+        if class_array[indexPath.row] != "" {
+            self.give_indexPath = String(indexPath.row)
+            self.give_class_name = class_array[indexPath.row]
+            self.performSegue(withIdentifier: "detail_class", sender: nil)
+        } else {
+            self.give_indexPath = String(indexPath.row)
+            self.give_day = self.set_class_comma[indexPath.row]
+            self.performSegue(withIdentifier: "new_class", sender: nil)
         }
+        
         
         
     }
@@ -195,6 +213,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         if segue.identifier == "detail_class" {
             let vc = segue.destination as! ClassViewController
+            vc.recieve_indexPath = give_indexPath
             vc.recieve_class_name = give_class_name
         }
     }

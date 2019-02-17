@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
 //        アカウント作成していたときuserdefaultのuser_idを参照してtimescheduleに移動
+//         ログアウト時はuserDefaultsは削除されているからここ経由しない
         if UserDefaults.standard.object(forKey: "user_id") != nil {
             //まずは、同じstororyboard内であることをここで定義します
             let storyboard: UIStoryboard = self.storyboard!

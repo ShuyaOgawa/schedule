@@ -937,6 +937,7 @@
                     </view>
                     <connections>
                         <outlet property="class_label" destination="YCr-3D-ax6" id="5dj-Mr-8Jm"/>
+                        <segue destination="u9R-be-G5A" kind="presentation" identifier="UpdateFileView" id="FQk-Qq-Gjf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zye-Pr-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -968,13 +969,17 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="キャンセル"/>
+                                        <connections>
+                                            <action selector="cancelButton:" destination="u9R-be-G5A" eventType="touchUpInside" id="3kH-h4-MOD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91F-Pv-p6i">
                                         <rect key="frame" x="297" y="5" width="57" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="OK"/>
+                                        <state key="normal" title="保存"/>
                                         <connections>
+                                            <action selector="UpdateFileButton:" destination="u9R-be-G5A" eventType="touchUpInside" id="dzg-zA-ie2"/>
                                             <action selector="delete_class_button:" destination="mIz-YL-ZzZ" eventType="touchUpInside" id="9Aj-MN-fzx"/>
                                         </connections>
                                     </button>
@@ -988,7 +993,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EQ-az-ivd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2037.5999999999999" y="166.8665667166417"/>
+            <point key="canvasLocation" x="2223" y="167"/>
         </scene>
     </scenes>
     <resources>

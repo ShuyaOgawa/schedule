@@ -9,14 +9,28 @@
 import UIKit
 
 class UpdateFileViewController: UIViewController {
+    
+    var recieve_class_name: String = ""
+    var recieve_indexPath: String = ""
+    var recieve_image_list: Array<UIImage> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("aaaaaaaaaaaaa")
+        print(recieve_indexPath)
+        print(recieve_class_name)
+        print(recieve_image_list)
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func UpdateFileButton(_ sender: Any) {
+    }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

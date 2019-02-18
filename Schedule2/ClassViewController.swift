@@ -16,6 +16,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     
     var recieve_class_name: String = ""
     var recieve_indexPath: String = ""
+    var give_image_list: Array<UIImage> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     */
     
     @IBAction func upload_file(_ sender: Any) {
-        var image_list: Array<UIImage> = []
         let pickerController = DKImagePickerController()
         pickerController.showsCancelButton = true
         // 選択可能上限の設定もできます
@@ -48,37 +48,31 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
             for asset in assets {
                 asset.fetchFullScreenImage(completeBlock: { (image, info) in
                     // ここで取り出せます
-                    image_list.append(image!)
-                    print("aaaaaaaaaaaaaaaaaaaa")
-                    print(image_list)
-                    self.go_to_UpdateFileViewController()
+                    self.give_image_list.append(image!)
+//                    self.go_to_UpdateFileViewController()
+                    self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
                 })
             }
         }
         self.present(pickerController, animated: true) {}
-        print(image_list)
     }
     
 //    UpdateFileViewコントローラに授業名、indexPathを渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "new_class" {
-            let vc = segue.destination as! new_class_ViewController
-            vc.receive_indexPath = give_indexPath
-            vc.receive_day = give_day
-        }
-        if segue.identifier == "detail_class" {
-            let vc = segue.destination as! ClassViewController
-            vc.recieve_indexPath = give_indexPath
-            vc.recieve_class_name = give_class_name
+        if segue.identifier == "UpdateFileView" {
+            let vc = segue.destination as! UpdateFileViewController
+            vc.recieve_indexPath = recieve_indexPath
+            vc.recieve_class_name = recieve_class_name
+            vc.recieve_image_list = give_image_list
         }
     }
     
 //    UpdateFileViewコントローラへの遷移メソッド
-    func go_to_UpdateFileViewController() {
-        let storyboard: UIStoryboard = self.storyboard!
-        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")
-        self.present(login, animated: true, completion: nil)
-    }
+//    func go_to_UpdateFileViewController() {
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")
+//        self.present(login, animated: true, completion: nil)
+//    }
     
     @IBAction func delete_class_button(_ sender: Any) {
         // ① UIAlertControllerクラスのインスタンスを生成

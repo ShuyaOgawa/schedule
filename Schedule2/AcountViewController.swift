@@ -26,38 +26,69 @@ class AcountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+//user_nameがuserDefaultsに登録されていたら表示
+        if UserDefaults.standard.string(forKey: "user_name") != nil {
+            self.userName.text = (UserDefaults.standard.string(forKey: "user_name"))!
+        }
+        if UserDefaults.standard.string(forKey: "daigaku") != nil {
+            self.daigaku_label.text = (UserDefaults.standard.string(forKey: "daigaku"))!
+            self.daigaku_label.textColor = UIColor.black
+        }
+        if UserDefaults.standard.string(forKey: "gakubu") != nil {
+            self.gakubu_label.text = (UserDefaults.standard.string(forKey: "gakubu"))!
+            self.gakubu_label.textColor = UIColor.black
+        }
+        
+//                    トプ画をストレージから取得
+        let user_id = UserDefaults.standard.string(forKey: "user_id")
+        let storage = Storage.storage()
+        let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+        let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
+        riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Uh-oh, an error occurred!
+                print(error)
+            } else {
+            // Data for "images/island.jpg" is returned
+                let image: UIImage? = data.flatMap(UIImage.init)
+                self.user_image.image = image
+                self.user_image.layer.cornerRadius = 40
+                self.user_image.layer.masksToBounds = true
+            }
+        }
+        
+        
         //ニックネームが登録されていたらfirebaseからさ取得。そうでなければfacebookの名前取得。
-        let user_id = Auth.auth().currentUser?.uid
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let nickName = value?["nickName"] as? String?
-            let user_image_data = value?["user_image"] as? String?
-            let daigaku = value?["daigaku"] as? String?
-            let gakubu = value?["gakubu"] as? String?
-            if nickName != nil {
-                self.userName.text = nickName!
-            } else {
-                self.returnUserData()
-            }
-            
-            if daigaku != nil{
-                self.daigaku_label.text = daigaku!
-                self.daigaku_label.textColor = UIColor.black
-            } else {
-                self.returnUserData()
-            }
-            
-            if gakubu != nil {
-                self.gakubu_label.text = gakubu!
-                self.gakubu_label.textColor = UIColor.black
-            } else {
-                self.returnUserData()
-            }
-            
+//        let user_id = Auth.auth().currentUser?.uid
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("users/\(user_id!)").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            let nickName = value?["nickName"] as? String?
+//            let user_image_data = value?["user_image"] as? String?
+//            let daigaku = value?["daigaku"] as? String?
+//            let gakubu = value?["gakubu"] as? String?
+//            if nickName != nil {
+//                self.userName.text = nickName!
+//            } else {
+//                self.returnUserData()
+//            }
+//
+//            if daigaku != nil{
+//                self.daigaku_label.text = daigaku!
+//                self.daigaku_label.textColor = UIColor.black
+//            } else {
+//                self.returnUserData()
+//            }
+//
+//            if gakubu != nil {
+//                self.gakubu_label.text = gakubu!
+//                self.gakubu_label.textColor = UIColor.black
+//            } else {
+//                self.returnUserData()
+//            }
+        
 //            if user_image_data != nil {
                 //空白を+に変換する
 //                var base64String = user_image_data!?.replacingOccurrences(of: " ", with:"+",range:nil)
@@ -79,32 +110,32 @@ class AcountViewController: UIViewController {
 //            }
             
 //            トプ画をストレージから取得
-            let storage = Storage.storage()
-            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
-            let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
-            riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
-                
-                if let error = error {
-                    // Uh-oh, an error occurred!
-                    print(error)
-                } else {
-                    // Data for "images/island.jpg" is returned
-                    let image: UIImage? = data.flatMap(UIImage.init)
-                    self.user_image.image = image
-                    self.user_image.layer.cornerRadius = 40
-                    self.user_image.layer.masksToBounds = true
-                }
-                
-            }
-         
-            
-            
-            
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
+//            let storage = Storage.storage()
+//            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+//            let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
+//            riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
+//
+//                if let error = error {
+//                    // Uh-oh, an error occurred!
+//                    print(error)
+//                } else {
+//                    // Data for "images/island.jpg" is returned
+//                    let image: UIImage? = data.flatMap(UIImage.init)
+//                    self.user_image.image = image
+//                    self.user_image.layer.cornerRadius = 40
+//                    self.user_image.layer.masksToBounds = true
+//                }
+//
+//            }
+//
+//
+//
+//
+//
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//
         
     }
     
@@ -150,6 +181,9 @@ class AcountViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "user_id")
             UserDefaults.standard.removeObject(forKey: "class_name")
             UserDefaults.standard.removeObject(forKey: "room_name")
+            UserDefaults.standard.removeObject(forKey: "user_name")
+            UserDefaults.standard.removeObject(forKey: "daigaku")
+            UserDefaults.standard.removeObject(forKey: "gakubu")
             let loginManager : FBSDKLoginManager = FBSDKLoginManager()
             loginManager.logOut()
             //ここで移動先のstoryboardを選択

@@ -54,6 +54,9 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         let nickName = self.nickName.text
         ref.child("users/\(user_id!)").updateChildValues(["nickName": nickName!])
         
+//        userDefaultsに名前を設定
+        UserDefaults.standard.set(nickName, forKey: "user_name")
+        
         //まずは、同じstororyboard内であることをここで定義します
         let storyboard: UIStoryboard = self.storyboard!
         //ここで移動先のstoryboardを選択

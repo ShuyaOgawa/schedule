@@ -49,11 +49,35 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                 asset.fetchFullScreenImage(completeBlock: { (image, info) in
                     // ここで取り出せます
                     image_list.append(image!)
+                    print("aaaaaaaaaaaaaaaaaaaa")
+                    print(image_list)
+                    self.go_to_UpdateFileViewController()
                 })
             }
         }
         self.present(pickerController, animated: true) {}
         print(image_list)
+    }
+    
+//    UpdateFileViewコントローラに授業名、indexPathを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "new_class" {
+            let vc = segue.destination as! new_class_ViewController
+            vc.receive_indexPath = give_indexPath
+            vc.receive_day = give_day
+        }
+        if segue.identifier == "detail_class" {
+            let vc = segue.destination as! ClassViewController
+            vc.recieve_indexPath = give_indexPath
+            vc.recieve_class_name = give_class_name
+        }
+    }
+    
+//    UpdateFileViewコントローラへの遷移メソッド
+    func go_to_UpdateFileViewController() {
+        let storyboard: UIStoryboard = self.storyboard!
+        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")
+        self.present(login, animated: true, completion: nil)
     }
     
     @IBAction func delete_class_button(_ sender: Any) {
@@ -76,7 +100,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
             var room_array = UserDefaults.standard.array(forKey: "room_name") as! Array<String>
             room_array[Int(self.recieve_indexPath)!] = ""
             UserDefaults.standard.set(class_array, forKey: "room_name")
-            self.go_to_ViewController()
+            self.go_to_timeScheduleViewController()
         })
         // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
@@ -94,7 +118,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     }
     
 //    viewControllerに遷移するメソッド
-    func go_to_ViewController() {
+    func go_to_timeScheduleViewController() {
         let storyboard: UIStoryboard = self.storyboard!
         let login = storyboard.instantiateViewController(withIdentifier: "timeschedule")
         self.present(login, animated: true, completion: nil)

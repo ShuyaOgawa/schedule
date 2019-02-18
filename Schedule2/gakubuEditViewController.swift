@@ -127,22 +127,34 @@ class gakubuEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     
     @IBAction func updata_gakubu_button(_ sender: Any) {
-        //    firebaseのデータベース取得
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        //firebaseデータベースにuser追加
-        let user = Auth.auth().currentUser
-        let user_id = user?.uid
-        let gakubu = self.gakubu_picker.text
-        ref.child("users/\(user_id!)").updateChildValues(["gakubu": gakubu!])
-//        学部をUserDefaultに書き込み
-        UserDefaults.standard.set(gakubu, forKey: "gakubu")
-        //まずは、同じstororyboard内であることをここで定義します
-        let storyboard: UIStoryboard = self.storyboard!
-        //ここで移動先のstoryboardを選択
-        let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
-        //ここが実際に移動するコードとなります
-        self.present(AccountView, animated: true, completion: nil)
+        if self.gakubu_picker.text != "" {
+//                firebaseのデータベース取得
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            //firebaseデータベースにuser追加
+            let user = Auth.auth().currentUser
+            let user_id = user?.uid
+            let gakubu = self.gakubu_picker.text
+            ref.child("users/\(user_id!)").updateChildValues(["gakubu": gakubu!])
+            //        学部をUserDefaultに書き込み
+            UserDefaults.standard.set(gakubu, forKey: "gakubu")
+            //まずは、同じstororyboard内であることをここで定義します
+            let storyboard: UIStoryboard = self.storyboard!
+            //ここで移動先のstoryboardを選択
+            let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
+            //ここが実際に移動するコードとなります
+            self.present(AccountView, animated: true, completion: nil)
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "保存できません", message: "学部名を選択してください。", preferredStyle:  UIAlertController.Style.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+            })
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
 

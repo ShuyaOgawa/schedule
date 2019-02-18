@@ -66,16 +66,30 @@ class daigakuEditViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func goTogakubu(_ sender: Any) {
-        //    firebaseのデータベース取得
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        //firebaseデータベースにuser追加
-        let user = Auth.auth().currentUser
-        let user_id = user?.uid
-        let daigaku = self.daigaku.text
-        ref.child("users/\(user_id!)").updateChildValues(["daigaku": daigaku!])
-//        大学をUserDefaultにと書き込み
-        UserDefaults.standard.set(daigaku, forKey: "daigaku")
+//        nilチェック
+        if self.daigaku.text != "" {
+            //    firebaseのデータベース取得
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            //firebaseデータベースにuser追加
+            let user = Auth.auth().currentUser
+            let user_id = user?.uid
+            let daigaku = self.daigaku.text
+            ref.child("users/\(user_id!)").updateChildValues(["daigaku": daigaku!])
+            //        大学をUserDefaultにと書き込み
+            UserDefaults.standard.set(daigaku, forKey: "daigaku")
+//            大学がnilだった場合、アラート表示
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "保存できません", message: "大学名前を選択してください。", preferredStyle:  UIAlertController.Style.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+            })
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     // 画面遷移先のViewControllerを取得し、データを渡す

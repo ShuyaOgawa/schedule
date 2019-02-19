@@ -41,6 +41,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     @IBAction func upload_file(_ sender: Any) {
         let pickerController = DKImagePickerController()
         pickerController.showsCancelButton = true
+        pickerController.allowSwipeToSelect = true
         // 選択可能上限の設定もできます
         pickerController.maxSelectableCount = 30
         pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
@@ -50,17 +51,18 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                     // ここで取り出せます
                     self.give_image_list.append(image!)
 //                    self.go_to_UpdateFileViewController()
+                    
+                    if asset == assets.last {
+                        print("1111111111111111111")
+                        print(self.give_image_list)
+                        self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
+                    }
+                    
                 })
             }
         }
         self.present(pickerController, animated: true) {}
         
-    }
-    
-    func imagePickerController(_ picker: DKImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
-        print("1111111111111111111")
-        self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
-        print("22222222222222222222")
     }
     
 //    UpdateFileViewコントローラに授業名、indexPathを渡す
@@ -74,11 +76,11 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     }
     
 //    UpdateFileViewコントローラへの遷移メソッド
-    func go_to_UpdateFileViewController() {
-        let storyboard: UIStoryboard = self.storyboard!
-        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")
-        self.present(login, animated: true, completion: nil)
-    }
+//    func go_to_UpdateFileViewController() {
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")
+//        self.present(login, animated: true, completion: nil)
+//    }
 
     
     @IBAction func delete_class_button(_ sender: Any) {

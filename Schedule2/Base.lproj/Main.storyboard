@@ -840,7 +840,7 @@
         <!--Class View Controller-->
         <scene sceneID="es4-Q7-tIH">
             <objects>
-                <viewController id="mIz-YL-ZzZ" customClass="ClassViewController" customModule="Schedule2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClassView" id="mIz-YL-ZzZ" customClass="ClassViewController" customModule="Schedule2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNY-TU-yUX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1004,7 +1004,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eJ-6n-Mty">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5eJ-6n-Mty">
                                                     <rect key="frame" x="16" y="31" width="98" height="89"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>

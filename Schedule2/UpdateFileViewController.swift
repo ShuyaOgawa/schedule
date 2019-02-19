@@ -29,9 +29,17 @@ class UpdateFileViewController: UIViewController {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        self.dismiss(animated: true)
+        back_to_classView()
     }
     
+    func back_to_classView() {
+        //まずは、同じstororyboard内であることをここで定義します
+        let storyboard: UIStoryboard = self.storyboard!
+        //ここで移動先のstoryboardを選択
+        let timeschedule = storyboard.instantiateViewController(withIdentifier: "ClassView")
+        //ここが実際に移動するコードとなります
+        self.present(timeschedule, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
@@ -62,6 +70,7 @@ extension UpdateFileViewController: UICollectionViewDataSource {
         print(recieve_image_list[indexPath.row])
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "image_cell", for: indexPath)
         if let image = cell.contentView.viewWithTag(1) as? UIImageView {
+            print("ccccccccccccccccccc")
             image.image = recieve_image_list[indexPath.row]
         }
         

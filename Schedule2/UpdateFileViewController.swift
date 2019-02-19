@@ -10,16 +10,18 @@ import UIKit
 
 class UpdateFileViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var recieve_class_name: String = ""
     var recieve_indexPath: String = ""
     var recieve_image_list: Array<UIImage> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("aaaaaaaaaaaaa")
-        print(recieve_indexPath)
-        print(recieve_class_name)
+        print("aaaaaaaaaaaaaaaaaaaa")
         print(recieve_image_list)
+        self.collectionView.delegate = self as! UICollectionViewDelegate
+        self.collectionView.dataSource = self as! UICollectionViewDataSource
         // Do any additional setup after loading the view.
     }
     
@@ -41,4 +43,28 @@ class UpdateFileViewController: UIViewController {
     }
     */
 
+}
+
+extension UpdateFileViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // スタンプが押された時の処理を書く
+    }
+}
+
+extension UpdateFileViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.recieve_image_list.count)
+        return self.recieve_image_list.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("bbbbbbbbbbbbb")
+        print(recieve_image_list[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "image_cell", for: indexPath)
+        if let image = cell.contentView.viewWithTag(1) as? UIImageView {
+            image.image = recieve_image_list[indexPath.row]
+        }
+        
+        return cell
+    }
 }

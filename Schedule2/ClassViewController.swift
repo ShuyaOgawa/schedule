@@ -52,6 +52,14 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                     self.give_image_list.append(image!)
 //                    self.go_to_UpdateFileViewController()
                     
+                    
+                    
+                    pickerController.didCancel = { () in
+                        self.give_image_list = []
+                    }
+                    
+                    
+                    
                     if asset == assets.last {
                         print("1111111111111111111")
                         print(self.give_image_list)
@@ -75,7 +83,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         }
     }
     
-//    UpdateFileViewコントローラへの遷移メソッド
+//    ClassViewコントローラへの遷移メソッド
 //    func go_to_UpdateFileViewController() {
 //        let storyboard: UIStoryboard = self.storyboard!
 //        let login = storyboard.instantiateViewController(withIdentifier: "UpdateFileView")

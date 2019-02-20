@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKCoreKit
 
 class UpdateFileViewController: UIViewController {
     
@@ -15,6 +17,9 @@ class UpdateFileViewController: UIViewController {
     var recieve_class_name: String = ""
     var recieve_indexPath: String = ""
     var recieve_image_list: Array<UIImage> = []
+    
+    @IBOutlet weak var albumName: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +30,13 @@ class UpdateFileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func UpdateFileButton(_ sender: Any) {
-    }
+//    @IBAction func UpdateFileButton(_ sender: Any) {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        let daigaku = UserDefaults.standard.string(forKey: "daigaku")
+//        let gakubu = UserDefaults.standard.string(forKey: "gakubu")
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)/\(self.recieve_class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
+//    }
     
     @IBAction func cancelButton(_ sender: Any) {
         back_to_classView()

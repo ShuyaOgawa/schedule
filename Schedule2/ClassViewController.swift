@@ -53,7 +53,11 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
 //                    self.go_to_UpdateFileViewController()
                     
                     
+                    print("aaaaaaaaaaa")
+                    print(info)
                     
+                    
+//                    cancelボタンが押されたときは画像の入る配列を空にする
                     pickerController.didCancel = { () in
                         self.give_image_list = []
                     }
@@ -61,8 +65,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                     
                     
                     if asset == assets.last {
-                        print("1111111111111111111")
-                        print(self.give_image_list)
                         self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
                     }
                     

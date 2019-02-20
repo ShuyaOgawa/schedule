@@ -23,8 +23,6 @@ class UpdateFileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("aaaaaaaaaaaaaaaaaaaa")
-        print(recieve_image_list)
         self.collectionView.delegate = self as! UICollectionViewDelegate
         self.collectionView.dataSource = self as! UICollectionViewDataSource
         // Do any additional setup after loading the view.
@@ -51,6 +49,8 @@ class UpdateFileViewController: UIViewController {
         self.present(timeschedule, animated: true, completion: nil)
     }
     
+    
+    
     /*
     // MARK: - Navigation
 
@@ -76,11 +76,8 @@ extension UpdateFileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("bbbbbbbbbbbbb")
-        print(recieve_image_list[indexPath.row])
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "image_cell", for: indexPath)
         if let image = cell.contentView.viewWithTag(1) as? UIImageView {
-            print("ccccccccccccccccccc")
             image.image = recieve_image_list[indexPath.row]
         }
         

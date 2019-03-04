@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 
-class UpdateFileViewController: UIViewController {
+class UpdateFileViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,6 +23,8 @@ class UpdateFileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        albumName.delegate = self
+        
         self.collectionView.delegate = self as! UICollectionViewDelegate
         self.collectionView.dataSource = self as! UICollectionViewDataSource
         // Do any additional setup after loading the view.
@@ -35,6 +37,13 @@ class UpdateFileViewController: UIViewController {
 //        let gakubu = UserDefaults.standard.string(forKey: "gakubu")
 //        ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)/\(self.recieve_class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
 //    }
+    
+    //Enterを押したらキーボードが閉じるようにする
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
+    }
     
     @IBAction func cancelButton(_ sender: Any) {
         back_to_classView()
@@ -49,6 +58,40 @@ class UpdateFileViewController: UIViewController {
         self.present(timeschedule, animated: true, completion: nil)
     }
     
+    @IBAction func upload_file_button(_ sender: Any) {
+        let album_name = albumName.text
+//        アルバム名が入力されていなかったらエラー
+        if album_name! == nil {
+            let alert: UIAlertController = UIAlertController(title: "保存できません", message: "アルバム名を選択してください。", preferredStyle:  UIAlertController.Style.alert)
+            
+            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                // ボタンが押された時の処理を書く（クロージャ実装）
+                (action: UIAlertAction!) -> Void in
+            })
+            alert.addAction(defaultAction)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let daigaku = UserDefaults.standard.string(forKey: "daigaku")
+            let gakubu = UserDefaults.standard.string(forKey: "gakubu")
+            //保存するURLを指定
+            let storage = Storage.storage()
+            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+            //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
+            for image in self.recieve_image_list {
+                print("aaaaaaaaaaaa")
+                print(recieve_image_list.count)
+                let data = image.pngData()
+                //ディレクトリを指定
+                let index_image = recieve_image_list.index(of: image)
+                let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)").child(album_name!).child(String(index_image!))
+                reference.putData(data!, metadata: nil, completion: { metaData, error in
+                    print("done")
+                })
+            }
+        }
+        
+        
+    }
     
     
     /*
@@ -71,7 +114,6 @@ extension UpdateFileViewController: UICollectionViewDelegate {
 
 extension UpdateFileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.recieve_image_list.count)
         return self.recieve_image_list.count
     }
     

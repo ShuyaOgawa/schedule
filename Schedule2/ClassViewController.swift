@@ -24,7 +24,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         class_label.text = recieve_class_name
         // Do any additional setup after loading the view.
         
-        
     }
     
    
@@ -52,9 +51,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                     self.give_image_list.append(image!)
 //                    self.go_to_UpdateFileViewController()
                     
-                    
-                    print("aaaaaaaaaaa")
-                    print(info)
                     
                     
 //                    cancelボタンが押されたときは画像の入る配列を空にする

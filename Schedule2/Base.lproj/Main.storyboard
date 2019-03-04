@@ -878,7 +878,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXP-bx-grh">
-                                <rect key="frame" x="0.0" y="97" width="375" height="274"/>
+                                <rect key="frame" x="0.0" y="97" width="375" height="277"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="共有ファイル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2U-pS-bzp">
@@ -943,7 +943,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zye-Pr-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KTV-f8-3pN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1322" y="167"/>
+            <point key="canvasLocation" x="1260" y="166.8665667166417"/>
         </scene>
         <!--Update File View Controller-->
         <scene sceneID="xsT-1s-n9U">
@@ -979,8 +979,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <state key="normal" title="保存"/>
                                         <connections>
-                                            <action selector="UpdateFileButton:" destination="u9R-be-G5A" eventType="touchUpInside" id="dzg-zA-ie2"/>
-                                            <action selector="delete_class_button:" destination="mIz-YL-ZzZ" eventType="touchUpInside" id="9Aj-MN-fzx"/>
+                                            <action selector="upload_file_button:" destination="u9R-be-G5A" eventType="touchUpInside" id="oa1-ij-0Y2"/>
                                         </connections>
                                     </button>
                                 </subviews>

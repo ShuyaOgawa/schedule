@@ -11,6 +11,8 @@ import Firebase
 import DKImagePickerController
 
 class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
+    
+    
 
     @IBOutlet weak var class_label: UILabel!
     
@@ -50,7 +52,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                     // ここで取り出せます
                     self.give_image_list.append(image!)
 //                    self.go_to_UpdateFileViewController()
-                    
                     
                     
 //                    cancelボタンが押されたときは画像の入る配列を空にする

@@ -85,6 +85,11 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
             vc.recieve_class_name = recieve_class_name
             vc.recieve_image_list = give_image_list
         }
+        if segue.identifier == "goToAlbumContainer" {
+            let vc = segue.destination as! AlbumContainerViewController
+            vc.recieve_indexPath = recieve_indexPath
+            vc.recieve_class_name = recieve_class_name
+        }
     }
     
 //    ClassViewコントローラへの遷移メソッド
@@ -139,6 +144,8 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         self.present(login, animated: true, completion: nil)
     }
     
+    
+
 
     
 }

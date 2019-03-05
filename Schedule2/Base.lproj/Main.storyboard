@@ -910,7 +910,7 @@
                                 <rect key="frame" x="0.0" y="79" width="375" height="315"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="ng2-5K-A9t" kind="embed" id="Kbv-aJ-EC2"/>
+                                    <segue destination="ng2-5K-A9t" kind="embed" identifier="goToAlbumContainer" id="Kbv-aJ-EC2"/>
                                 </connections>
                             </containerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-ãã©ã¹-80.png" translatesAutoresizingMaskIntoConstraints="NO" id="1YM-mH-T7y">
@@ -1045,7 +1045,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumItem" id="FeV-ix-kmS" customClass="AlbumContainerCollectionViewCell" customModule="Schedule2" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="AlbumItem" id="FeV-ix-kmS" customClass="AlbumContainerCollectionViewCell" customModule="Schedule2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="96" height="122"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1074,6 +1074,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rAz-MF-zdJ"/>
                     </view>
                     <connections>
                         <outlet property="albumCollection" destination="nbA-4d-eN4" id="5NG-Q5-1Jr"/>

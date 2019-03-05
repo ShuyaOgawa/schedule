@@ -44,22 +44,18 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
             } else {
                 self.album_number = 0
             }
-            print("aaaaaaaaaaaa")
-            print(self.album_number)
             self.albumCollection.reloadData()
         })
     }
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        print("---------")
-        print(self.album_number)
         return self.album_number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumItem", for: indexPath) as! AlbumContainerCollectionViewCell
+        
         
         return cell
     }

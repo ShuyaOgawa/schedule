@@ -67,7 +67,35 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
+        let daigaku = UserDefaults.standard.string(forKey: "daigaku")
+        let gakubu = UserDefaults.standard.string(forKey: "gakubu")
+        
         let album_name = albumName.text
+        
+//        既にあるアルバム名ならエラー
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            let album = value["album"] as? [String : Any]
+            if album != nil {
+                for (key, value) in album! {
+                    print(key)
+                    if key == album_name {
+                        let alert: UIAlertController = UIAlertController(title: "保存できません", message: "既に同じ名前のアルバムがあります。", preferredStyle:  UIAlertController.Style.alert)
+                        
+                        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                            // ボタンが押された時の処理を書く（クロージャ実装）
+                            (action: UIAlertAction!) -> Void in
+                        })
+                        alert.addAction(defaultAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        })
+        
+        
+        
 //        アルバム名が入力されていなかったらエラー
         if album_name! == "" {
             let alert: UIAlertController = UIAlertController(title: "保存できません", message: "アルバム名を選択してください。", preferredStyle:  UIAlertController.Style.alert)
@@ -79,8 +107,6 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(defaultAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let daigaku = UserDefaults.standard.string(forKey: "daigaku")
-            let gakubu = UserDefaults.standard.string(forKey: "gakubu")
             //保存するURLを指定
             let storage = Storage.storage()
             let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
@@ -103,7 +129,6 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
             
         }
-        
         
         
         

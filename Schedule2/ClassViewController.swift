@@ -26,6 +26,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         class_label.text = recieve_class_name
         // Do any additional setup after loading the view.
         
+        
     }
     
    
@@ -40,6 +41,8 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     */
     
     @IBAction func upload_file(_ sender: Any) {
+//        self.give_image_list = []
+        var  segue_count: Int = 1
         let pickerController = DKImagePickerController()
         pickerController.showsCancelButton = true
         pickerController.allowSwipeToSelect = true
@@ -47,25 +50,27 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         pickerController.maxSelectableCount = 30
         pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
             // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
-            for asset in assets {
-                asset.fetchFullScreenImage(completeBlock: { (image, info) in
+            self.give_image_list = Array(repeating: UIImage(), count: assets.count)
+            for i in 0 ... assets.count-1 {
+                assets[i].fetchFullScreenImage(completeBlock: { (image, info) in
                     // ここで取り出せます
-                    self.give_image_list.append(image!)
-//                    self.go_to_UpdateFileViewController()
+                    self.give_image_list[i] = image!
                     
+//                    self.go_to_UpdateFileViewController()
                     
 //                    cancelボタンが押されたときは画像の入る配列を空にする
                     pickerController.didCancel = { () in
                         self.give_image_list = []
                     }
                     
-                    
-                    
-                    if asset == assets.last {
+                    if segue_count == assets.count {
                         self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
                     }
                     
+                    segue_count += 1
+                    
                 })
+                
             }
         }
         self.present(pickerController, animated: true) {}

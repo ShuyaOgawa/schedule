@@ -34,7 +34,7 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 34
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

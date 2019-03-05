@@ -23,6 +23,12 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("bbbbbbbbbbbbbbbb")
+        print(recieve_class_name)
+        print(recieve_indexPath)
+        print(recieve_image_list)
+        
         albumName.delegate = self
         
         self.collectionView.delegate = self as! UICollectionViewDelegate
@@ -46,7 +52,7 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        back_to_classView()
+        self.dismiss(animated: true)
     }
     
     func back_to_classView() {
@@ -59,9 +65,15 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func upload_file_button(_ sender: Any) {
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        
         let album_name = albumName.text
 //        アルバム名が入力されていなかったらエラー
-        if album_name! == nil {
+        print("aaaaaaaaaaaaa")
+        print(album_name!)
+        if album_name! == "" {
             let alert: UIAlertController = UIAlertController(title: "保存できません", message: "アルバム名を選択してください。", preferredStyle:  UIAlertController.Style.alert)
             
             let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
@@ -78,7 +90,6 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
             //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
             for image in self.recieve_image_list {
-                print("aaaaaaaaaaaa")
                 print(recieve_image_list.count)
                 let data = image.pngData()
                 //ディレクトリを指定
@@ -88,6 +99,14 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                     print("done")
                 })
             }
+            
+            //                保存するアルバム名等をrealtimedatabaseにも追加する
+            let user = Auth.auth().currentUser
+            let user_id = user?.uid
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album").updateChildValues(["albumName": album_name!])
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album").updateChildValues(["user": user_id!])
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album").updateChildValues(["number": String(self.recieve_image_list.count)])
+            
         }
         
         

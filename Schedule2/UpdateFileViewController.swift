@@ -71,31 +71,6 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
         let gakubu = UserDefaults.standard.string(forKey: "gakubu")
         
         let album_name = albumName.text
-        
-//        既にあるアルバム名ならエラー
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as! NSDictionary
-            let album = value["album"] as? [String : Any]
-            if album != nil {
-                for (key, value) in album! {
-                    print(key)
-                    if key == album_name {
-                        let alert: UIAlertController = UIAlertController(title: "保存できません", message: "既に同じ名前のアルバムがあります。", preferredStyle:  UIAlertController.Style.alert)
-                        
-                        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
-                            // ボタンが押された時の処理を書く（クロージャ実装）
-                            (action: UIAlertAction!) -> Void in
-                        })
-                        alert.addAction(defaultAction)
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            }
-        })
-        
-        
-        
 //        アルバム名が入力されていなかったらエラー
         if album_name! == "" {
             let alert: UIAlertController = UIAlertController(title: "保存できません", message: "アルバム名を選択してください。", preferredStyle:  UIAlertController.Style.alert)
@@ -107,26 +82,51 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(defaultAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            //保存するURLを指定
-            let storage = Storage.storage()
-            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
-            //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
-            for image in self.recieve_image_list {
-                let data = image.pngData()
-                //ディレクトリを指定
-                let index_image = recieve_image_list.index(of: image)
-                let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)").child(album_name!).child(String(index_image!))
-                reference.putData(data!, metadata: nil, completion: { metaData, error in
-                    print("done")
-                })
-            }
             
-
             
-            //                保存するアルバム名等をrealtimedatabaseにも追加する
-            let user = Auth.auth().currentUser
-            let user_id = user?.uid
-            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+            //        アルバム名取得
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as! NSDictionary
+                let album = value["album"] as? [String : Any]
+                if album != nil {
+                    for (key, value) in album! {
+                        //        既にあるアルバム名ならエラー
+                        if key == album_name {
+                            let alert: UIAlertController = UIAlertController(title: "保存できません", message: "既に同じ名前のアルバムがあります。", preferredStyle:  UIAlertController.Style.alert)
+                            
+                            let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+                                // ボタンが押された時の処理を書く（クロージャ実装）
+                                (action: UIAlertAction!) -> Void in
+                            })
+                            alert.addAction(defaultAction)
+                            self.present(alert, animated: true, completion: nil)
+                        } else {
+                            //保存するURLを指定
+                            let storage = Storage.storage()
+                            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+                            //保存を実行して、metadataにURLが含まれているので、あとはよしなに加工
+                            for image in self.recieve_image_list {
+                                let data = image.pngData()
+                                //ディレクトリを指定
+                                let index_image = self.recieve_image_list.index(of: image)
+                                let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)").child(album_name!).child(String(index_image!))
+                                reference.putData(data!, metadata: nil, completion: { metaData, error in
+                                    print("done")
+                                })
+                            }
+                            //                保存するアルバム名等をrealtimedatabaseにも追加する
+                            let user = Auth.auth().currentUser
+                            let user_id = user?.uid
+                            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+                        }
+                    }
+                }
+            })
+            
+            
+            
+            
             
         }
         

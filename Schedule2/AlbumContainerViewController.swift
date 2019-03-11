@@ -22,6 +22,7 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     var album_number: Int = 0
     var album_image_list: Array<UIImage> = []
     var album_image: UIImage?
+    var give_album_name: String = ""
     
     
     
@@ -85,9 +86,6 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
 //                        self.user_image.layer.masksToBounds = true
                         self.album_image = image!
                     }
-                    print("bbbbbbbbbbbbbbb")
-                    print(album_name)
-                    print(self.album_image!)
                     self.albumCollection.reloadData()
                 }
                 
@@ -116,23 +114,10 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         
         if self.album_image != nil{
             cell.album_image.image = self.album_image_list[indexPath.row]
+            cell.album_image.layer.masksToBounds = true
         }
 
-        
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
+     
        
 //        cell.album_image.image = self.album_image_list[indexPath.row]
 
@@ -140,20 +125,23 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
         
-        
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+      
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.give_album_name = self.album_name_array[indexPath.row]
+        self.performSegue(withIdentifier: "showAlbum", sender: nil)
+    }
+    
+    // 画面遷移先のViewControllerを取得し、データを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAlbum" {
+            let vc = segue.destination as! ShowAlbumViewController
+            vc.recieve_indexPath = self.recieve_indexPath
+            vc.recieve_class_name = self.recieve_class_name
+            vc.recieve_album_name = self.give_album_name
+        }
     }
     
 

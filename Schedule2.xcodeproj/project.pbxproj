@@ -39,6 +39,8 @@
 		98CF8827222D74DC0026802E /* icons8-ãã©ã¹-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 98CF8826222D74DC0026802E /* icons8-ãã©ã¹-80.png */; };
 		98CF882D222D8E110026802E /* AlbumContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF882C222D8E110026802E /* AlbumContainerViewController.swift */; };
 		98CF8831222D92930026802E /* AlbumContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8830222D92930026802E /* AlbumContainerCollectionViewCell.swift */; };
+		98CF88332236A5780026802E /* ShowAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF88322236A5780026802E /* ShowAlbumViewController.swift */; };
+		98CF88352236AAF10026802E /* ShowAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF88342236AAF10026802E /* ShowAlbumCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		98CF8826222D74DC0026802E /* icons8-ãã©ã¹-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ãã©ã¹-80.png"; sourceTree = "<group>"; };
 		98CF882C222D8E110026802E /* AlbumContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumContainerViewController.swift; sourceTree = "<group>"; };
 		98CF8830222D92930026802E /* AlbumContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		98CF88322236A5780026802E /* ShowAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlbumViewController.swift; sourceTree = "<group>"; };
+		98CF88342236AAF10026802E /* ShowAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +149,8 @@
 				98CF880C22063F3F0026802E /* UIView+Border.swift */,
 				98CF882C222D8E110026802E /* AlbumContainerViewController.swift */,
 				98CF8830222D92930026802E /* AlbumContainerCollectionViewCell.swift */,
+				98CF88322236A5780026802E /* ShowAlbumViewController.swift */,
+				98CF88342236AAF10026802E /* ShowAlbumCollectionViewCell.swift */,
 			);
 			path = Schedule2;
 			sourceTree = "<group>";
@@ -401,8 +407,10 @@
 				98BE045D21FDAF8200D53FA8 /* LoginViewController.swift in Sources */,
 				98BE046C2200780400D53FA8 /* daigakuEditViewController.swift in Sources */,
 				98CF882D222D8E110026802E /* AlbumContainerViewController.swift in Sources */,
+				98CF88352236AAF10026802E /* ShowAlbumCollectionViewCell.swift in Sources */,
 				98CF8831222D92930026802E /* AlbumContainerCollectionViewCell.swift in Sources */,
 				98CF88212213B6FE0026802E /* Ex.swift in Sources */,
+				98CF88332236A5780026802E /* ShowAlbumViewController.swift in Sources */,
 				98BE046221FDDE1300D53FA8 /* AcountViewController.swift in Sources */,
 				98CF880F22064A410026802E /* new_class_ViewController.swift in Sources */,
 				98CF880D22063F3F0026802E /* UIView+Border.swift in Sources */,

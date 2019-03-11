@@ -82,7 +82,6 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(defaultAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-        print("aaaaaaaaaaaaaaaaaaaa")
             //        アルバム名取得
             ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value

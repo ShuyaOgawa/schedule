@@ -35,6 +35,9 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
         get_album_number()
         
         
+        
+       
+        
     }
     
     func get_album_number(){
@@ -91,6 +94,8 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowAlbumItem", for: indexPath) as! ShowAlbumCollectionViewCell
         
         cell.album_image.image = self.album_image_list[indexPath.row]
+        
+        
         
         return cell
     }

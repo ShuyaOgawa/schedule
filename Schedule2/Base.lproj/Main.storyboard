@@ -1164,51 +1164,40 @@
                     <connections>
                         <outlet property="ShowAlbumCollection" destination="Mz3-uo-fQ9" id="ZuN-KH-trP"/>
                         <outlet property="album_name" destination="jH1-9A-Kay" id="oSL-OA-l1c"/>
+                        <segue destination="jyB-YH-uau" kind="showDetail" identifier="image_detail" id="SaL-HK-7ZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pJ-wv-jT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2949.5999999999999" y="-545.57721139430294"/>
         </scene>
-        <!--View Controller-->
+        <!--Image detail View Controller-->
         <scene sceneID="Ltd-OJ-nwM">
             <objects>
-                <viewController id="jyB-YH-uau" sceneMemberID="viewController">
+                <viewController id="jyB-YH-uau" customClass="image_detailViewController" customModule="Schedule2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zdr-3p-Bpn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6BK-Lc-Rzh">
-                                <rect key="frame" x="0.0" y="20" width="375" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvU-pI-HoH">
-                                        <rect key="frame" x="20" y="5" width="56" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="戻る"/>
-                                        <connections>
-                                            <action selector="back_button:" destination="AsL-bJ-3qV" eventType="touchUpInside" id="y4H-46-XhH"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="教科名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpF-i0-Rij">
-                                        <rect key="frame" x="74" y="7" width="226" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzc-bv-0ow">
-                                <rect key="frame" x="0.0" y="79" width="375" height="588"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uzc-bv-0ow">
+                                <rect key="frame" x="0.0" y="84" width="375" height="620"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gu-BW-tFO">
+                                <rect key="frame" x="16" y="27" width="37" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-delete-filled-50.png"/>
+                                <connections>
+                                    <action selector="back_button:" destination="jyB-YH-uau" eventType="touchUpInside" id="ab3-Fi-9Cc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="724-n1-a1J"/>
                     </view>
+                    <connections>
+                        <outlet property="scrView" destination="Uzc-bv-0ow" id="Z1S-Hj-n2y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNY-Jn-wrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

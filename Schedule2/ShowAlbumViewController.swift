@@ -19,6 +19,7 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     var recieve_album_name: String = ""
     var number_of_album: Int = 0
     var album_image_list: Array<UIImage> = []
+    var give_toucu_album_image: UIImage?
     
     
     let daigaku = UserDefaults.standard.string(forKey: "daigaku")
@@ -98,6 +99,21 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
         
         
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.give_toucu_album_image = self.album_image_list[indexPath.row]
+        self.performSegue(withIdentifier: "image_detail", sender: nil)
+    }
+    
+    // 画面遷移先のViewControllerを取得し、データを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "image_detail" {
+            let vc = segue.destination as! image_detailViewController
+            vc.recieve_touch_image = self.give_toucu_album_image
+            vc.recieve_image_list = self.self.album_image_list
+        }
     }
     
 

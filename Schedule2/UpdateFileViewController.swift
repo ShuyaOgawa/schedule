@@ -19,6 +19,9 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
     var recieve_image_list: Array<UIImage> = []
     
     
+    var ActivityIndicator: UIActivityIndicatorView!
+    
+    
     @IBOutlet weak var albumName: UITextField!
     
 
@@ -31,7 +34,28 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
         
         self.collectionView.delegate = self as! UICollectionViewDelegate
         self.collectionView.dataSource = self as! UICollectionViewDataSource
-        // Do any additional setup after loading the view.
+        
+        
+        
+        // ActivityIndicatorを作成＆中央に配置
+        ActivityIndicator = UIActivityIndicatorView()
+        ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        ActivityIndicator.center = self.view.center
+        
+        // クルクルをストップした時に非表示する
+        ActivityIndicator.hidesWhenStopped = true
+        
+        // 色を設定
+        ActivityIndicator.style = UIActivityIndicatorView.Style.gray
+        
+        //Viewに追加
+        self.view.addSubview(ActivityIndicator)
+        
+        
+        
+        
+        
+        
     }
     
 //    @IBAction func UpdateFileButton(_ sender: Any) {
@@ -66,6 +90,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
+//        キーボードとじる
+        albumName.endEditing(true)
         
         let daigaku = UserDefaults.standard.string(forKey: "daigaku")
         let gakubu = UserDefaults.standard.string(forKey: "gakubu")
@@ -82,6 +108,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(defaultAction)
             self.present(alert, animated: true, completion: nil)
         } else {
+//            くるくるスタート
+            ActivityIndicator.startAnimating()
             //        アルバム名取得
             ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -115,6 +143,7 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                                 let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)").child(album_name!).child(String(index_image!))
                                 reference.putData(data!, metadata: nil, completion: { metaData, error in
                                     print("done")
+                                    self.ActivityIndicator.stopAnimating()
                                     self.dismiss(animated: true)
                                     
                                     
@@ -134,6 +163,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                     
 //                    そもそもアルバムがない時
                 } else {
+                    //            くるくるスタート
+                    self.ActivityIndicator.startAnimating()
                     //保存するURLを指定
                     let storage = Storage.storage()
                     let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
@@ -144,7 +175,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                         let index_image = self.recieve_image_list.index(of: image)
                         let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)").child(album_name!).child(String(index_image!))
                         reference.putData(data!, metadata: nil, completion: { metaData, error in
-                            
+                            self.ActivityIndicator.stopAnimating()
+                            self.dismiss(animated: true)
                             print("done")
                         })
                     }

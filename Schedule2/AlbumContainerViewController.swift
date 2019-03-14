@@ -47,9 +47,11 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     
     
     @objc func refresh(sender: UIRefreshControl) {
+        
         sender.beginRefreshing()
         get_album_number_name()
         // データフェッチが終わったらUIRefreshControl.endRefreshing()を呼ぶ必要がある
+        
         sender.endRefreshing()
     }
 
@@ -57,6 +59,7 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     
     //        アルバム数、名前取得
     func get_album_number_name(){
+        
         self.album_name_array = []
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -67,9 +70,8 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
             if album != nil {
                 self.album_number = album!.count
                 for  (key, value) in album!{
+                    
                     self.album_name_array.append(key as! String)
-                    print("bbbbbbbbbb")
-                    print(self.album_name_array)
                 }
             } else {
                 self.album_number = 0
@@ -85,12 +87,14 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     func get_album_image(){
         
         self.album_image_list = Array(repeating: UIImage(), count: self.album_name_array.count)
-        
-        
         let storage = Storage.storage()
         let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
         if self.album_name_array != [] {
+            
+            
+            
             for album_name in self.album_name_array {
+                
                 let riversRef = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)/\(album_name)/0")
                 riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
                     if let error = error {
@@ -100,11 +104,15 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
                         // Data for "images/island.jpg" is returned
                         let image: UIImage? = data.flatMap(UIImage.init)
 //                        self.album_image_list.append(image!)
-                        self.album_image_list[self.album_name_array.index(of: album_name)!] = image!
-//                        self.album_image.image = image
-//                        self.user_image.layer.cornerRadius = 40
-//                        self.user_image.layer.masksToBounds = true
-                        self.album_image = image!
+                        
+                        if self.album_name_array != [] {
+                            self.album_image_list[self.album_name_array.index(of: album_name)!] = image!
+                            //                        self.album_image.image = image
+                            //                        self.user_image.layer.cornerRadius = 40
+                            //                        self.user_image.layer.masksToBounds = true
+                            self.album_image = image!
+                        }
+                        
                     }
                     self.albumCollection.reloadData()
                 }
@@ -128,7 +136,10 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         
         
         
-        cell.album_name.text = self.album_name_array[indexPath.row]
+        if self.album_name_array != [] {
+            cell.album_name.text = self.album_name_array[indexPath.row]
+        }
+        
         
         
         
@@ -136,7 +147,8 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
             cell.album_image.image = self.album_image_list[indexPath.row]
             cell.album_image.layer.masksToBounds = true
         }
-
+        
+        
      
        
 //        cell.album_image.image = self.album_image_list[indexPath.row]

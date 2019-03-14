@@ -25,6 +25,9 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     var give_album_name: String = ""
     
     
+    private let refreshControl = UIRefreshControl()
+    
+    
     
     let daigaku = UserDefaults.standard.string(forKey: "daigaku")
     let gakubu = UserDefaults.standard.string(forKey: "gakubu")
@@ -35,11 +38,26 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         get_album_number_name()
         
         
+        
+        albumCollection.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(AlbumContainerViewController.refresh(sender:)), for: .valueChanged)
+        
+        
     }
+    
+    
+    @objc func refresh(sender: UIRefreshControl) {
+        sender.beginRefreshing()
+        get_album_number_name()
+        // データフェッチが終わったらUIRefreshControl.endRefreshing()を呼ぶ必要がある
+        sender.endRefreshing()
+    }
+
     
     
     //        アルバム数、名前取得
     func get_album_number_name(){
+        self.album_name_array = []
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -50,6 +68,8 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
                 self.album_number = album!.count
                 for  (key, value) in album!{
                     self.album_name_array.append(key as! String)
+                    print("bbbbbbbbbb")
+                    print(self.album_name_array)
                 }
             } else {
                 self.album_number = 0

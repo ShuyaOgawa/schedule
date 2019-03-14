@@ -102,7 +102,7 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                             
                             
                         } else if key != album_name && album!.count == 1 {
-                            print("eeeeeeeeeee")
+                            
                             
                             //保存するURLを指定
                             let storage = Storage.storage()
@@ -126,7 +126,7 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                             let user = Auth.auth().currentUser
                             let user_id = user?.uid
                             ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
-                            print("cccccccccccccccccc")
+                            
                             
                         }
                         album!.removeValue(forKey: key)
@@ -144,7 +144,7 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                         let index_image = self.recieve_image_list.index(of: image)
                         let reference = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)").child(album_name!).child(String(index_image!))
                         reference.putData(data!, metadata: nil, completion: { metaData, error in
-                            print("ddddddddddddddddd")
+                            
                             print("done")
                         })
                     }

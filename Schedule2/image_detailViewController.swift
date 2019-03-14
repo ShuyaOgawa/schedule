@@ -31,8 +31,13 @@ class image_detailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("aaaaaaaaaaaaa")
-        print(recieve_touch_image)
+        // 下向きにスワイプした時のジェスチャーを作成
+        let downSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.closeModalView))
+        downSwipeGesture.direction = .down
+        
+        // 画面にジェスチャーを登録
+        view.addGestureRecognizer(downSwipeGesture)
+        
         
         screenSize = UIScreen.main.bounds
         
@@ -76,8 +81,7 @@ class image_detailViewController: UIViewController {
         
         // 描画開始の x,y 位置
         var px:CGFloat = 0.0
-//        let py:CGFloat = (screenSize.height - scrollScreenHeight)/2
-        let py:CGFloat = 0.0
+        let py:CGFloat = (screenSize.height - scrollScreenHeight)/2
         
         for i in 0 ..< subviews.count {
             imgView = subviews[i] as! UIImageView
@@ -102,8 +106,11 @@ class image_detailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func back_button(_ sender: Any) {
-        self.dismiss(animated: true)
+    
+    
+    // 画面を閉じる
+    @objc func closeModalView() {
+        dismiss(animated: true, completion: nil)
     }
     
     

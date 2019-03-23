@@ -1159,6 +1159,15 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awn-NV-krB">
+                                        <rect key="frame" x="279" y="10" width="77" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="削除"/>
+                                        <connections>
+                                            <action selector="delete_button:" destination="AsL-bJ-3qV" eventType="touchUpInside" id="Hhe-nS-BH5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -1169,12 +1178,13 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                     <connections>
                         <outlet property="ShowAlbumCollection" destination="Mz3-uo-fQ9" id="ZuN-KH-trP"/>
                         <outlet property="album_name" destination="jH1-9A-Kay" id="oSL-OA-l1c"/>
+                        <outlet property="deleteButton" destination="Awn-NV-krB" id="m2h-tf-hmX"/>
                         <segue destination="jyB-YH-uau" kind="showDetail" identifier="image_detail" id="SaL-HK-7ZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pJ-wv-jT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2949.5999999999999" y="-545.57721139430294"/>
+            <point key="canvasLocation" x="2949.5999999999999" y="-546.02698650674665"/>
         </scene>
         <!--Image detail View Controller-->
         <scene sceneID="Ltd-OJ-nwM">

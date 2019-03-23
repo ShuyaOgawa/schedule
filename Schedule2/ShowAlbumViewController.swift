@@ -29,15 +29,29 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet weak var ShowAlbumCollection: UICollectionView!
     @IBOutlet weak var album_name: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         album_name.text = recieve_album_name
         get_album_number()
         
+        let user = Auth.auth().currentUser
+        let user_id = user?.uid
         
-        
-       
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as! NSDictionary
+            let update_user = value["user"] as! String
+            if update_user != user_id {
+                self.deleteButton.isEnabled = false
+            } else {
+                self.deleteButton.isEnabled = true
+            }
+        })
         
     }
     
@@ -117,6 +131,31 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
 
+    @IBAction func delete_button(_ sender: Any) {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").removeValue()
+        
+        
+        for i in 0..<self.number_of_album {
+            let storage = Storage.storage()
+            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+            let desertRef = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)/\(recieve_album_name)/\(i)")
+            // Delete the file
+            desertRef.delete { error in
+                if let error = error {
+                    print("error")
+                    print(error)
+                } else {
+                    // File deleted successfully
+                    print("doneeeeeeeeeee")
+                }
+            }
+        }
+        
+        self.dismiss(animated: true)
+        
+    }
     
 
     

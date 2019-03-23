@@ -129,6 +129,8 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
         //                UserDeafultsに教室を登録
         var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
         room_array[Int(receive_indexPath)!] = self.give_class_room
+        print("aaaaaaaaaaaaaa")
+        print(self.give_class_room)
         UserDefaults.standard.set(room_array, forKey: "room_name")
         print(UserDefaults.standard.array(forKey: "room_name") as! Array<String>)
         go_to_timeSchedule()
@@ -147,7 +149,8 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
     */
     
     @IBAction func update_class(_ sender: Any) {
-        if class_name_field.text != nil && room_name_field.text != nil {
+        if class_name_field.text != "" && room_name_field.text != "" {
+            print("aaaaaaaaaaaaaaaaaaaaaa")
             let class_name = self.class_name_field.text!
             let room_name = self.room_name_field.text!
             //            大学、学部が登録されている場合DBにも授業、教室を登録

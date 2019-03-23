@@ -57,6 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         HomeMemoTextView.layer.masksToBounds = true
         
         
+        
     }
     
     

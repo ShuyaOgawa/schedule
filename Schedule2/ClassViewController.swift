@@ -44,39 +44,89 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     */
     
     @IBAction func upload_file(_ sender: Any) {
-//        self.give_image_list = []
-        var  segue_count: Int = 1
-        let pickerController = DKImagePickerController()
-        pickerController.showsCancelButton = true
-        pickerController.allowSwipeToSelect = true
-        // 選択可能上限の設定もできます
-        pickerController.maxSelectableCount = 30
-        pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
-            // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
-            self.give_image_list = Array(repeating: UIImage(), count: assets.count)
-            for i in 0 ... assets.count-1 {
-                assets[i].fetchFullScreenImage(completeBlock: { (image, info) in
-                    // ここで取り出せます
-                    self.give_image_list[i] = image!
+        
+        
+        
+        let alert: UIAlertController = UIAlertController(title: "画像をアップロードする", message: "この授業を取っている人みんなに共有しますか？", preferredStyle:  UIAlertController.Style.alert)
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            
+            
+            
+            
+            
+            //        self.give_image_list = []
+            var  segue_count: Int = 1
+            let pickerController = DKImagePickerController()
+            pickerController.showsCancelButton = true
+            pickerController.allowSwipeToSelect = true
+            // 選択可能上限の設定もできます
+            pickerController.maxSelectableCount = 30
+            pickerController.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
+                // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
+                self.give_image_list = Array(repeating: UIImage(), count: assets.count)
+                for i in 0 ... assets.count-1 {
+                    assets[i].fetchFullScreenImage(completeBlock: { (image, info) in
+                        // ここで取り出せます
+                        self.give_image_list[i] = image!
+                        
+                        //                    self.go_to_UpdateFileViewController()
+                        
+                        //                    cancelボタンが押されたときは画像の入る配列を空にする
+                        pickerController.didCancel = { () in
+                            self.give_image_list = []
+                        }
+                        
+                        if segue_count == assets.count {
+                            self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
+                        }
+                        
+                        segue_count += 1
+                        
+                    })
                     
-//                    self.go_to_UpdateFileViewController()
-                    
-//                    cancelボタンが押されたときは画像の入る配列を空にする
-                    pickerController.didCancel = { () in
-                        self.give_image_list = []
-                    }
-                    
-                    if segue_count == assets.count {
-                        self.performSegue(withIdentifier: "UpdateFileView", sender: nil)
-                    }
-                    
-                    segue_count += 1
-                    
-                })
-                
+                }
             }
-        }
-        self.present(pickerController, animated: true) {}
+            self.present(pickerController, animated: true) {}
+            
+            
+            
+            
+            
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
+        
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
         
     }
     

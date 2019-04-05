@@ -98,7 +98,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xmx-4X-vsf">
-                                                    <rect key="frame" x="3" y="44" width="54" height="20"/>
+                                                    <rect key="frame" x="2" y="44" width="54" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="14"/>
@@ -390,7 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248.80000000000001" y="102.99850074962519"/>
+            <point key="canvasLocation" x="2" y="-145"/>
         </scene>
         <!--New class View Controller-->
         <scene sceneID="9jA-AR-r1Q">
@@ -626,7 +626,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="kf4-cw-MC9" kind="presentation" id="rii-MV-fgh"/>
+                                            <segue destination="kf4-cw-MC9" kind="presentation" identifier="" id="rii-MV-fgh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -659,7 +659,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIy-SV-S4P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="aMD-gL-JaS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="408.80000000000001" y="1074.5127436281859"/>
+            <point key="canvasLocation" x="134" y="1087"/>
         </scene>
         <!--Account Edit View Controller-->
         <scene sceneID="zK4-uO-eyD">
@@ -803,7 +803,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zay-Sr-Zue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="1925.4872563718143"/>
+            <point key="canvasLocation" x="226" y="2246"/>
         </scene>
         <!--Gakubu Edit View Controller-->
         <scene sceneID="xcJ-r6-z4c">
@@ -929,12 +929,31 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 <rect key="frame" x="314" y="588" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="大学・学部を登録することで同じ大学の友達と連携することができます。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkm-dX-EEH">
+                                <rect key="frame" x="96" y="256" width="207" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJ6-FO-z6a">
+                                <rect key="frame" x="84" y="340" width="207" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="大学学部登録"/>
+                                <connections>
+                                    <action selector="go_daigaku_gakubu:" destination="mIz-YL-ZzZ" eventType="touchUpInside" id="pAZ-qU-Vaq"/>
+                                    <segue destination="kf4-cw-MC9" kind="presentation" id="rWd-ct-AvT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="DQr-TH-13Z"/>
                     </view>
                     <connections>
                         <outlet property="class_label" destination="YCr-3D-ax6" id="5dj-Mr-8Jm"/>
+                        <outlet property="daigaku_gakubu_button" destination="hJ6-FO-z6a" id="tcb-as-Pdf"/>
+                        <outlet property="not_register" destination="qkm-dX-EEH" id="7OO-Ca-jkZ"/>
                         <segue destination="u9R-be-G5A" kind="presentation" identifier="UpdateFileView" id="FQk-Qq-Gjf"/>
                     </connections>
                 </viewController>
@@ -1219,6 +1238,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
         <image name="icons8-settings.undefined" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qOU-NO-i2f"/>
+        <segue reference="JCh-mg-XT5"/>
+        <segue reference="rWd-ct-AvT"/>
     </inferredMetricsTieBreakers>
 </document>

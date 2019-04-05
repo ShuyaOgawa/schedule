@@ -34,13 +34,13 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        get_album_number_name()
         
+        if daigaku  != nil && gakubu != nil {
+            get_album_number_name()
+            albumCollection.refreshControl = refreshControl
+            refreshControl.addTarget(self, action: #selector(AlbumContainerViewController.refresh(sender:)), for: .valueChanged)
+        }
         
-        
-        albumCollection.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(AlbumContainerViewController.refresh(sender:)), for: .valueChanged)
         
         
     }

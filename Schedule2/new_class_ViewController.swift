@@ -39,46 +39,55 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
         room_name_field.delegate = self
         title_label.text = receive_day
         
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.showsSelectionIndicator = true
-        
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
-        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(daigakuEditViewController.done))
-        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(daigakuEditViewController.cancel))
-        toolbar.setItems([cancelItem, doneItem], animated: true)
-        
-        self.choice_class.inputView = pickerView
-        self.choice_class.inputAccessoryView = toolbar
-        
-        
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let daigaku = UserDefaults.standard.string(forKey: "daigaku")
         let gakubu = UserDefaults.standard.string(forKey: "gakubu")
         
+        
+        if daigaku != nil && gakubu != nil{
+            pickerView.delegate = self
+            pickerView.dataSource = self
+            pickerView.showsSelectionIndicator = true
+            
+            let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+            let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(daigakuEditViewController.done))
+            let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(daigakuEditViewController.cancel))
+            toolbar.setItems([cancelItem, doneItem], animated: true)
+            
+            self.choice_class.inputView = pickerView
+            self.choice_class.inputAccessoryView = toolbar
+        } else {
+            choice_class.isHidden = true
+        }
+        
+        
+        
+        
+        
         var choose_class_name: String = ""
         var choose_class_room: String = ""
         
         
-        
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil{
-                for (key1, value1) in value!{
-                    self.class_name_list.append(key1 as! String)
-                }
-                for class_name in self.class_name_list{
-                    let class_name_dictionary = value![class_name] as! NSDictionary
-                    let room_name = class_name_dictionary["room_name"] as! String
+        if daigaku != nil && gakubu != nil {
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                if value != nil{
+                    for (key1, value1) in value!{
+                        self.class_name_list.append(key1 as! String)
+                    }
+                    for class_name in self.class_name_list{
+                        let class_name_dictionary = value![class_name] as! NSDictionary
+                        let room_name = class_name_dictionary["room_name"] as! String
+                        
+                        self.class_room_list.append(room_name)
+                    }
                     
-                    self.class_room_list.append(room_name)
                 }
-                
-            }
-        })
+            })
+        }
+        
         
         
         
@@ -129,8 +138,6 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
         //                UserDeafultsに教室を登録
         var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
         room_array[Int(receive_indexPath)!] = self.give_class_room
-        print("aaaaaaaaaaaaaa")
-        print(self.give_class_room)
         UserDefaults.standard.set(room_array, forKey: "room_name")
         print(UserDefaults.standard.array(forKey: "room_name") as! Array<String>)
         go_to_timeSchedule()
@@ -150,7 +157,6 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     @IBAction func update_class(_ sender: Any) {
         if class_name_field.text != "" && room_name_field.text != "" {
-            print("aaaaaaaaaaaaaaaaaaaaaa")
             let class_name = self.class_name_field.text!
             let room_name = self.room_name_field.text!
             //            大学、学部が登録されている場合DBにも授業、教室を登録

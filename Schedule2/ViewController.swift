@@ -100,7 +100,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.classRoom.text = self.room_array[indexPath.row]
         
         
-        cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
+//        cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
+        
+        if self.class_array[indexPath.row] != "" {
+            cell.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
+        }
         
       
         cell.layer.borderColor = UIColor.gray.cgColor

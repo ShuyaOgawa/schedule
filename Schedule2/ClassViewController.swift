@@ -16,9 +16,17 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
 
     @IBOutlet weak var class_label: UILabel!
     
+    @IBOutlet weak var not_register: UILabel!
+    @IBOutlet weak var daigaku_gakubu_button: UIButton!
+    
+    
+    
     var recieve_class_name: String = ""
     var recieve_indexPath: String = ""
     var give_image_list: Array<UIImage> = []
+    
+    let daigaku = UserDefaults.standard.string(forKey: "daigaku")
+    let gakubu = UserDefaults.standard.string(forKey: "gakubu")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +34,10 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         class_label.text = recieve_class_name
         // Do any additional setup after loading the view.
         
-        
-        
-        
+        if daigaku != nil && gakubu != nil {
+            not_register.isHidden = true
+            daigaku_gakubu_button.isHidden = true
+        }
         
     }
     
@@ -109,23 +118,6 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
         
     }
@@ -189,6 +181,16 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         // ④ Alertを表示
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func go_daigaku_gakubu(_ sender: Any) {
+//        //まずは、同じstororyboard内であることをここで定義します
+//        let storyboard: UIStoryboard = self.storyboard!
+//        //ここで移動先のstoryboardを選択
+//        let timeschedule = storyboard.instantiateViewController(withIdentifier: "goTodaigaku")
+//        //ここが実際に移動するコードとなります
+//        self.present(timeschedule, animated: true, completion: nil)
+    }
+    
     
 //    viewControllerに遷移するメソッド
     func go_to_timeScheduleViewController() {

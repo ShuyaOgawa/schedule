@@ -19,7 +19,7 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     var recieve_album_name: String = ""
     var number_of_album: Int = 0
     var album_image_list: Array<UIImage> = []
-    var give_toucu_album_image: UIImage?
+    var give_touch_album_image: UIImage?
     
     
     let daigaku = UserDefaults.standard.string(forKey: "daigaku")
@@ -117,7 +117,7 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.give_toucu_album_image = self.album_image_list[indexPath.row]
+        self.give_touch_album_image = self.album_image_list[indexPath.row]
         self.performSegue(withIdentifier: "image_detail", sender: nil)
     }
     
@@ -125,35 +125,75 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "image_detail" {
             let vc = segue.destination as! image_detailViewController
-            vc.recieve_touch_image = self.give_toucu_album_image
+            vc.recieve_touch_image = self.give_touch_album_image
             vc.recieve_image_list = self.self.album_image_list
         }
     }
     
 
     @IBAction func delete_button(_ sender: Any) {
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").removeValue()
         
         
-        for i in 0..<self.number_of_album {
-            let storage = Storage.storage()
-            let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
-            let desertRef = storageRef.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)/\(recieve_album_name)/\(i)")
-            // Delete the file
-            desertRef.delete { error in
-                if let error = error {
-                    print("error")
-                    print(error)
-                } else {
-                    // File deleted successfully
-                    print("doneeeeeeeeeee")
+        
+        
+        // ① UIAlertControllerクラスのインスタンスを生成
+        // タイトル, メッセージ, Alertのスタイルを指定する
+        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "削除", message: "このアルバムを削除しますか？", preferredStyle:  UIAlertController.Style.alert)
+        
+        // ② Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(self.recieve_album_name)").removeValue()
+            
+            
+            for i in 0..<self.number_of_album {
+                let storage = Storage.storage()
+                let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+                let desertRef = storageRef.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.recieve_class_name)/\(self.recieve_album_name)/\(i)")
+                // Delete the file
+                desertRef.delete { error in
+                    if let error = error {
+                        print("error")
+                        print(error)
+                    } else {
+                        // File deleted successfully
+                        print("doneeeeeeeeeee")
+                    }
                 }
             }
-        }
+            
+            self.dismiss(animated: true)
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
         
-        self.dismiss(animated: true)
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        // ④ Alertを表示
+        self.present(alert, animated: true, completion: nil)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
     

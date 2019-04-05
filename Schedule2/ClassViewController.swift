@@ -19,6 +19,11 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     @IBOutlet weak var not_register: UILabel!
     @IBOutlet weak var daigaku_gakubu_button: UIButton!
     
+    @IBOutlet weak var updateFIleButton: UIButton!
+    
+    
+    
+    
     
     
     var recieve_class_name: String = ""
@@ -27,6 +32,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     
     let daigaku = UserDefaults.standard.string(forKey: "daigaku")
     let gakubu = UserDefaults.standard.string(forKey: "gakubu")
+    let not_daigaku_register = UserDefaults.standard.array(forKey: "not_daigaku_register") as! Array<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +45,12 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
             daigaku_gakubu_button.isHidden = true
         }
         
+        print("aaaaaaaa")
+        print(not_daigaku_register![Int(recieve_indexPath)!])
+        
+        if not_daigaku_register![Int(recieve_indexPath)!] == "true" {
+            updateFIleButton.isEnabled = false
+        }
     }
     
    
@@ -53,6 +65,8 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     */
     
     @IBAction func upload_file(_ sender: Any) {
+        
+        
         
         
         

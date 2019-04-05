@@ -138,6 +138,9 @@ class gakubuEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
             ref.child("users/\(user_id!)").updateChildValues(["gakubu": gakubu!])
             //        学部をUserDefaultに書き込み
             UserDefaults.standard.set(gakubu, forKey: "gakubu")
+//            not_daigaku_registerを初期化
+            let not_daigaku_register: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+            UserDefaults.standard.set(not_daigaku_register, forKey: "not_daigaku_register")
             //まずは、同じstororyboard内であることをここで定義します
             let storyboard: UIStoryboard = self.storyboard!
             //ここで移動先のstoryboardを選択

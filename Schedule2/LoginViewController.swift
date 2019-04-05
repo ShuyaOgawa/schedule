@@ -28,6 +28,11 @@ class LoginViewController: UIViewController {
             let room_array: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
             UserDefaults.standard.set(room_array, forKey: "room_name")
         }
+        if UserDefaults.standard.array(forKey: "not_daigaku_register") == nil {
+            let not_daigaku_register: Array = ["",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "",     "", ""]
+            UserDefaults.standard.set(not_daigaku_register, forKey: "not_daigaku_register")
+        }
+        
     }
     
     

@@ -45,6 +45,27 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
         let gakubu = UserDefaults.standard.string(forKey: "gakubu")
         
         
+        
+        if daigaku != nil && gakubu != nil {
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                if value != nil{
+                    for (key1, value1) in value!{
+                        self.class_name_list.append(key1 as! String)
+                    }
+                    for class_name in self.class_name_list{
+                        let class_name_dictionary = value![class_name] as! NSDictionary
+                        let room_name = class_name_dictionary["room_name"] as! String
+                        
+                        self.class_room_list.append(room_name)
+                    }
+                    
+                }
+            })
+        }
+        
+        
         if daigaku != nil && gakubu != nil{
             pickerView.delegate = self
             pickerView.dataSource = self
@@ -69,24 +90,7 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
         var choose_class_room: String = ""
         
         
-        if daigaku != nil && gakubu != nil {
-            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.receive_indexPath)").observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                if value != nil{
-                    for (key1, value1) in value!{
-                        self.class_name_list.append(key1 as! String)
-                    }
-                    for class_name in self.class_name_list{
-                        let class_name_dictionary = value![class_name] as! NSDictionary
-                        let room_name = class_name_dictionary["room_name"] as! String
-                        
-                        self.class_room_list.append(room_name)
-                    }
-                    
-                }
-            })
-        }
+        
         
         
         
@@ -129,18 +133,21 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     @objc func done() {
 //        self.daigaku.endEditing(true)
-        self.choice_class.endEditing(true)
+        if self.class_name_list != [] {
+            self.choice_class.endEditing(true)
+            
+            //                UserDefaultに授業を登録
+            var class_array = UserDefaults.standard.array(forKey: "class_name")! as! Array<String>
+            class_array[Int(receive_indexPath)!] = self.give_class_name
+            UserDefaults.standard.set(class_array, forKey: "class_name")
+            //                UserDeafultsに教室を登録
+            var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
+            room_array[Int(receive_indexPath)!] = self.give_class_room
+            UserDefaults.standard.set(room_array, forKey: "room_name")
+            print(UserDefaults.standard.array(forKey: "room_name") as! Array<String>)
+            go_to_timeSchedule()
+        }
         
-        //                UserDefaultに授業を登録
-        var class_array = UserDefaults.standard.array(forKey: "class_name")! as! Array<String>
-        class_array[Int(receive_indexPath)!] = self.give_class_name
-        UserDefaults.standard.set(class_array, forKey: "class_name")
-        //                UserDeafultsに教室を登録
-        var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
-        room_array[Int(receive_indexPath)!] = self.give_class_room
-        UserDefaults.standard.set(room_array, forKey: "room_name")
-        print(UserDefaults.standard.array(forKey: "room_name") as! Array<String>)
-        go_to_timeSchedule()
     }
     
     
@@ -167,7 +174,13 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
                 ref.child("classes/\(daigaku!)/\(gakubu!)/\(receive_indexPath)/\(class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
-                }
+                // 大学、学部が登録されていない場合、not_daigaku_registerにtrueを代入する。updatefileできないようにする
+            } else {
+                var not_daigaku_register = UserDefaults.standard.array(forKey: "not_daigaku_register")! as! Array<String>
+                not_daigaku_register[Int(receive_indexPath)!] = "true"
+                UserDefaults.standard.set(not_daigaku_register, forKey: "not_daigaku_register")
+                
+            }
             //                UserDefaultに授業を登録
             var class_array = UserDefaults.standard.array(forKey: "class_name")! as! Array<String>
             class_array[Int(receive_indexPath)!] = class_name
@@ -176,7 +189,8 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
             var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
             room_array[Int(receive_indexPath)!] = room_name
             UserDefaults.standard.set(room_array, forKey: "room_name")
-            print(UserDefaults.standard.array(forKey: "room_name") as! Array<String>)
+            
+
             //                timeScheduleに遷移
             go_to_timeSchedule()
         }

@@ -65,19 +65,22 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         ref = Database.database().reference()
         ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let value = snapshot.value as! NSDictionary
-            let album = value["album"] as? NSDictionary
-            if album != nil {
-                self.album_number = album!.count
-                for  (key, value) in album!{
-                    
-                    self.album_name_array.append(key as! String)
+            let value = snapshot.value as? NSDictionary
+            if value != nil {
+                let album = value!["album"] as? NSDictionary
+                if album != nil {
+                    self.album_number = album!.count
+                    for  (key, value) in album!{
+                        
+                        self.album_name_array.append(key as! String)
+                    }
+                } else {
+                    self.album_number = 0
                 }
-            } else {
-                self.album_number = 0
+                self.get_album_image()
+                self.albumCollection.reloadData()
             }
-            self.get_album_image()
-            self.albumCollection.reloadData()
+            
         })
     }
     

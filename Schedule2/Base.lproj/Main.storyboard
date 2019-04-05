@@ -954,6 +954,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                         <outlet property="class_label" destination="YCr-3D-ax6" id="5dj-Mr-8Jm"/>
                         <outlet property="daigaku_gakubu_button" destination="hJ6-FO-z6a" id="tcb-as-Pdf"/>
                         <outlet property="not_register" destination="qkm-dX-EEH" id="7OO-Ca-jkZ"/>
+                        <outlet property="updateFIleButton" destination="3Ws-mx-nT1" id="xBb-0n-GTM"/>
                         <segue destination="u9R-be-G5A" kind="presentation" identifier="UpdateFileView" id="FQk-Qq-Gjf"/>
                     </connections>
                 </viewController>
@@ -1238,7 +1239,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
         <image name="icons8-settings.undefined" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JCh-mg-XT5"/>
+        <segue reference="qOU-NO-i2f"/>
         <segue reference="rWd-ct-AvT"/>
     </inferredMetricsTieBreakers>
 </document>

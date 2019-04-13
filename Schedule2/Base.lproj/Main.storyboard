@@ -481,6 +481,9 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 <rect key="frame" x="141" y="591" width="92" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="大学学部登録"/>
+                                <connections>
+                                    <segue destination="kf4-cw-MC9" kind="presentation" id="0bK-tB-52k"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNt-Md-pFY">
                                 <rect key="frame" x="63" y="302" width="249" height="63"/>
@@ -562,8 +565,8 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 <rect key="frame" x="0.0" y="95" width="375" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="rPO-dZ-hO4">
-                                        <rect key="frame" x="27" y="38" width="80" height="80"/>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-circle-thin-240.png" translatesAutoresizingMaskIntoConstraints="NO" id="rPO-dZ-hO4">
+                                        <rect key="frame" x="27" y="38" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ox5-u3-rwe">
@@ -577,8 +580,8 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                             <segue destination="qSG-Fs-Q5G" kind="presentation" id="IGS-U9-Lim"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X53-hB-Omr">
-                                        <rect key="frame" x="131" y="38" width="221" height="38"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X53-hB-Omr">
+                                        <rect key="frame" x="146" y="38" width="221" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="highlightedColor"/>
@@ -726,7 +729,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="cFV-dO-3Bf"/>
                     </view>
                     <connections>
@@ -794,7 +797,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="Mha-Yl-G5G"/>
                     </view>
                     <connections>
@@ -860,7 +863,7 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="e9Z-2w-Lk4"/>
                     </view>
                     <connections>
@@ -1240,6 +1243,6 @@ EREREREN44GL44KJ55m76Yyy44GX44Gm5LiL44GV44GE44CCERERERER4oCo55m76Yyy44GZ44KL44GT
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qOU-NO-i2f"/>
-        <segue reference="rii-MV-fgh"/>
+        <segue reference="0bK-tB-52k"/>
     </inferredMetricsTieBreakers>
 </document>

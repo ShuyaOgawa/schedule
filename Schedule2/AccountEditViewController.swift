@@ -42,7 +42,7 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
         if UserDefaults.standard.data(forKey: "userImage") != nil {
             let image: UIImage? = UserDefaults.standard.data(forKey: "userImage").flatMap(UIImage.init)
             self.user_image.image = image
-            self.user_image.layer.cornerRadius = 40
+            self.user_image.layer.cornerRadius = 60
             self.user_image.layer.masksToBounds = true
             self.user_image.alpha = 1.0
         }

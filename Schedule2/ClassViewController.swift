@@ -46,6 +46,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         }
         
         print("aaaaaaaa")
+        print(not_daigaku_register)
         print(not_daigaku_register![Int(recieve_indexPath)!])
         
         if not_daigaku_register![Int(recieve_indexPath)!] == "true" {

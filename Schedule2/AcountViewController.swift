@@ -29,6 +29,7 @@ class AcountViewController: UIViewController {
 //user_nameがuserDefaultsに登録されていたら表示
         if UserDefaults.standard.string(forKey: "user_name") != nil {
             self.userName.text = (UserDefaults.standard.string(forKey: "user_name"))!
+            self.userName.alpha = 1.0
         }
         if UserDefaults.standard.string(forKey: "daigaku") != nil {
             self.daigaku_label.text = (UserDefaults.standard.string(forKey: "daigaku"))!
@@ -61,7 +62,7 @@ class AcountViewController: UIViewController {
         if UserDefaults.standard.data(forKey: "userImage") != nil {
             let image: UIImage? = UserDefaults.standard.data(forKey: "userImage").flatMap(UIImage.init)
             self.user_image.image = image
-            self.user_image.layer.cornerRadius = 40
+            self.user_image.layer.cornerRadius = 45
             self.user_image.layer.masksToBounds = true
             self.user_image.alpha = 1.0
         }
@@ -190,10 +191,12 @@ class AcountViewController: UIViewController {
             //        UserDefaiultsのuser_id、class_name、room_name削除
             UserDefaults.standard.removeObject(forKey: "user_id")
             UserDefaults.standard.removeObject(forKey: "class_name")
+            UserDefaults.standard.removeObject(forKey: "userImage")
             UserDefaults.standard.removeObject(forKey: "room_name")
             UserDefaults.standard.removeObject(forKey: "user_name")
             UserDefaults.standard.removeObject(forKey: "daigaku")
             UserDefaults.standard.removeObject(forKey: "gakubu")
+            UserDefaults.standard.removeObject(forKey: "not_daigaku_register")
             let loginManager : FBSDKLoginManager = FBSDKLoginManager()
             loginManager.logOut()
             //ここで移動先のstoryboardを選択

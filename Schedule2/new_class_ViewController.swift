@@ -179,9 +179,11 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
                 ref.child("classes/\(daigaku!)/\(gakubu!)/\(receive_indexPath)/\(class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name])
                 // 大学、学部が登録されていない場合、not_daigaku_registerにtrueを代入する。updatefileできないようにする
             } else {
+                print("rrrrrrrrrrrrrrrrrrrrrrrr")
                 var not_daigaku_register = UserDefaults.standard.array(forKey: "not_daigaku_register")! as! Array<String>
                 not_daigaku_register[Int(receive_indexPath)!] = "true"
                 UserDefaults.standard.set(not_daigaku_register, forKey: "not_daigaku_register")
+                print(UserDefaults.standard.array(forKey: "not_daigaku_register") as! Array<String>!)
                 
             }
             //                UserDefaultに授業を登録

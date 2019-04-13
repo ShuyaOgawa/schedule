@@ -35,6 +35,18 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
             self.dismiss(animated: true)
         }
         
+        if UserDefaults.standard.string(forKey: "user_name") != nil {
+            nickName.text = UserDefaults.standard.string(forKey: "user_name")
+        }
+        
+        if UserDefaults.standard.data(forKey: "userImage") != nil {
+            let image: UIImage? = UserDefaults.standard.data(forKey: "userImage").flatMap(UIImage.init)
+            self.user_image.image = image
+            self.user_image.layer.cornerRadius = 40
+            self.user_image.layer.masksToBounds = true
+            self.user_image.alpha = 1.0
+        }
+        
         
     }
     
@@ -125,13 +137,18 @@ class AccountEditViewController: UIViewController,UIImagePickerControllerDelegat
 //                画像圧縮
             let arrangedImage = (info[UIImagePickerController.InfoKey.originalImage] as! UIImage).fixedOrientation()?.resizeImage(maxSize: 1048576)
             if let data = arrangedImage!.pngData() {
-                
-                
-                
+        
                 //user_uidの名前で画像保存
                 let reference = storageRef.child("user_image/" + user_id! + ".jpg")
                 reference.putData(data, metadata: nil, completion: { metaData, error in
                 })
+                
+//                userDeafoultsにも保存
+                UserDefaults.standard.set(data, forKey: "userImage")
+                if UserDefaults.standard.data(forKey: "userImage") != nil {
+                    self.user_image.alpha = 1.0
+                }
+                
             }
             
         }

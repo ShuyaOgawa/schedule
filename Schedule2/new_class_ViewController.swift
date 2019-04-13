@@ -121,7 +121,10 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate, UIPickerV
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //        self.daigaku.text = daigaku_list[row]
-        self.choice_class.text = "\(class_name_list[row])     \(class_room_list[row])"
+        if class_name_list != [] && class_room_list != [] {
+            self.choice_class.text = "\(class_name_list[row])     \(class_room_list[row])"
+        }
+        
     }
     
     @objc func cancel() {

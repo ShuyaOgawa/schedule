@@ -40,22 +40,32 @@ class AcountViewController: UIViewController {
         }
         
 //                    トプ画をストレージから取得
-        let user_id = UserDefaults.standard.string(forKey: "user_id")
-        let storage = Storage.storage()
-        let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
-        let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
-        riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
-            if let error = error {
-                // Uh-oh, an error occurred!
-                print(error)
-            } else {
-            // Data for "images/island.jpg" is returned
-                let image: UIImage? = data.flatMap(UIImage.init)
-                self.user_image.image = image
-                self.user_image.layer.cornerRadius = 40
-                self.user_image.layer.masksToBounds = true
-            }
+//        let user_id = UserDefaults.standard.string(forKey: "user_id")
+//        let storage = Storage.storage()
+//        let storageRef = storage.reference(forURL: "gs://schedule-7b17a.appspot.com")
+//        let riversRef = storageRef.child("user_image/" + user_id! + ".jpg")
+//        riversRef.getData(maxSize: 20 * 1024 * 1024) { data, error in
+//            if let error = error {
+//                // Uh-oh, an error occurred!
+//                print(error)
+//            } else {
+//            // Data for "images/island.jpg" is returned
+//                let image: UIImage? = data.flatMap(UIImage.init)
+//                self.user_image.image = image
+//                self.user_image.layer.cornerRadius = 40
+//                self.user_image.layer.masksToBounds = true
+//            }
+//        }
+        
+//        トプ画の配置 UserDefaultsにあったら取得
+        if UserDefaults.standard.data(forKey: "userImage") != nil {
+            let image: UIImage? = UserDefaults.standard.data(forKey: "userImage").flatMap(UIImage.init)
+            self.user_image.image = image
+            self.user_image.layer.cornerRadius = 40
+            self.user_image.layer.masksToBounds = true
+            self.user_image.alpha = 1.0
         }
+        
         
         
         //ニックネームが登録されていたらfirebaseからさ取得。そうでなければfacebookの名前取得。

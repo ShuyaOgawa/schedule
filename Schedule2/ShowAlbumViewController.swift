@@ -185,15 +185,7 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
         // ④ Alertを表示
         self.present(alert, animated: true, completion: nil)
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       
         
     }
     

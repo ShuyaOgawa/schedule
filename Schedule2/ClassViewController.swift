@@ -45,9 +45,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
             daigaku_gakubu_button.isHidden = true
         }
         
-        print("aaaaaaaa")
-        print(not_daigaku_register)
-        print(not_daigaku_register![Int(recieve_indexPath)!])
+        
         
         if not_daigaku_register![Int(recieve_indexPath)!] == "true" {
             updateFIleButton.isEnabled = false

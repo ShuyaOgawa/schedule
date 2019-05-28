@@ -50,7 +50,6 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
                             self.classList.append(key)
                         }
                     }
-                    
                     classNumber += 1
                     self.classTableView.reloadData()
                 }
@@ -77,6 +76,9 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    
+    
 
     /*
     // MARK: - Navigation

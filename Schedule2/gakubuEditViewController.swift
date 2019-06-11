@@ -144,7 +144,7 @@ class gakubuEditViewController: UIViewController, UIPickerViewDelegate, UIPicker
             //まずは、同じstororyboard内であることをここで定義します
             let storyboard: UIStoryboard = self.storyboard!
             //ここで移動先のstoryboardを選択
-            let AccountView = storyboard.instantiateViewController(withIdentifier: "AccountView")
+            let AccountView = storyboard.instantiateViewController(withIdentifier: "timeschedule")
             //ここが実際に移動するコードとなります
             self.present(AccountView, animated: true, completion: nil)
         } else {

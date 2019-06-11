@@ -14,6 +14,11 @@
 		9841CFBD2291D192001CE948 /* icons8-ãã©ã¹-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9841CFBA2291D191001CE948 /* icons8-ãã©ã¹-50.png */; };
 		9841CFBF2291D2E7001CE948 /* OnlyUpdateFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9841CFBE2291D2E7001CE948 /* OnlyUpdateFileViewController.swift */; };
 		9841CFC322924010001CE948 /* OnlyUpdateFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9841CFC222924010001CE948 /* OnlyUpdateFileTableViewCell.swift */; };
+		9841CFC5229DAC87001CE948 /* SelectClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9841CFC4229DAC87001CE948 /* SelectClassViewController.swift */; };
+		9841CFC7229DB789001CE948 /* SelectClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9841CFC6229DB789001CE948 /* SelectClassTableViewCell.swift */; };
+		9841CFC922A0D845001CE948 /* icons8-æå®¤-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9841CFC822A0D845001CE948 /* icons8-æå®¤-50.png */; };
+		9841CFCC22A0D929001CE948 /* icons8-å­¦çç·æ§-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9841CFCA22A0D929001CE948 /* icons8-å­¦çç·æ§-filled-50.png */; };
+		9841CFCD22A0D929001CE948 /* icons8-å­¦çç·æ§-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 9841CFCB22A0D929001CE948 /* icons8-å­¦çç·æ§-50.png */; };
 		988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988432F121ABD5610037DFB0 /* AppDelegate.swift */; };
 		988432F421ABD5610037DFB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988432F321ABD5610037DFB0 /* ViewController.swift */; };
 		988432F721ABD5610037DFB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 988432F521ABD5610037DFB0 /* Main.storyboard */; };
@@ -48,6 +53,8 @@
 		98CF88332236A5780026802E /* ShowAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF88322236A5780026802E /* ShowAlbumViewController.swift */; };
 		98CF88352236AAF10026802E /* ShowAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF88342236AAF10026802E /* ShowAlbumCollectionViewCell.swift */; };
 		98CF8837223B06CB0026802E /* image_detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CF8836223B06CB0026802E /* image_detailViewController.swift */; };
+		98EDDEDA22A78EB8009B24CD /* icons8-ユーザーグループ-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EDDED822A78EB7009B24CD /* icons8-ユーザーグループ-50.png */; };
+		98EDDEDB22A78EB8009B24CD /* icons8-目に見える-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 98EDDED922A78EB8009B24CD /* icons8-目に見える-50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +66,11 @@
 		9841CFBA2291D191001CE948 /* icons8-ãã©ã¹-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ãã©ã¹-50.png"; sourceTree = "<group>"; };
 		9841CFBE2291D2E7001CE948 /* OnlyUpdateFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyUpdateFileViewController.swift; sourceTree = "<group>"; };
 		9841CFC222924010001CE948 /* OnlyUpdateFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyUpdateFileTableViewCell.swift; sourceTree = "<group>"; };
+		9841CFC4229DAC87001CE948 /* SelectClassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassViewController.swift; sourceTree = "<group>"; };
+		9841CFC6229DB789001CE948 /* SelectClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassTableViewCell.swift; sourceTree = "<group>"; };
+		9841CFC822A0D845001CE948 /* icons8-æå®¤-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-æå®¤-50.png"; sourceTree = "<group>"; };
+		9841CFCA22A0D929001CE948 /* icons8-å­¦çç·æ§-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-å­¦çç·æ§-filled-50.png"; sourceTree = "<group>"; };
+		9841CFCB22A0D929001CE948 /* icons8-å­¦çç·æ§-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-å­¦çç·æ§-50.png"; sourceTree = "<group>"; };
 		988432EE21ABD5610037DFB0 /* Schedule2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schedule2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		988432F121ABD5610037DFB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		988432F321ABD5610037DFB0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +108,8 @@
 		98CF88322236A5780026802E /* ShowAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlbumViewController.swift; sourceTree = "<group>"; };
 		98CF88342236AAF10026802E /* ShowAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		98CF8836223B06CB0026802E /* image_detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_detailViewController.swift; sourceTree = "<group>"; };
+		98EDDED822A78EB7009B24CD /* icons8-ユーザーグループ-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-ユーザーグループ-50.png"; sourceTree = "<group>"; };
+		98EDDED922A78EB8009B24CD /* icons8-目に見える-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-目に見える-50.png"; sourceTree = "<group>"; };
 		A1EBC111DBFBBBE60AE4E73A /* Pods-Schedule2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schedule2.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schedule2/Pods-Schedule2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +182,8 @@
 				98CF8836223B06CB0026802E /* image_detailViewController.swift */,
 				9841CFBE2291D2E7001CE948 /* OnlyUpdateFileViewController.swift */,
 				9841CFC222924010001CE948 /* OnlyUpdateFileTableViewCell.swift */,
+				9841CFC4229DAC87001CE948 /* SelectClassViewController.swift */,
+				9841CFC6229DB789001CE948 /* SelectClassTableViewCell.swift */,
 			);
 			path = Schedule2;
 			sourceTree = "<group>";
@@ -175,6 +191,11 @@
 		98BE045E21FDD7AC00D53FA8 /* 素材 */ = {
 			isa = PBXGroup;
 			children = (
+				98EDDED822A78EB7009B24CD /* icons8-ユーザーグループ-50.png */,
+				98EDDED922A78EB8009B24CD /* icons8-目に見える-50.png */,
+				9841CFCB22A0D929001CE948 /* icons8-å­¦çç·æ§-50.png */,
+				9841CFCA22A0D929001CE948 /* icons8-å­¦çç·æ§-filled-50.png */,
+				9841CFC822A0D845001CE948 /* icons8-æå®¤-50.png */,
 				9841CFB92291D191001CE948 /* icons8-ãã¡ã¤ã«-50.png */,
 				9841CFB82291D191001CE948 /* icons8-ãã©ã«ã-50.png */,
 				9841CFBA2291D191001CE948 /* icons8-ãã©ã¹-50.png */,
@@ -278,16 +299,21 @@
 				9841CFBB2291D192001CE948 /* icons8-ãã©ã«ã-50.png in Resources */,
 				98BE04772200A97300D53FA8 /* 645.jpg in Resources */,
 				98BE046421FF323000D53FA8 /* iconmonstr-user-circle-thin-240.png in Resources */,
+				98EDDEDB22A78EB8009B24CD /* icons8-目に見える-50.png in Resources */,
 				9841CFB72291D0D3001CE948 /* icons8-ã¯ã©ã¦ãã¸ã®ã¢ããã­ã¼ã-50.png in Resources */,
+				98EDDEDA22A78EB8009B24CD /* icons8-ユーザーグループ-50.png in Resources */,
 				98CF881D2211E86D0026802E /* 974 (3).jpg in Resources */,
 				98CF8815220B74850026802E /* icons8-ファイル追加-100.png in Resources */,
 				988432F921ABD5620037DFB0 /* Assets.xcassets in Resources */,
+				9841CFCC22A0D929001CE948 /* icons8-å­¦çç·æ§-filled-50.png in Resources */,
 				988432F721ABD5610037DFB0 /* Main.storyboard in Resources */,
 				98CF8825222D740A0026802E /* icons8-ã¯ã©ã¦ãã¸ã®ã¢ããã­ã¼ã-48.png in Resources */,
 				98BE046A2200606600D53FA8 /* icons8-delete-filled-50.png in Resources */,
+				9841CFCD22A0D929001CE948 /* icons8-å­¦çç·æ§-50.png in Resources */,
 				98BE04752200A97300D53FA8 /* 646.jpg in Resources */,
 				9841CFBC2291D192001CE948 /* icons8-ãã¡ã¤ã«-50.png in Resources */,
 				98BE04782200A97300D53FA8 /* 644.jpg in Resources */,
+				9841CFC922A0D845001CE948 /* icons8-æå®¤-50.png in Resources */,
 				98BE046021FDD7C700D53FA8 /* icons8-settings.undefined in Resources */,
 				98CF881F2211E8990026802E /* 974 (4).jpg in Resources */,
 			);
@@ -429,11 +455,13 @@
 				988432F421ABD5610037DFB0 /* ViewController.swift in Sources */,
 				98CF8837223B06CB0026802E /* image_detailViewController.swift in Sources */,
 				988432F221ABD5610037DFB0 /* AppDelegate.swift in Sources */,
+				9841CFC7229DB789001CE948 /* SelectClassTableViewCell.swift in Sources */,
 				98BE046622005EB300D53FA8 /* AccountEditViewController.swift in Sources */,
 				98BE045D21FDAF8200D53FA8 /* LoginViewController.swift in Sources */,
 				98BE046C2200780400D53FA8 /* daigakuEditViewController.swift in Sources */,
 				9841CFBF2291D2E7001CE948 /* OnlyUpdateFileViewController.swift in Sources */,
 				9841CFC322924010001CE948 /* OnlyUpdateFileTableViewCell.swift in Sources */,
+				9841CFC5229DAC87001CE948 /* SelectClassViewController.swift in Sources */,
 				98CF882D222D8E110026802E /* AlbumContainerViewController.swift in Sources */,
 				98CF88352236AAF10026802E /* ShowAlbumCollectionViewCell.swift in Sources */,
 				98CF8831222D92930026802E /* AlbumContainerCollectionViewCell.swift in Sources */,

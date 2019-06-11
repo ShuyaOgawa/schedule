@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func backToTop(segue: UIStoryboardSegue) {}
     
+    var ActivityIndicator: UIActivityIndicatorView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,24 +35,63 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(not_daigaku_register, forKey: "not_daigaku_register")
         }
         
+        
+        if UserDefaults.standard.object(forKey: "user_id") != nil && UserDefaults.standard.object(forKey: "daigaku") != nil {
+            let storyboard: UIStoryboard = self.storyboard!
+            let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+            self.present(timeschedule, animated: true, completion: nil)
+        }
+        
+        // ActivityIndicatorを作成＆中央に配置
+        
+        ActivityIndicator = UIActivityIndicatorView()
+        ActivityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        ActivityIndicator.center = self.view.center
+        
+        // クルクルをストップした時に非表示する
+        ActivityIndicator.hidesWhenStopped = true
+        
+        // 色を設定
+        ActivityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        
+        //Viewに追加
+        self.view.addSubview(ActivityIndicator)
+        
+        
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
         
+        
 //        アカウント作成していたときuserdefaultのuser_idを参照してtimescheduleに移動
 //         ログアウト時はuserDefaultsは削除されているからここ経由しない
         if UserDefaults.standard.object(forKey: "user_id") != nil {
+            
             //まずは、同じstororyboard内であることをここで定義します
             let storyboard: UIStoryboard = self.storyboard!
             //ここで移動先のstoryboardを選択
-            let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
-            //ここが実際に移動するコードとなります
-            self.present(timeschedule, animated: true, completion: nil)
+//            let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+            
+//            let timeschedule = storyboard.instantiateViewController(withIdentifier: "daigaku_register")
+//            //ここが実際に移動するコードとなります
+//            self.present(timeschedule, animated: true, completion: nil)
+            
+            if UserDefaults.standard.object(forKey: "daigaku") == nil {
+                let timeschedule = storyboard.instantiateViewController(withIdentifier: "daigaku_register")
+                self.present(timeschedule, animated: true, completion: nil)
+            } else {
+                let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+                self.present(timeschedule, animated: true, completion: nil)
+            }
         }
         
         // ログイン済みかチェック
+        
         if let token = FBSDKAccessToken.current() {
+            // クルクルスタート
+            self.ActivityIndicator.startAnimating()
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if error != nil {
@@ -58,6 +99,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 // ログイン時の処理
+                
                 //    firebaseのデータベース取得
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
@@ -74,9 +116,11 @@ class LoginViewController: UIViewController {
                 //まずは、同じstororyboard内であることをここで定義します
                 let storyboard: UIStoryboard = self.storyboard!
                 //ここで移動先のstoryboardを選択
-                let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+//                let timeschedule = storyboard.instantiateViewController(withIdentifier: "timeschedule")
+                let timeschedule = storyboard.instantiateViewController(withIdentifier: "daigaku_register")
                 //ここが実際に移動するコードとなります
                 self.present(timeschedule, animated: true, completion: nil)
+                
             }
             return
         }
@@ -106,22 +150,24 @@ class LoginViewController: UIViewController {
             return
         }
         // ログイン時の処理
+        // クルクルストップ
+        self.ActivityIndicator.stopAnimating()
     }
     
     
 //    ログアウトボタン
-    @IBAction func logoutButton(_ sender: Any) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
-    // Logout callback
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-    }
+//    @IBAction func logoutButton(_ sender: Any) {
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
+//    }
+//
+//    // Logout callback
+//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+//    }
     
 
     /*

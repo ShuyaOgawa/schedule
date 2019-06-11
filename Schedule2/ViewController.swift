@@ -202,7 +202,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             self.give_indexPath = String(indexPath.row)
             self.give_day = self.set_class_comma[indexPath.row]
-            self.performSegue(withIdentifier: "new_class", sender: nil)
+//            self.performSegue(withIdentifier: "new_class", sender: nil)
+            self.performSegue(withIdentifier: "select_class", sender: nil)
         }
         
         
@@ -211,16 +212,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // 画面遷移先のViewControllerを取得し、データを渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "new_class" {
-            let vc = segue.destination as! new_class_ViewController
-            vc.receive_indexPath = give_indexPath
-            vc.receive_day = give_day
-        }
+//        if segue.identifier == "new_class" {
+//            let vc = segue.destination as! new_class_ViewController
+//            vc.receive_indexPath = give_indexPath
+//            vc.receive_day = give_day
+//        }
         if segue.identifier == "detail_class" {
             let vc = segue.destination as! ClassViewController
             vc.recieve_indexPath = give_indexPath
             vc.recieve_class_name = give_class_name
         }
+        if segue.identifier == "select_class" {
+            let vc = segue.destination as! SelectClassViewController
+            vc.receive_indexPath = give_indexPath
+            vc.receive_day = give_day
+        }
+        
     }
 
     

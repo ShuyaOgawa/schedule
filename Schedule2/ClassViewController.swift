@@ -47,9 +47,9 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
         
         
         
-        if not_daigaku_register![Int(recieve_indexPath)!] == "true" {
-            updateFIleButton.isEnabled = false
-        }
+//        if not_daigaku_register![Int(recieve_indexPath)!] == "true" {
+//            updateFIleButton.isEnabled = false
+//        }
     }
     
    

@@ -1,30 +1,31 @@
 //
-//  OnlyUpdateFileViewController.swift
+//  SelectClassViewController.swift
 //  Schedule2
 //
-//  Created by 小川秀哉 on 2019/05/20.
+//  Created by 小川秀哉 on 2019/05/29.
 //  Copyright © 2019年 Digital Circus Inc. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import DKImagePickerController
 
-class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class SelectClassViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     
     
-    @IBOutlet weak var classTableView: UITableView!
+    @IBOutlet weak var SelectClassTable: UITableView!
+    
     
     @IBOutlet weak var searchField: UITextField!
     
     
     
+    @IBOutlet weak var title_label: UILabel!
+    
     var receive_indexPath: String = ""
     var receive_day: String = ""
     var give_indexPath: String = ""
     var give_day: String = ""
-    var give_class_name: String = ""
     
     let daigaku = UserDefaults.standard.string(forKey: "daigaku")
     let gakubu = UserDefaults.standard.string(forKey: "gakubu")
@@ -39,17 +40,20 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
     var subSubscriberList: Array<Int> = []
     var indexPathList: Array<String> = []
     var subscribeNumber: Int?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        
+        title_label.text = receive_day
+        
         getClassesName()
-
+        
         searchTextFieldConfig()
-    
         
         
+
         // Do any additional setup after loading the view.
     }
     
@@ -89,10 +93,10 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
                         }
                     }
                     classNumber += 1
-                    self.classTableView.reloadData()
-                    
+                    self.SelectClassTable.reloadData()
+
                 }
-                
+
             }
         })
     }
@@ -108,7 +112,7 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // セルを取得する
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "classItem", for: indexPath) as! OnlyUpdateFileTableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "selectClassItem", for: indexPath) as! SelectClassTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let selectClassName = cell.contentView.viewWithTag(1) as? UILabel
@@ -126,7 +130,7 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         let register_button = cell.contentView.viewWithTag(4) as? UIButton
         register_button?.tag = indexPath.row
         register_button?.addTarget(self, action: "register_button:", for: .touchUpInside)
-        
+
         
         return cell
     }
@@ -135,81 +139,68 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         self.dismiss(animated: true)
     }
     
+    // 画面遷移先のViewControllerを取得し、データを渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "new_class" {
+            let vc = segue.destination as! new_class_ViewController
+            vc.receive_indexPath = self.receive_indexPath
+            vc.receive_day = self.receive_day
+        }
+        
+        
+        
+    }
     
     @IBAction func register_button(_ sender: Any) {
         let row = (sender as AnyObject).tag
         
+        // ① UIAlertControllerクラスのインスタンスを生成
+        // タイトル, メッセージ, Alertのスタイルを指定する
+        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
+        let alert: UIAlertController = UIAlertController(title: "登録", message: "この授業を登録しますか？", preferredStyle:  UIAlertController.Style.alert)
         
-        give_indexPath = self.indexPathList[row!]
+        // ② Actionの設定
+        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
+        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
+        // OKボタン
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            //        UserDefaiultsのuser_id、class_name、room_name削除
+            //                UserDefaultに授業を登録
+            var class_array = UserDefaults.standard.array(forKey: "class_name")! as! Array<String>
+            class_array[Int(self.receive_indexPath)!] = self.classList[row!]
+            UserDefaults.standard.set(class_array, forKey: "class_name")
+            //                UserDeafultsに教室を登録
+            var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
+            room_array[Int(self.receive_indexPath)!] = self.roomList[row!]
+            UserDefaults.standard.set(room_array, forKey: "room_name")
+            
+//            登録者数にアクセスして+1する
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            print("countttttttttttt")
+            print(self.subscriberList[row!]+1)
+            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.indexPathList[row!])/\(self.classList[row!])").updateChildValues(["subscriber": self.subscriberList[row!]+1])
+            
+            self.go_to_timeSchedule()
+        })
+        // キャンセルボタン
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        })
         
-        give_class_name = self.classList[row!]
+        // ③ UIAlertControllerにActionを追加
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
         
-        print("bbbbbbbbbbbbbbbbbbb")
-        print(give_indexPath)
-        print(give_class_name)
-        
-        self.performSegue(withIdentifier: "detail_class", sender: nil)
-        
-//        // ① UIAlertControllerクラスのインスタンスを生成
-//        // タイトル, メッセージ, Alertのスタイルを指定する
-//        // 第3引数のpreferredStyleでアラートの表示スタイルを指定する
-//        let alert: UIAlertController = UIAlertController(title: "登録", message: "この授業を登録しますか？", preferredStyle:  UIAlertController.Style.alert)
-//
-//        // ② Actionの設定
-//        // Action初期化時にタイトル, スタイル, 押された時に実行されるハンドラを指定する
-//        // 第3引数のUIAlertActionStyleでボタンのスタイルを指定する
-//        // OKボタン
-//        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
-//            // ボタンが押された時の処理を書く（クロージャ実装）
-//            (action: UIAlertAction!) -> Void in
-//            //        UserDefaiultsのuser_id、class_name、room_name削除
-//            //                UserDefaultに授業を登録
-//            var class_array = UserDefaults.standard.array(forKey: "class_name")! as! Array<String>
-//            class_array[Int(self.receive_indexPath)!] = self.classList[row!]
-//            UserDefaults.standard.set(class_array, forKey: "class_name")
-//            //                UserDeafultsに教室を登録
-//            var room_array = UserDefaults.standard.array(forKey: "room_name")! as! Array<String>
-//            room_array[Int(self.receive_indexPath)!] = self.roomList[row!]
-//            UserDefaults.standard.set(room_array, forKey: "room_name")
-//
-//            //            登録者数にアクセスして+1する
-//            var ref: DatabaseReference!
-//            ref = Database.database().reference()
-//            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.indexPathList[row!])/\(self.classList[row!])").updateChildValues(["subscriber": self.subscriberList[row!]+1])
-//
-//            self.go_to_timeSchedule()
-//        })
-//        // キャンセルボタン
-//        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
-//            // ボタンが押された時の処理を書く（クロージャ実装）
-//            (action: UIAlertAction!) -> Void in
-//            print("Cancel")
-//        })
-//
-//        // ③ UIAlertControllerにActionを追加
-//        alert.addAction(cancelAction)
-//        alert.addAction(defaultAction)
-//
-//        // ④ Alertを表示
-//        self.present(alert, animated: true, completion: nil)
-        
-        
+        // ④ Alertを表示
+        self.present(alert, animated: true, completion: nil)
         
     }
-    
-    // 画面遷移先のViewControllerを取得し、データを渡す
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail_class" {
-            let vc = segue.destination as! ClassViewController
-            vc.recieve_indexPath = give_indexPath
-            vc.recieve_class_name = give_class_name
-            print("aaaaaaaaaaaaa")
-            print(vc.recieve_indexPath)
-            print(vc.recieve_class_name)
-        }
-        
-    }
-    
+
     
     //    timeScheduleに移動するメソッド
     func go_to_timeSchedule() {
@@ -237,33 +228,33 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-    //    キーボードの検索ボタンが押された時
+//    キーボードの検索ボタンが押された時
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchField.resignFirstResponder()
         
-        //        テキストフィールドに何も書かれないで検索ボタンが押された時
+//        テキストフィールドに何も書かれないで検索ボタンが押された時
         if searchField.text! == "" {
             classList = subClassList
             roomList = subRoomList
             profList = subProfList
             subscriberList = subSubscriberList
-            self.classTableView.reloadData()
+            self.SelectClassTable.reloadData()
         } else{
             classSearch()
         }
         
-        self.classTableView.reloadData()
+        self.SelectClassTable.reloadData()
         return true
         
     }
     
-    //    テキストフィールドの削除ボタンが押された時
+//    テキストフィールドの削除ボタンが押された時
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         classList = subClassList
         roomList = subRoomList
         profList = subProfList
         subscriberList = subSubscriberList
-        self.classTableView.reloadData()
+        self.SelectClassTable.reloadData()
         return true
     }
     
@@ -274,13 +265,13 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
     
     
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

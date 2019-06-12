@@ -144,10 +144,6 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         
         give_class_name = self.classList[row!]
         
-        print("bbbbbbbbbbbbbbbbbbb")
-        print(give_indexPath)
-        print(give_class_name)
-        
         self.performSegue(withIdentifier: "detail_class", sender: nil)
         
 //        // ① UIAlertControllerクラスのインスタンスを生成
@@ -203,9 +199,6 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
             let vc = segue.destination as! ClassViewController
             vc.recieve_indexPath = give_indexPath
             vc.recieve_class_name = give_class_name
-            print("aaaaaaaaaaaaa")
-            print(vc.recieve_indexPath)
-            print(vc.recieve_class_name)
         }
         
     }

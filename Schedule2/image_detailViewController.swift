@@ -8,7 +8,7 @@
 
 import UIKit
 
-class image_detailViewController: UIViewController {
+class image_detailViewController: UIViewController, UIScrollViewDelegate {
     
     var recieve_touch_image: UIImage?
     var recieve_image_list: Array<UIImage> = []
@@ -38,6 +38,22 @@ class image_detailViewController: UIViewController {
         
         // 画面にジェスチャーを登録
         view.addGestureRecognizer(downSwipeGesture)
+        
+        
+        
+        
+//        // ピンチを定義
+//        //let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(PinchCodeViewController.pinchView(_:)))  //Swift2.2以前
+//        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchView))  //Swift3
+//        // viewにピンチを登録
+//        self.view.addGestureRecognizer(pinchGesture)
+        
+        print("fffffffffffffffffff")
+        self.scrView.delegate = self
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action:#selector(self.doubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        self.view.addGestureRecognizer(doubleTapGesture)
+        
         
         
         
@@ -72,19 +88,7 @@ class image_detailViewController: UIViewController {
         
         setupScrollImages()
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+ 
         
 ////        デフォルト使用
 //        screenSize = UIScreen.main.bounds
@@ -147,18 +151,14 @@ class image_detailViewController: UIViewController {
         
         
 //       タップされた画像を初期値にする
-        print("aaaaaaaaaaaaaa")
-        print(Int(scrollScreenWidth))
         let tap_image_x: Int = (recieve_image_list.index(of: recieve_touch_image!))!*(Int(scrollScreenWidth)-1)
         scrView.contentOffset = CGPoint(x: tap_image_x, y: 0)
         
         
-        
-        
-        
-        
-        
     }
+    
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -170,6 +170,47 @@ class image_detailViewController: UIViewController {
     // 画面を閉じる
     @objc func closeModalView() {
         dismiss(animated: true, completion: nil)
+    }
+    
+//    /// ピンチイン・ピンチアウト時に実行される
+//    @objc func pinchView(sender: UIPinchGestureRecognizer) {
+//        print("pinch")
+//        // ピンチイン・ピンチアウトの拡大縮小率
+//        print("scale: \(sender.scale)")
+//        // 1秒あたりのピンチの速度(read-only)
+//        print("velocity: \(sender.velocity)")
+//    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        print("pinch")
+        return self.image
+    }
+    
+    @objc func doubleTap(gesture: UITapGestureRecognizer) -> Void {
+        print("aaaaaaaaaaaaaaaaa")
+        print(self.scrView.zoomScale)
+        if (self.scrView.zoomScale < self.scrView.maximumZoomScale) {
+            let newScale = self.scrView.zoomScale * 3
+            let zoomRect = self.zoomRectForScale(scale: newScale, center: gesture.location(in: gesture.view))
+            self.scrView.zoom(to: zoomRect, animated: true)
+        } else {
+            self.scrView.setZoomScale(1.0, animated: true)
+        }
+    }
+    
+    func zoomRectForScale(scale:CGFloat, center: CGPoint) -> CGRect{
+        print("bbbbbbbbbbbbbbbbbb")
+        let size = CGSize(
+            width: self.scrView.frame.size.width / scale,
+            height: self.scrView.frame.size.height / scale
+        )
+        return CGRect(
+            origin: CGPoint(
+                x: center.x - size.width / 2.0,
+                y: center.y - size.height / 2.0
+            ),
+            size: size
+        )
     }
     
     

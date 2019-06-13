@@ -102,26 +102,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.classRoom.text = self.room_array[indexPath.row]
         
         
+        
 //        cell.className.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
         
-        if self.class_array[indexPath.row] != "" {
-            cell.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
-        }
+//        if self.class_array[indexPath.row] != "" {
+//            cell.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
+//        }
         
       
         cell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderWidth = 0.7
+        cell.layer.borderWidth = 0.3
         
         
-        // 枠のカラー
-        cell.classRoom.layer.borderColor = UIColor.black.cgColor
+//        // 枠のカラー
+//        cell.classRoom.layer.borderColor = UIColor.black.cgColor
+//        
+//        // 枠の幅
+//        cell.classRoom.layer.borderWidth = 1.0
+//        
+//        // 枠を角丸にする場合
+//        cell.classRoom.layer.cornerRadius = 3.0
+//        cell.classRoom.layer.masksToBounds = true
         
-        // 枠の幅
-        cell.classRoom.layer.borderWidth = 1.0
         
-        // 枠を角丸にする場合
-        cell.classRoom.layer.cornerRadius = 3.0
-        cell.classRoom.layer.masksToBounds = true
+        
+//        cell.itemFolder.layer.borderColor = UIColor.black.cgColor
+//        cell.itemFolder.layer.borderWidth = 1
+//        cell.className.layer.borderColor = UIColor.white.cgColor
+        
+        if self.class_array[indexPath.row] != "" {
+            cell.itemFolder.backgroundColor = UIColor.init(red: 230/255, green: 255/255, blue: 255/255, alpha: 100/100)
+//            cell.itemFolder.layer.cornerRadius = 10
+            cell.itemFolder.layer.borderColor = UIColor.gray.cgColor
+            cell.itemFolder.layer.borderWidth = 0.3
+        }
+        
+        
+        
+        
         
 //        授業配置
 //        var ref: DatabaseReference!

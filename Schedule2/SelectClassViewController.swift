@@ -130,6 +130,8 @@ class SelectClassViewController: UIViewController, UITableViewDelegate, UITableV
         let register_button = cell.contentView.viewWithTag(4) as? UIButton
         register_button?.tag = indexPath.row
         register_button?.addTarget(self, action: "register_button:", for: .touchUpInside)
+        
+        
 
         
         return cell

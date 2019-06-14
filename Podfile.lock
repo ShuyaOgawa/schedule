@@ -55,6 +55,7 @@ PODS:
     - SDWebImage/GIF
   - DKPhotoGallery/Resource (0.0.11):
     - SDWebImage/GIF
+  - DOAlertController (1.0.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -234,6 +235,7 @@ PODS:
 
 DEPENDENCIES:
   - DKImagePickerController
+  - DOAlertController
   - FacebookCore
   - FacebookLogin
   - Firebase/Auth
@@ -248,6 +250,7 @@ SPEC REPOS:
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
+    - DOAlertController
     - FacebookCore
     - FacebookLogin
     - FBSDKCoreKit
@@ -284,6 +287,7 @@ SPEC CHECKSUMS:
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 358ebcd5ce87db8863ec4b8dea651c67baca36e0
   DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
+  DOAlertController: d22fca7cd83b5eeeb24b78a1c6c76ed08cc28dac
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
@@ -314,6 +318,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 3e523d2639503a38deaab87d7dcd300418060ffa
+PODFILE CHECKSUM: 1b778a156536700ac2a57d1d7a48c312296ba898
 
 COCOAPODS: 1.5.3

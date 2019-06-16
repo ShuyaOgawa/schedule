@@ -154,7 +154,7 @@ class AcountViewController: UIViewController {
     
     func returnUserData()
     {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me",
+        let graphRequest : GraphRequest = GraphRequest(graphPath: "me",
                                                                  parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"])
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             if ((error) != nil)
@@ -197,7 +197,7 @@ class AcountViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "daigaku")
             UserDefaults.standard.removeObject(forKey: "gakubu")
             UserDefaults.standard.removeObject(forKey: "not_daigaku_register")
-            let loginManager : FBSDKLoginManager = FBSDKLoginManager()
+            let loginManager : LoginManager = LoginManager()
             loginManager.logOut()
             //ここで移動先のstoryboardを選択
             let storyboard: UIStoryboard = self.storyboard!

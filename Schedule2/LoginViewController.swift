@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
         
         // ログイン済みかチェック
         
-        if let token = FBSDKAccessToken.current() {
+        if let token = AccessToken.current {
             // クルクルスタート
             self.ActivityIndicator.startAnimating()
             let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
@@ -125,14 +125,14 @@ class LoginViewController: UIViewController {
             return
         }
         // ログインボタン設置
-        let fbLoginBtn = FBSDKLoginButton()
-        fbLoginBtn.readPermissions = ["public_profile", "email"]
+        var fbLoginBtn = FBLoginButton()
+//        fbLoginBtn.readPermissions = ["public_profile", "email"]
         var fbx = self.view.frame.width
         fbx *= 1/2
         var fby = self.view.frame.height
         fby *= 5/6
         fbLoginBtn.layer.position = CGPoint(x: fbx, y:fby)
-        fbLoginBtn.delegate = self as? FBSDKLoginButtonDelegate
+        fbLoginBtn.delegate = self as? LoginButtonDelegate
         self.view.addSubview(fbLoginBtn)
         
         
@@ -143,7 +143,7 @@ class LoginViewController: UIViewController {
     }
     
     // login callback
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    func loginButton(_ loginButton: FBLoginButton!, didCompleteWith result: LoginManagerLoginResult!, error: Error!) {
         
         if error != nil {
             print("Error")

@@ -13,5 +13,5 @@ target 'Schedule2' do
   	pod 'FacebookLogin'
 	pod 'Firebase/Storage'
 	pod 'DKImagePickerController'
-	pod 'DOAlertController'
+	
 end

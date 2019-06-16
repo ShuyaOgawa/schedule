@@ -113,6 +113,9 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
             //        アルバム名取得
             ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
+                print("aaaaaaaaaaaa")
+                print(self.recieve_indexPath)
+                print(self.recieve_class_name)
                 let value = snapshot.value as! NSDictionary
                 var album = value["album"] as? [String : Any]
                 if album != nil {

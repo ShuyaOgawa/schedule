@@ -64,19 +64,10 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     */
     
     @IBAction func upload_file(_ sender: Any) {
-        
-        
-        
-        
-        
         let alert: UIAlertController = UIAlertController(title: "画像をアップロードする", message: "この授業を取っている人みんなに共有しますか？", preferredStyle:  UIAlertController.Style.alert)
         let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
-            
-            
-            
-            
             
             //        self.give_image_list = []
             var  segue_count: Int = 1
@@ -89,7 +80,7 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
                 // 選択された画像はassetsに入れて返却されますのでfetchして取り出すとよいでしょう
                 self.give_image_list = Array(repeating: UIImage(), count: assets.count)
                 for i in 0 ... assets.count-1 {
-                    assets[i].fetchFullScreenImage(completeBlock: { (image, info) in
+                    assets[i].fetchFullScreenImage(true, completeBlock: { (image, info) in
                         // ここで取り出せます
                         self.give_image_list[i] = image!
                         

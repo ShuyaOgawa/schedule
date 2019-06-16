@@ -200,6 +200,9 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
             vc.recieve_indexPath = give_indexPath
             vc.recieve_class_name = give_class_name
         }
+        print("bbbbbbbbbbb")
+        print(give_class_name)
+        print(give_indexPath)
         
     }
     

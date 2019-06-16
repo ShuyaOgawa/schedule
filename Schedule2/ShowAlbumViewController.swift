@@ -42,7 +42,8 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
         
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as! NSDictionary
             let update_user = value["user"] as! String
@@ -58,9 +59,12 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
     func get_album_number(){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)/album/\(recieve_album_name)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as! NSDictionary
+            print("ggggggggggggggggg")
+            print(value)
             let album_number = value["imageNumber"] as! String
             self.number_of_album = Int(album_number)!
            
@@ -150,7 +154,8 @@ class ShowAlbumViewController: UIViewController, UICollectionViewDelegate, UICol
             (action: UIAlertAction!) -> Void in
             var ref: DatabaseReference!
             ref = Database.database().reference()
-            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(self.recieve_album_name)").removeValue()
+//            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(self.recieve_album_name)").removeValue()
+            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.recieve_class_name)/album/\(self.recieve_album_name)").removeValue()
             
             
             for i in 0..<self.number_of_album {

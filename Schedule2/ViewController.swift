@@ -297,6 +297,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         if segue.identifier == "select_class" {
             let vc = segue.destination as! SelectClassViewController
+            print("vvvvvvvvvvvvvvvvvv")
+            print(give_indexPath)
             vc.receive_indexPath = give_indexPath
             vc.receive_day = give_day
         }

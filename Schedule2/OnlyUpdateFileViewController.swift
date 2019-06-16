@@ -63,35 +63,65 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         searchField.delegate = self
     }
     
+//    func getClassesName() {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            if value != nil {
+//                var classNumber = 0
+//                while classNumber < 36 {
+//                    var className = value![String(classNumber)] as? [String : Any]
+//                    if className != nil {
+//                        for (key, value) in className! {
+//                            self.classList.append(key)
+//                            self.subClassList.append(key)
+//                            if let room_dictionary = value as? NSDictionary {
+//                                self.roomList.append(room_dictionary["room_name"]! as! String)
+//                                self.subRoomList.append(room_dictionary["room_name"]! as! String)
+//                                self.profList.append(room_dictionary["prof_name"]! as! String)
+//                                self.subProfList.append(room_dictionary["prof_name"]! as! String)
+//                                self.subscriberList.append(room_dictionary["subscriber"]! as! Int)
+//                                self.subSubscriberList.append(room_dictionary["subscriber"]! as! Int)
+//                                self.indexPathList.append(String(classNumber))
+//                            }
+//                        }
+//                    }
+//                    classNumber += 1
+//                    self.classTableView.reloadData()
+//
+//                }
+//
+//            }
+//        })
+//    }
+    
     func getClassesName() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("classes/\(daigaku!)/\(gakubu!)/").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil {
-                var classNumber = 0
-                while classNumber < 36 {
-                    var className = value![String(classNumber)] as? [String : Any]
-                    if className != nil {
-                        for (key, value) in className! {
-                            self.classList.append(key)
-                            self.subClassList.append(key)
-                            if let room_dictionary = value as? NSDictionary {
-                                self.roomList.append(room_dictionary["room_name"]! as! String)
-                                self.subRoomList.append(room_dictionary["room_name"]! as! String)
-                                self.profList.append(room_dictionary["prof_name"]! as! String)
-                                self.subProfList.append(room_dictionary["prof_name"]! as! String)
-                                self.subscriberList.append(room_dictionary["subscriber"]! as! Int)
-                                self.subSubscriberList.append(room_dictionary["subscriber"]! as! Int)
-                                self.indexPathList.append(String(classNumber))
-                            }
-                        }
+            let className = snapshot.value as? [String : Any]
+            print("!!!!!!!!!!!!!!!!!")
+            print(className)
+            if className != nil {
+                for (key, value) in className! {
+                    self.classList.append(key)
+                    self.subClassList.append(key)
+                    if let class_value = value as? NSDictionary {
+                        self.roomList.append(class_value["room_name"]! as! String)
+                        self.subRoomList.append(class_value["room_name"]! as! String)
+                        self.profList.append(class_value["prof_name"]! as! String)
+                        self.subProfList.append(class_value["prof_name"]! as! String)
+                        self.subscriberList.append(class_value["subscriber"]! as! Int)
+                        self.subSubscriberList.append(class_value["subscriber"]! as! Int)
+                        //                        self.indexPathList.append(String(classNumber))
                     }
-                    classNumber += 1
-                    self.classTableView.reloadData()
-                    
                 }
+                self.classTableView.reloadData()
+                
+                
                 
             }
         })
@@ -140,7 +170,7 @@ class OnlyUpdateFileViewController: UIViewController, UITableViewDelegate, UITab
         let row = (sender as AnyObject).tag
         
         
-        give_indexPath = self.indexPathList[row!]
+//        give_indexPath = self.indexPathList[row!]
         
         give_class_name = self.classList[row!]
         

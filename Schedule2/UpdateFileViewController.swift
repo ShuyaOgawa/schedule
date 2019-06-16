@@ -111,7 +111,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
 //            くるくるスタート
             ActivityIndicator.startAnimating()
             //        アルバム名取得
-            ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+//            ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("aaaaaaaaaaaa")
                 print(self.recieve_indexPath)
@@ -157,7 +158,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                             //                保存するアルバム名等をrealtimedatabaseにも追加する
                             let user = Auth.auth().currentUser
                             let user_id = user?.uid
-                            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+//                            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+                            ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
                             
                             
                         }
@@ -186,7 +188,8 @@ class UpdateFileViewController: UIViewController, UITextFieldDelegate {
                     //                保存するアルバム名等をrealtimedatabaseにも追加する
                     let user = Auth.auth().currentUser
                     let user_id = user?.uid
-                    ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+//                    ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_indexPath)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
+                    ref.child("classes/\(daigaku!)/\(gakubu!)/\(self.recieve_class_name)/album/\(album_name!)").updateChildValues(["albumName": album_name!, "user": user_id!, "imageNumber": String(self.recieve_image_list.count)])
                 }
             })
             

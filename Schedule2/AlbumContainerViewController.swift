@@ -63,7 +63,8 @@ class AlbumContainerViewController: UIViewController, UICollectionViewDelegate, 
         self.album_name_array = []
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_indexPath)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("classes/\(daigaku!)/\(gakubu!)/\(recieve_class_name)").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
             if value != nil {

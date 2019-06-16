@@ -178,7 +178,8 @@ class new_class_ViewController: UIViewController, UITextFieldDelegate {
             //                DBに授業を登録
             var ref: DatabaseReference!
             ref = Database.database().reference()
-            ref.child("classes/\(daigaku!)/\(gakubu!)/\(receive_indexPath)/\(class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name, "prof_name": prof_name, "subscriber": 1])
+//            ref.child("classes/\(daigaku!)/\(gakubu!)/\(receive_indexPath)/\(class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name, "prof_name": prof_name, "subscriber": 1])
+            ref.child("classes/\(daigaku!)/\(gakubu!)/\(class_name)").updateChildValues(["indexPath": receive_indexPath, "class_name": class_name, "room_name": room_name, "prof_name": prof_name, "subscriber": 1])
             
             
             

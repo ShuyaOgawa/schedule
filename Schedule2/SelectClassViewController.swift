@@ -67,36 +67,68 @@ class SelectClassViewController: UIViewController, UITableViewDelegate, UITableV
         searchField.delegate = self
     }
     
+//    func getClassesName() {
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        ref.child("classes/\(daigaku!)/\(gakubu!)/").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            print("!!!!!!!!!!!!!!!!!")
+//            print(value)
+//            if value != nil {
+//                var classNumber = 0
+//                while classNumber < 36 {
+//                    var className = value![String(classNumber)] as? [String : Any]
+//                    if className != nil {
+//                        for (key, value) in className! {
+//                            self.classList.append(key)
+//                            self.subClassList.append(key)
+//                            if let room_dictionary = value as? NSDictionary {
+//                                self.roomList.append(room_dictionary["room_name"]! as! String)
+//                                self.subRoomList.append(room_dictionary["room_name"]! as! String)
+//                                self.profList.append(room_dictionary["prof_name"]! as! String)
+//                                self.subProfList.append(room_dictionary["prof_name"]! as! String)
+//                                self.subscriberList.append(room_dictionary["subscriber"]! as! Int)
+//                                self.subSubscriberList.append(room_dictionary["subscriber"]! as! Int)
+//                                self.indexPathList.append(String(classNumber))
+//                            }
+//                        }
+//                    }
+//                    classNumber += 1
+//                    self.SelectClassTable.reloadData()
+//
+//                }
+//
+//            }
+//        })
+//    }
+    
     func getClassesName() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("classes/\(daigaku!)/\(gakubu!)/").observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            let value = snapshot.value as? NSDictionary
-            if value != nil {
-                var classNumber = 0
-                while classNumber < 36 {
-                    var className = value![String(classNumber)] as? [String : Any]
-                    if className != nil {
-                        for (key, value) in className! {
-                            self.classList.append(key)
-                            self.subClassList.append(key)
-                            if let room_dictionary = value as? NSDictionary {
-                                self.roomList.append(room_dictionary["room_name"]! as! String)
-                                self.subRoomList.append(room_dictionary["room_name"]! as! String)
-                                self.profList.append(room_dictionary["prof_name"]! as! String)
-                                self.subProfList.append(room_dictionary["prof_name"]! as! String)
-                                self.subscriberList.append(room_dictionary["subscriber"]! as! Int)
-                                self.subSubscriberList.append(room_dictionary["subscriber"]! as! Int)
-                                self.indexPathList.append(String(classNumber))
-                            }
-                        }
+            let className = snapshot.value as? [String : Any]
+            print("!!!!!!!!!!!!!!!!!")
+            print(className)
+            if className != nil {
+                for (key, value) in className! {
+                    self.classList.append(key)
+                    self.subClassList.append(key)
+                    if let class_value = value as? NSDictionary {
+                        self.roomList.append(class_value["room_name"]! as! String)
+                        self.subRoomList.append(class_value["room_name"]! as! String)
+                        self.profList.append(class_value["prof_name"]! as! String)
+                        self.subProfList.append(class_value["prof_name"]! as! String)
+                        self.subscriberList.append(class_value["subscriber"]! as! Int)
+                        self.subSubscriberList.append(class_value["subscriber"]! as! Int)
+//                        self.indexPathList.append(String(classNumber))
                     }
-                    classNumber += 1
-                    self.SelectClassTable.reloadData()
-
                 }
-
+                    self.SelectClassTable.reloadData()
+                    
+                
+                
             }
         })
     }
@@ -145,6 +177,8 @@ class SelectClassViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "new_class" {
             let vc = segue.destination as! new_class_ViewController
+            print("aaaaaaaa")
+            print(self.receive_indexPath)
             vc.receive_indexPath = self.receive_indexPath
             vc.receive_day = self.receive_day
         }
@@ -183,7 +217,8 @@ class SelectClassViewController: UIViewController, UITableViewDelegate, UITableV
             ref = Database.database().reference()
             print("countttttttttttt")
             print(self.subscriberList[row!]+1)
-            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.indexPathList[row!])/\(self.classList[row!])").updateChildValues(["subscriber": self.subscriberList[row!]+1])
+//            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.indexPathList[row!])/\(self.classList[row!])").updateChildValues(["subscriber": self.subscriberList[row!]+1])
+            ref.child("classes/\(self.daigaku!)/\(self.gakubu!)/\(self.classList[row!])").updateChildValues(["subscriber": self.subscriberList[row!]+1])
             
             self.go_to_timeSchedule()
         })

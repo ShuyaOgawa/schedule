@@ -130,13 +130,13 @@ class ClassViewController: UIViewController, UIImagePickerControllerDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UpdateFileView" {
             let vc = segue.destination as! UpdateFileViewController
-            vc.recieve_indexPath = recieve_indexPath
+//            vc.recieve_indexPath = recieve_indexPath
             vc.recieve_class_name = recieve_class_name
             vc.recieve_image_list = give_image_list
         }
         if segue.identifier == "goToAlbumContainer" {
             let vc = segue.destination as! AlbumContainerViewController
-            vc.recieve_indexPath = recieve_indexPath
+//            vc.recieve_indexPath = recieve_indexPath
             vc.recieve_class_name = recieve_class_name
         }
     }
